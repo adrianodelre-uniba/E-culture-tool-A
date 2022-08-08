@@ -1,4 +1,4 @@
-package com.malfaang.e_culture_tool_a;
+package com.malfaang.e_culture_tool_a.model.persone;
 
 import java.util.Date;
 
