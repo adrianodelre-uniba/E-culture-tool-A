@@ -1,19 +1,21 @@
 package com.malfaang.e_culture_tool_a.model.spazi;
 
+import java.time.LocalDate;
+
 public class Luogo {
 
-    //private static final int maxCapienza = ??;
+    protected static final int MAX_CAPIENZA = 100;
     private String nome;
     private int capienza;
     private String indirizzo;
-    private String orarioApertura;
-    private String orarioChiusura;
+    private LocalDate orarioApertura;
+    private LocalDate orarioChiusura;
 
     public Luogo() {
 
     }
 
-    public Luogo(String nome, int capienza, String indirizzo, String orarioApertura, String orarioChiusura) {
+    public Luogo(String nome, int capienza, String indirizzo, LocalDate orarioApertura, LocalDate orarioChiusura) {
         this.nome = nome;
         this.capienza = capienza;
         this.indirizzo = indirizzo;
@@ -45,19 +47,19 @@ public class Luogo {
         this.indirizzo = indirizzo;
     }
 
-    public String getOrarioApertura() {
+    public LocalDate getOrarioApertura() {
         return orarioApertura;
     }
 
-    public void setOrarioApertura(String orarioApertura) {
+    public void setOrarioApertura(LocalDate orarioApertura) {
         this.orarioApertura = orarioApertura;
     }
 
-    public String getOrarioChiusura() {
+    public LocalDate getOrarioChiusura() {
         return orarioChiusura;
     }
 
-    public void setOrarioChiusura(String orarioChiusura) {
+    public void setOrarioChiusura(LocalDate orarioChiusura) {
         this.orarioChiusura = orarioChiusura;
     }
 }
