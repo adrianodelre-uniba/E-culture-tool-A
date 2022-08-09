@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "460905117218",
+    "project_id": "e-culture-tool-a-6f940",
+    "storage_bucket": "e-culture-tool-a-6f940.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:460905117218:android:bd968f6d84b562ebbc7c7b",
+        "android_client_info": {
+          "package_name": "com.malfaang.e_culture_tool_a"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "460905117218-86v7e52csqab1l05vq9fe8a4td8dtaoi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqExh2V6efz3EudcrvblaLqy8Q6GGyNkw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "460905117218-86v7e52csqab1l05vq9fe8a4td8dtaoi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
