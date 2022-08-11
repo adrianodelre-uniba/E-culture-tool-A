@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "460905117218-9dkl1a8a84507gr3seofb6oc02rdms9p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.malfaang.e_culture_tool_a",
+            "certificate_hash": "cf76a062314c9d70ff14a48fc9287768992f8ed4"
+          }
+        },
+        {
           "client_id": "460905117218-86v7e52csqab1l05vq9fe8a4td8dtaoi.apps.googleusercontent.com",
           "client_type": 3
         }
