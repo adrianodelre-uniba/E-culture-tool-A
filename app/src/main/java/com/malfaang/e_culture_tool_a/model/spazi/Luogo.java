@@ -1,6 +1,15 @@
 package com.malfaang.e_culture_tool_a.model.spazi;
 
+import androidx.annotation.NonNull;
+
 import java.time.LocalDate;
+import java.util.Objects;
+
+/*
+ *  TODO commentare la classe
+ *
+ *  @author Donatellol
+ */
 
 public class Luogo {
 
@@ -21,6 +30,35 @@ public class Luogo {
         this.indirizzo = indirizzo;
         this.orarioApertura = orarioApertura;
         this.orarioChiusura = orarioChiusura;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "Luogo{" +
+                "nome='" + nome + '\'' +
+                ", capienza=" + capienza +
+                ", indirizzo='" + indirizzo + '\'' +
+                ", orarioApertura=" + orarioApertura +
+                ", orarioChiusura=" + orarioChiusura +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()){
+            return false;
+        }
+        Luogo luogo = (Luogo) o;
+        return nome.equals(luogo.nome) && indirizzo.equals(luogo.indirizzo);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nome, indirizzo);
     }
 
     public String getNome() {
@@ -62,4 +100,5 @@ public class Luogo {
     public void setOrarioChiusura(LocalDate orarioChiusura) {
         this.orarioChiusura = orarioChiusura;
     }
+
 }
