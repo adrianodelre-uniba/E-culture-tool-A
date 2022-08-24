@@ -3,11 +3,20 @@ package com.malfaang.e_culture_tool_a.auth;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.content.IntentSender;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.google.android.gms.auth.api.identity.BeginSignInRequest;
+import com.google.android.gms.auth.api.identity.Identity;
+import com.google.android.gms.auth.api.identity.SignInClient;
+import com.google.android.gms.auth.api.identity.SignInCredential;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.common.api.CommonStatusCodes;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FacebookAuthProvider;
@@ -24,22 +33,65 @@ import java.util.Objects;
 
 public class LoginActivity extends AppCompatActivity {
     private static final String TAG = "LoginActivity";
-    private FirebaseAuth mAuth;
+    private static FirebaseAuth mAuth;
+    private static final int REQ_ONE_TAP = 2;  // Can be any integer unique to the Activity.
+    private SignInClient oneTapClient;
 
     public LoginActivity(){ /* TODO document why this constructor is empty */ }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
+        super.onCreate(savedInstanceState, persistentState);
         setContentView(R.layout.activity_login);
     }
 
-    public boolean checkCurrentUser() {
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        return user != null;
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == REQ_ONE_TAP) {
+            try {
+                SignInCredential credential = oneTapClient.getSignInCredentialFromIntent(data);
+                String idToken = credential.getGoogleIdToken();
+                String username = credential.getId();
+                String password = credential.getPassword();
+                if (idToken != null) {
+                    // Got an ID token from Google. Use it to authenticate
+                    // with your backend.
+                    //TODO Completare
+                    Log.d(TAG, "Got ID token.");
+                } else if (password != null) {
+                    // Got a saved username and password. Use them to authenticate
+                    // with your backend.
+                    signInEmailPassword(Objects.requireNonNull(checkCurrentUser()).getEmail(), password);
+                    Log.d(TAG, "Got password.");
+                }
+            } catch (ApiException e) {
+                switch (e.getStatusCode()) {
+                    case CommonStatusCodes.CANCELED:
+                        Log.d(TAG, "One-tap dialog was closed.");
+                        // Don't re-prompt the user.
+                        boolean showOneTapUI = false;
+                        break;
+                    case CommonStatusCodes.NETWORK_ERROR:
+                        Log.d(TAG, "One-tap encountered a network error.");
+                        // Try again or just ignore.
+                        break;
+                    default:
+                        Log.d(TAG, "Couldn't get credential from result."
+                                + e.getLocalizedMessage());
+                        break;
+                }
+            }
+        }
     }
 
-    public void signIn(String email, String password) {
+    public static FirebaseUser checkCurrentUser() {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        return user;
+    }
+
+    public void signInEmailPassword(String email, String password) {
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
@@ -54,6 +106,45 @@ public class LoginActivity extends AppCompatActivity {
                                 Toast.LENGTH_SHORT).show();
                         updateUI(null);
                     }
+                });
+    }
+
+    public void signInGoogle(){
+        oneTapClient = Identity.getSignInClient(this);
+        // Your server's client ID, not your Android client ID.
+        // Only show accounts previously used to sign in.
+        // Automatically sign in when exactly one credential is retrieved.
+        BeginSignInRequest signInRequest = BeginSignInRequest.builder()
+                .setPasswordRequestOptions(BeginSignInRequest.PasswordRequestOptions.builder()
+                        .setSupported(true)
+                        .build())
+                .setGoogleIdTokenRequestOptions(BeginSignInRequest.GoogleIdTokenRequestOptions.builder()
+                        .setSupported(true)
+                        // Your server's client ID, not your Android client ID.
+                        .setServerClientId(getString(R.string.default_web_client_id))
+                        // Only show accounts previously used to sign in.
+                        .setFilterByAuthorizedAccounts(true)
+                        .build())
+                // Automatically sign in when exactly one credential is retrieved.
+                .setAutoSelectEnabled(true)
+                .build();
+
+        BeginSignInRequest signUpRequest = null;
+        assert false;
+        oneTapClient.beginSignIn(signUpRequest)
+                .addOnSuccessListener(this, result -> {
+                    try {
+                        startIntentSenderForResult(
+                                result.getPendingIntent().getIntentSender(), REQ_ONE_TAP,
+                                null, 0, 0, 0);
+                    } catch (IntentSender.SendIntentException e) {
+                        Log.e(TAG, "Couldn't start One Tap UI: " + e.getLocalizedMessage());
+                    }
+                })
+                .addOnFailureListener(this, e -> {
+                    // No saved credentials found. Launch the One Tap sign-up flow, or
+                    // do nothing and continue presenting the signed-out UI.
+                    Log.d(TAG, e.getLocalizedMessage());
                 });
     }
 

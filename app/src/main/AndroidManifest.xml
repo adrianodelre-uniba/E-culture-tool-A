@@ -14,10 +14,10 @@
         android:theme="@style/Theme.EculturetoolA"
         tools:targetApi="31">
         <activity
-            android:name=".RegistrazioneActivity"
+            android:name=".auth.RegistrazioneActivity"
             android:exported="false" />
         <activity
-            android:name=".Login2Activity"
+            android:name=".auth.LoginActivity"
             android:exported="false" />
     </application>
 
