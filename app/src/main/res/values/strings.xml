@@ -12,4 +12,6 @@
     <string name="title_activity_login" translatable="false">LoginActivity</string>
     
     <string name="login" translatable="false">Login</string>
+    <string name="sign_in_with" translatable="true">Sign in with:</string>
+    <string name="You_are_not_registered_Register" translatable="true">You are not registered? Register</string>
 </resources>

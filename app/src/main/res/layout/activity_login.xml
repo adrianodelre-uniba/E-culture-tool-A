@@ -15,10 +15,10 @@
             android:id="@+id/logo_image"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:src="@drawable/pngtree_exquisite_architectural_landmark_of_roman_colosseum_png_image_6942934"
-            tools:ignore="contentDescription"
+            android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentStart="true"/>
+            android:src="@drawable/pngtree_exquisite_architectural_landmark_of_roman_colosseum_png_image_6942934"
+            tools:ignore="contentDescription" />
 
 
         <!-- EditText username -->
@@ -89,8 +89,43 @@
             android:text="@string/login"
             android:textAllCaps="true" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sign_in_with"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:layout_marginStart="122dp"
+            android:layout_marginTop="500dp" />
+
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="109dp"
+            android:layout_marginTop="560dp"
+            android:src="@drawable/google__g__logo_svg" />
+
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="221dp"
+            android:layout_marginTop="560dp"
+            android:src="@drawable/icons8_facebook_nuovo_48" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/You_are_not_registered_Register"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="645dp" />
+
 
     </RelativeLayout>
+
+
+
 
 
 
