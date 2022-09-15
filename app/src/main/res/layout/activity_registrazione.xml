@@ -6,4 +6,33 @@
     android:layout_height="match_parent"
     tools:context=".auth.RegistrazioneActivity">
 
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        tools:ignore="MissingConstraints">
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="155dp"
+            android:layout_marginTop="16dp"
+            android:layout_alignParentStart="false"
+            android:layout_alignParentEnd="false"
+            android:src="@drawable/pngtree_exquisite_architectural_landmark_of_roman_colosseum_png_image_6942934"
+            tools:ignore="contentDescription" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/E_Culture_tool_A"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:layout_marginStart="125dp"
+            android:layout_marginTop="110dp" />
+
+    </RelativeLayout>
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
