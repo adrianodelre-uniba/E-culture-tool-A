@@ -31,6 +31,53 @@
             android:layout_marginStart="125dp"
             android:layout_marginTop="110dp" />
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/name"
+            style="@style/LoginTextInputLayoutStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="150dp"
+            android:layout_marginEnd="30dp"
+            android:hint="@string/prompt_name"
+            android:padding="5dp"
+            android:textColorHint="@color/heading_gray"
+            app:hintTextColor="@color/heading_gray">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/Name"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:importantForAutofill="no"
+                android:textColor="@color/heading_gray"
+                android:textColorHint="@color/heading_gray"
+                android:textSize="14sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/UserName"
+            style="@style/RegistrationTextInputLayoutStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="210dp"
+            android:layout_marginEnd="30dp"
+            android:hint="@string/surname"
+            android:padding="5dp"
+            android:textColorHint="@color/heading_gray"
+            app:hintTextColor="@color/heading_gray">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:importantForAutofill="no"
+                android:textColor="@color/heading_gray"
+                android:textColorHint="@color/heading_gray"
+                android:textSize="14sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
     </RelativeLayout>
 
 
