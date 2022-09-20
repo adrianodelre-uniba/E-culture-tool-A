@@ -98,19 +98,21 @@
             android:layout_marginStart="122dp"
             android:layout_marginTop="500dp" />
 
-        <ImageView
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+        <ImageButton
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:layout_marginStart="109dp"
             android:layout_marginTop="560dp"
-            android:src="@drawable/google__g__logo_svg" />
+            android:src="@drawable/google__g__logo_svg"
+            android:scaleType="fitCenter"/>
 
-        <ImageView
+        <ImageButton
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_marginStart="221dp"
             android:layout_marginTop="560dp"
-            android:src="@drawable/icons8_facebook_nuovo_48" />
+            android:src="@drawable/icons8_facebook_nuovo_48"
+            android:scaleType="fitCenter"/>
 
         <TextView
             android:layout_width="wrap_content"
