@@ -1,14 +1,19 @@
 package com.malfaang.e_culture_tool_a.auth;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.util.Log;
+import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.identity.BeginSignInRequest;
@@ -17,6 +22,7 @@ import com.google.android.gms.auth.api.identity.SignInClient;
 import com.google.android.gms.auth.api.identity.SignInCredential;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.CommonStatusCodes;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FacebookAuthProvider;
@@ -28,6 +34,7 @@ import com.google.firebase.auth.UserProfileChangeRequest;
 import com.facebook.AccessToken;
 
 import com.malfaang.e_culture_tool_a.R;
+import com.malfaang.e_culture_tool_a.utility.NetworkConnectivity;
 
 import java.util.Objects;
 
@@ -36,6 +43,12 @@ public class LoginActivity extends AppCompatActivity {
     private static FirebaseAuth mAuth;
     private static final int REQ_ONE_TAP = 2;  // Can be any integer unique to the Activity.
     private SignInClient oneTapClient;
+    private BeginSignInRequest signInRequest;
+    private TextInputEditText emailEdit;
+    private TextInputEditText passwordEdit;
+    private Button gLoginBtn;
+    private Button fbLoginBtn;
+    private ControlloCredenziali checker;
 
     public LoginActivity(){ /* TODO document why this constructor is empty */ }
 
@@ -43,9 +56,19 @@ public class LoginActivity extends AppCompatActivity {
     public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
         super.onCreate(savedInstanceState, persistentState);
         setContentView(R.layout.activity_login);
+
+        checker = new ControlloCredenziali();
+        emailEdit = findViewById(R.id.idEdtUserName);
+        passwordEdit = findViewById(R.id.idEdtPassword);
+        String email = Objects.requireNonNull(emailEdit.getText().toString());
+        String password = Objects.requireNonNull(passwordEdit.getText().toString());
+        Button loginBtn = findViewById(R.id.idBtnLogin);
+        loginBtn.setOnClickListener(view -> signInEmailPassword(email, password));
+        gLoginBtn.setOnClickListener(view -> signInGoogle());
     }
 
     @Override
+    @Deprecated
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
@@ -53,7 +76,6 @@ public class LoginActivity extends AppCompatActivity {
             try {
                 SignInCredential credential = oneTapClient.getSignInCredentialFromIntent(data);
                 String idToken = credential.getGoogleIdToken();
-                String username = credential.getId();
                 String password = credential.getPassword();
                 if (idToken != null) {
                     // Got an ID token from Google. Use it to authenticate
@@ -87,26 +109,35 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public static FirebaseUser checkCurrentUser() {
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        return user;
+        return FirebaseAuth.getInstance().getCurrentUser();
     }
 
     public void signInEmailPassword(String email, String password) {
-        mAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, task -> {
-                    if (task.isSuccessful()) {
-                        // Sign in success, update UI with the signed-in user's information
-                        Log.d(TAG, "signInWithEmail:success");
-                        FirebaseUser user = mAuth.getCurrentUser();
-                        updateUI(user);
-                    } else {
-                        // If sign in fails, display a message to the user.
-                        Log.w(TAG, "signInWithEmail:failure", task.getException());
-                        Toast.makeText(LoginActivity.this, "Authentication failed.",
-                                Toast.LENGTH_SHORT).show();
-                        updateUI(null);
-                    }
-                });
+        if(checker.checkEmail(emailEdit,LoginActivity.this) && checker.checkPassword(passwordEdit,LoginActivity.this)) {
+            if (!NetworkConnectivity.check(getApplicationContext())) {
+                Toast.makeText(LoginActivity.this, R.string.no_connection, Toast.LENGTH_SHORT).show();
+                return;
+            }
+            mAuth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this, task -> {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d(TAG, "signInWithEmail:success");
+                            Toast.makeText(LoginActivity.this, R.string.logged_in, Toast.LENGTH_SHORT).show();
+                            addNewSessionUid(getApplicationContext(), FirebaseAuth.getInstance().getUid());
+                            //FirebaseUser user = mAuth.getCurrentUser();
+                            //updateUI(user);
+                            //*startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                            finishAffinity();
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w(TAG, "signInWithEmail:failure", task.getException());
+                            Toast.makeText(LoginActivity.this, "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show();
+                            updateUI(null);
+                        }
+                    });
+        }
     }
 
     public void signInGoogle(){
@@ -114,19 +145,13 @@ public class LoginActivity extends AppCompatActivity {
         // Your server's client ID, not your Android client ID.
         // Only show accounts previously used to sign in.
         // Automatically sign in when exactly one credential is retrieved.
-        BeginSignInRequest signInRequest = BeginSignInRequest.builder()
-                .setPasswordRequestOptions(BeginSignInRequest.PasswordRequestOptions.builder()
+        signInRequest = BeginSignInRequest.builder()
+                .setGoogleIdTokenRequestOptions(BeginSignInRequest.GoogleIdTokenRequestOptions
+                        .builder()
                         .setSupported(true)
-                        .build())
-                .setGoogleIdTokenRequestOptions(BeginSignInRequest.GoogleIdTokenRequestOptions.builder()
-                        .setSupported(true)
-                        // Your server's client ID, not your Android client ID.
                         .setServerClientId(getString(R.string.default_web_client_id))
-                        // Only show accounts previously used to sign in.
                         .setFilterByAuthorizedAccounts(true)
                         .build())
-                // Automatically sign in when exactly one credential is retrieved.
-                .setAutoSelectEnabled(true)
                 .build();
 
         BeginSignInRequest signUpRequest = null;
@@ -152,6 +177,22 @@ public class LoginActivity extends AppCompatActivity {
         // TODO document why this method is empty
     }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            // API 5+ solution
+            onBackPressed();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        //overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+    }
+
     public String getUserProfile() {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
@@ -170,6 +211,18 @@ public class LoginActivity extends AppCompatActivity {
             return name + " " + email + " " + photoUrl + " " + "email verificata: " + emailVerified;
         }
         return "";
+    }
+
+    /**
+     * Aggiunge al file sharedPreferences l'uid cloud dell'utente loggato.
+     * @param context contesto app android.
+     * @param uid user id da inserire.
+     */
+    public static void addNewSessionUid(@NonNull final Context context, final String uid) {
+        final SharedPreferences.Editor editor;
+        editor = context.getSharedPreferences("MyPreferences", MODE_PRIVATE).edit();
+        editor.putString(context.getString(R.string.uid_preferences), uid);
+        editor.apply();
     }
 
     public void updateProfile(String nome, String url) {

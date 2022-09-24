@@ -8,11 +8,23 @@
     <string name="welcome" translatable="false">"Welcome !"</string>
     <string name="invalid_username" translatable="false">Not a valid username</string>
     <string name="invalid_password" translatable="false">Password must be >5 characters</string>
+    <string name="psw_too_short" translatable="true">Password field has less than , %1$d characters</string>
+    <string name="msg_psw_without_space" translatable="true">Your password cannot contain spaces </string>
     <string name="login_failed" translatable="false">"Login failed"</string>
     <string name="title_activity_login" translatable="false">LoginActivity</string>
-    
+    <string name="msg_different_psw" translatable="true">Your passwords do not match</string>
+    <string name="field_empty" translatable="true">%1$s field is empty </string>
+    <string name="field_too_long" translatable="true">%1$s field contains more than, %2$d characters</string>
+    <string name="valid_email" translatable="true">Enter a valid email</string>
+    <string name="logged_in" translatable="true">Logged in</string>
+    <string name="uid_preferences" translatable="false">uid_preferences</string>
+    <string name="success_registration" translatable="true">Success registration</string>
+    <string name="credentials_not_accepted" translatable="true">Email and password are not allowed</string>
+    <string name="email_already_use" translatable="true">Email already in use by another account</string>
+    <string name="failed_registration" translatable="true">Failed registration</string>
     <string name="login" translatable="false">Login</string>
     <string name="sign_in_with" translatable="true">Sign in with:</string>
     <string name="You_are_not_registered_Register" translatable="true">You are not registered? Register</string>
+    <string name="no_connection" translatable="true">There is no internet connection</string>
     <string name="E_Culture_tool_A" translatable="false">E Culture tool A</string>
 </resources>

@@ -29,16 +29,16 @@ public class User {
         this.password = password;
         counter++;
     }
-    public User(String nome, String cognome, LocalDate dateBirth, String cap, String email, String password){
+    public User(String nome, String cognome, LocalDate dateBirth, String email, String password){
         this.id = counter;
         this.nome = nome;
         this.cognome = cognome;
         this.dateBirth = dateBirth;
-        this.cap = cap;
         this.email = email;
         this.password = password;
         counter++;
     }
+
     public int getId() {
         return id;
     }
@@ -62,12 +62,6 @@ public class User {
     }
     public void setDateBirth(LocalDate dateBirth) {
         this.dateBirth = dateBirth;
-    }
-    public String getCap() {
-        return cap;
-    }
-    public void setCap(String cap) {
-        this.cap = cap;
     }
     public String getCellulare() {
         return cellulare;
