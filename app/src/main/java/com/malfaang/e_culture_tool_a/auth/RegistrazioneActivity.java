@@ -1,9 +1,5 @@
 package com.malfaang.e_culture_tool_a.auth;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.IntentSender;
 import android.os.Bundle;
@@ -12,11 +8,20 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.gms.auth.api.identity.BeginSignInRequest;
 import com.google.android.gms.auth.api.identity.Identity;
 import com.google.android.gms.auth.api.identity.SignInClient;
+import com.google.android.gms.auth.api.identity.SignInCredential;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.common.api.CommonStatusCodes;
+import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.malfaang.e_culture_tool_a.R;
@@ -36,7 +41,7 @@ public class RegistrazioneActivity extends AppCompatActivity {
     private BeginSignInRequest signUpRequest;
     private ControlloCredenziali checker;
     private static final int REQ_ONE_TAP = 2;
-    private final boolean showOneTapUI = true;
+    private boolean showOneTapUI = true;
     private static DatabaseReference reference;
     private static final String TABLE_NAME = "Users";
 
@@ -50,18 +55,52 @@ public class RegistrazioneActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         checker = new ControlloCredenziali();
 
-        oneTapClient = Identity.getSignInClient(this);
-        signUpRequest = BeginSignInRequest.builder()
-                .setGoogleIdTokenRequestOptions(BeginSignInRequest.GoogleIdTokenRequestOptions.builder()
-                        .setSupported(true)
-                        // Your server's client ID, not your Android client ID.
-                        .setServerClientId(getString(R.string.default_web_client_id))
-                        // Show all accounts on the device.
-                        .setFilterByAuthorizedAccounts(false)
-                        .build())
-                .build();
+        //TODO Utente tappa su registrazione --> registraUtenteSuFirebaseFinale
+        //TODO Utente tappa su simbolo Google --> creaAccountGoogle
+    }
 
-        // ...
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        switch (requestCode) {
+            case REQ_ONE_TAP:
+                try {
+                    SignInCredential credential = oneTapClient.getSignInCredentialFromIntent(data);
+                    String idToken = credential.getGoogleIdToken();
+                    if (idToken !=  null) {
+                        Log.d(TAG, "Got ID token.");
+                        AuthCredential firebaseCredential = GoogleAuthProvider.getCredential(idToken, null);
+                        mAuth.signInWithCredential(firebaseCredential)
+                                .addOnCompleteListener(this, task -> {
+                                    if (task.isSuccessful()) {
+                                        //TODO update UI with the signed-in user's information
+                                        Log.d(TAG, "signInWithCredential:success");
+                                        FirebaseUser user = mAuth.getCurrentUser();
+                                        updateUI(user);
+                                    } else {
+                                        Log.w(TAG, "signInWithCredential:failure", task.getException());
+                                        updateUI(null);
+                                    }
+                                });
+                    }
+                } catch (ApiException e) {
+                    switch (e.getStatusCode()) {
+                        case CommonStatusCodes.CANCELED:
+                            Log.d(TAG, "One-tap dialog was closed.");
+                            showOneTapUI = false;
+                            break;
+                        case CommonStatusCodes.NETWORK_ERROR:
+                            Log.d(TAG, "One-tap encountered a network error.");
+                            break;
+                        default:
+                            Log.d(TAG, "Couldn't get credential from result."
+                                    + e.getLocalizedMessage());
+                            break;
+                    }
+                }
+                break;
+        }
     }
 
     @Override
@@ -125,7 +164,16 @@ public class RegistrazioneActivity extends AppCompatActivity {
                 });
     }
 
-    private void createAccountGoogle() {
+    private void creaAccountGoogle() {
+        oneTapClient = Identity.getSignInClient(this);
+        signUpRequest = BeginSignInRequest.builder()
+                .setGoogleIdTokenRequestOptions(BeginSignInRequest.GoogleIdTokenRequestOptions.builder()
+                        .setSupported(true)
+                        .setServerClientId(getString(R.string.default_web_client_id))
+                        .setFilterByAuthorizedAccounts(false)
+                        .build())
+                .build();
+
         oneTapClient.beginSignIn(signUpRequest)
                 .addOnSuccessListener(this, result -> {
                     try {
@@ -137,7 +185,6 @@ public class RegistrazioneActivity extends AppCompatActivity {
                     }
                 })
                 .addOnFailureListener(this, e -> {
-                    // No Google Accounts found. Just continue presenting the signed-out UI.
                     Log.d(TAG, e.getLocalizedMessage());
                 });
     }
