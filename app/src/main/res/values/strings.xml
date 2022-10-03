@@ -27,4 +27,10 @@
     <string name="You_are_not_registered_Register" translatable="true">You are not registered? Register</string>
     <string name="no_connection" translatable="true">There is no internet connection</string>
     <string name="E_Culture_tool_A" translatable="false">E Culture tool A</string>
+    <string name="Name" translatable="true">Name</string>
+    <string name="Surname" translatable="true">Surname</string>
+    <string name="Date_of_birthday" translatable="true">Date of birthday</string>
+    <string name="Email" translatable="false">Email</string>
+    <string name="Password" translatable="false">Password</string>
+    <string name="Registration" translatable="true">Registration</string>
 </resources>

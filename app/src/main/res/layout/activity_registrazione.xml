@@ -39,7 +39,7 @@
             android:layout_marginStart="30dp"
             android:layout_marginTop="150dp"
             android:layout_marginEnd="30dp"
-            android:hint="@string/prompt_name"
+            android:hint="@string/Name"
             android:padding="5dp"
             android:textColorHint="@color/heading_gray"
             app:hintTextColor="@color/heading_gray">
@@ -63,7 +63,7 @@
             android:layout_marginStart="30dp"
             android:layout_marginTop="210dp"
             android:layout_marginEnd="30dp"
-            android:hint="@string/surname"
+            android:hint="@string/Surname"
             android:padding="5dp"
             android:textColorHint="@color/heading_gray"
             app:hintTextColor="@color/heading_gray">
@@ -77,6 +77,86 @@
                 android:textColorHint="@color/heading_gray"
                 android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/Birthaday"
+            style="@style/RegistrationTextInputLayoutStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="270dp"
+            android:layout_marginEnd="30dp"
+            android:hint="@string/Date_of_birthday"
+            android:padding="5dp"
+            android:textColorHint="@color/heading_gray"
+            app:hintTextColor="@color/heading_gray">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:importantForAutofill="no"
+                android:textColor="@color/heading_gray"
+                android:textColorHint="@color/heading_gray"
+                android:textSize="14sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/email"
+            style="@style/RegistrationTextInputLayoutStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="350dp"
+            android:layout_marginEnd="30dp"
+            android:hint="@string/Email"
+            android:padding="5dp"
+            android:textColorHint="@color/heading_gray"
+            app:hintTextColor="@color/heading_gray">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:importantForAutofill="no"
+                android:textColor="@color/heading_gray"
+                android:textColorHint="@color/heading_gray"
+                android:textSize="14sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/Password"
+            style="@style/RegistrationTextInputLayoutStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="410dp"
+            android:layout_marginEnd="30dp"
+            android:hint="@string/Password"
+            android:padding="5dp"
+            android:textColorHint="@color/heading_gray"
+            app:hintTextColor="@color/heading_gray">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:importantForAutofill="no"
+                android:textColor="@color/heading_gray"
+                android:textColorHint="@color/heading_gray"
+                android:textSize="14sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/registration"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="500dp"
+            android:layout_marginEnd="25dp"
+            android:background="@drawable/button_shape"
+            android:text="@string/Registration"
+            android:textAllCaps="true" />
 
     </RelativeLayout>
 
