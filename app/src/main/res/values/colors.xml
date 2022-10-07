@@ -10,4 +10,5 @@
 
     <color name="heading_gray">#293133</color>
     <color name="main_blue">#FF4348A7</color>
+    <color name="gray">#D9D9D9</color>
 </resources>
