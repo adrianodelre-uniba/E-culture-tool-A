@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/right_icon"
             android:layout_alignParentEnd="true"
-            android:src="@drawable/ic_baseline_menu_24"
+            android:src="@drawable/ic_baseline_menu_24"/>
     </RelativeLayout>
 
 </RelativeLayout>
