@@ -102,17 +102,17 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="122dp"
+            android:layout_marginTop="450dp"
             android:text="@string/sign_in_with"
             android:textColor="@color/black"
-            android:textSize="30sp"
-            android:layout_marginStart="122dp"
-            android:layout_marginTop="500dp" />
+            android:textSize="30sp" />
 
         <ImageButton
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_marginStart="109dp"
-            android:layout_marginTop="560dp"
+            android:layout_marginTop="500dp"
             android:src="@drawable/google__g__logo_svg"
             android:scaleType="fitCenter"/>
 
@@ -120,18 +120,29 @@
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_marginStart="221dp"
-            android:layout_marginTop="560dp"
-            android:src="@drawable/icons8_facebook_nuovo_48"
-            android:scaleType="fitCenter"/>
+            android:layout_marginTop="500dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/icons8_facebook_nuovo_48" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/You_are_not_registered_Register"
+            android:text="@string/You_are_not_registered"
             android:textColor="@color/black"
             android:textSize="24sp"
             android:layout_marginStart="36dp"
-            android:layout_marginTop="645dp" />
+            android:layout_marginTop="590dp" />
+
+        <TextView
+            android:id="@+id/Register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="290dp"
+            android:layout_marginTop="590dp"
+            android:linksClickable="true"
+            android:text="@string/Register"
+            android:textColor="@color/main_blue"
+            android:textSize="24sp" />
 
 
     </RelativeLayout>

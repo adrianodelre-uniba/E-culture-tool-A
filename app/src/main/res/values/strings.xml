@@ -24,7 +24,8 @@
     <string name="failed_registration" translatable="true">Failed registration</string>
     <string name="login" translatable="false">Login</string>
     <string name="sign_in_with" translatable="true">Sign in with:</string>
-    <string name="You_are_not_registered_Register" translatable="true">You are not registered? Register</string>
+    <string name="You_are_not_registered" translatable="true">You are not registered?</string>
+    <string name="Register" translatable="true">Register</string>
     <string name="no_connection" translatable="true">There is no internet connection</string>
     <string name="E_Culture_tool_A" translatable="false">E Culture tool A</string>
     <string name="Name" translatable="true">Name</string>
