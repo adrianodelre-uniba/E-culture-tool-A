@@ -109,14 +109,16 @@
             android:textSize="30sp" />
 
         <ImageButton
+            android:id="@+id/idBtnGoogle"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_marginStart="109dp"
             android:layout_marginTop="500dp"
-            android:src="@drawable/google__g__logo_svg"
-            android:scaleType="fitCenter"/>
+            android:scaleType="fitCenter"
+            android:src="@drawable/google__g__logo_svg" />
 
         <ImageButton
+            android:id="@+id/idBtnFacebook"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_marginStart="221dp"

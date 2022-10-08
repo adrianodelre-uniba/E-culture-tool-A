@@ -29,8 +29,8 @@
             android:textColor="@color/black"
             android:textSize="20sp"/>
 
-        <TextView
-            android:id="@+id/Name"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/idEdtName"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginLeft="30dp"
@@ -47,8 +47,8 @@
             android:textColorHint="@color/black"
             android:textSize="14sp" />
 
-        <TextView
-            android:id="@+id/Surname"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/idEdtSurname"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginLeft="30dp"
@@ -65,8 +65,8 @@
             android:textColorHint="@color/black"
             android:textSize="14sp" />
 
-        <TextView
-            android:id="@+id/Birthday"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/idEdtBirthday"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginLeft="30dp"
@@ -83,8 +83,8 @@
             android:textColorHint="@color/black"
             android:textSize="14sp" />
 
-        <TextView
-            android:id="@+id/Email"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/idEdtEmail"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginLeft="30dp"
@@ -92,7 +92,7 @@
             android:layout_marginRight="30dp"
             android:background="@drawable/input"
             android:ems="10"
-            android:hint="@string/Email"
+        android:hint="@string/Email"
             android:inputType="textEmailAddress"
             android:paddingStart="12dp"
             android:paddingTop="10dp"
@@ -101,8 +101,8 @@
             android:textColorHint="@color/black"
             android:textSize="14sp" />
 
-        <TextView
-            android:id="@+id/Password"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/idEdtPassword"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginLeft="30dp"
@@ -120,7 +120,7 @@
             android:textSize="14sp" />
 
         <Button
-            android:id="@+id/registration"
+            android:id="@+id/idBtnRegistration"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"

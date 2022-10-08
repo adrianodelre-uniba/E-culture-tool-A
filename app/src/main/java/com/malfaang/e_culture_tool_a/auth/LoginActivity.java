@@ -10,6 +10,7 @@ import android.os.PersistableBundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -46,7 +47,7 @@ public class LoginActivity extends AppCompatActivity {
     private BeginSignInRequest signInRequest;
     private TextInputEditText emailEdit;
     private TextInputEditText passwordEdit;
-    private Button gLoginBtn;
+    private ImageButton gLoginBtn;
     private Button fbLoginBtn;
     private ControlloCredenziali checker;
 
@@ -63,6 +64,7 @@ public class LoginActivity extends AppCompatActivity {
         String email = Objects.requireNonNull(emailEdit.getText().toString());
         String password = Objects.requireNonNull(passwordEdit.getText().toString());
         Button loginBtn = findViewById(R.id.idBtnLogin);
+        gLoginBtn = findViewById(R.id.idBtnGoogle);
         loginBtn.setOnClickListener(view -> signInEmailPassword(email, password));
         gLoginBtn.setOnClickListener(view -> signInGoogle());
     }

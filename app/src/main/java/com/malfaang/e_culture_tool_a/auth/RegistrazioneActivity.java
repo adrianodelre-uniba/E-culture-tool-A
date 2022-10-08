@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -18,6 +19,7 @@ import com.google.android.gms.auth.api.identity.SignInClient;
 import com.google.android.gms.auth.api.identity.SignInCredential;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.CommonStatusCodes;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -30,6 +32,8 @@ import com.malfaang.e_culture_tool_a.listeners.SuccessListener;
 import com.malfaang.e_culture_tool_a.model.persone.User;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 
 public class RegistrazioneActivity extends AppCompatActivity {
     private static final String TAG = "EmailPassword";
@@ -44,6 +48,12 @@ public class RegistrazioneActivity extends AppCompatActivity {
     private boolean showOneTapUI = true;
     private static DatabaseReference reference;
     private static final String TABLE_NAME = "Users";
+    private TextInputEditText nameEdit;
+    private TextInputEditText surnameEdit;
+    private TextInputEditText birthdayEdit;
+    private TextInputEditText emailEdit;
+    private TextInputEditText passwordEdit;
+    private Button registrationBtn;
 
     public RegistrazioneActivity(){ /* TODO document why this constructor is empty */ }
 
@@ -55,7 +65,24 @@ public class RegistrazioneActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         checker = new ControlloCredenziali();
 
-        //TODO Utente tappa su registrazione --> registraUtenteSuFirebaseFinale
+        nameEdit = findViewById(R.id.idEdtName);
+        surnameEdit = findViewById(R.id.idEdtSurname);
+        birthdayEdit = findViewById(R.id.idEdtBirthday);
+        emailEdit = findViewById(R.id.idEdtEmail);
+        passwordEdit = findViewById(R.id.idEdtPassword);
+        String name = Objects.requireNonNull(nameEdit.getText().toString());
+        String surname = Objects.requireNonNull(surnameEdit.getText().toString());
+        String birthday = Objects.requireNonNull(birthdayEdit.getText().toString());
+        String email = Objects.requireNonNull(emailEdit.getText().toString());
+        String password = Objects.requireNonNull(passwordEdit.getText().toString());
+        registrationBtn = findViewById(R.id.idBtnRegistration);
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
+        LocalDate birthdayLD = LocalDate.parse(birthday, formatter);
+
+        registrationBtn.setOnClickListener(view -> registraUtenteSuFirebaseFinale(name, surname,
+                 birthdayLD, email, password));
+
         //TODO Utente tappa su simbolo Google --> creaAccountGoogle
     }
 
