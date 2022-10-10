@@ -25,5 +25,14 @@
         <item name="boxStrokeWidth">1dp</item>
     </style>
 
+    <style name="Theme.EculturetoolA.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.EculturetoolA.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.EculturetoolA.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
 
 </resources>

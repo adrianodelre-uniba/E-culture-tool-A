@@ -14,6 +14,17 @@
         android:theme="@style/Theme.EculturetoolA"
         tools:targetApi="31">
         <activity
+            android:name=".auth.FirstActivity"
+            android:exported="true"
+            android:label="@string/title_activity_first"
+            android:theme="@style/Theme.EculturetoolA.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".auth.RegistrazioneActivity"
             android:exported="false" />
         <activity
