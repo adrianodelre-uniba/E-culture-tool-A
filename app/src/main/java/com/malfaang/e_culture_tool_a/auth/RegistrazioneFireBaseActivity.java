@@ -150,7 +150,7 @@ public class RegistrazioneFireBaseActivity extends AppCompatActivity {
                 () ->{
                     Toast.makeText(this, R.string.success_registration, Toast.LENGTH_LONG).show();
                     mAuth.signOut();
-                    startActivity(new Intent(this, LoginActivity.class));
+                    startActivity(new Intent(this, LoginFireBaseActivity.class));
                     finish();
                 },
                 (String errorMsg) ->{
@@ -175,7 +175,7 @@ public class RegistrazioneFireBaseActivity extends AppCompatActivity {
                         assert firebaseUser != null;
                         String userID = firebaseUser.getUid();
                         DatabaseReference actualReference = reference.child(userID);
-                        actualReference.setValue(new User(nome, cognome, email, password))
+                        actualReference.setValue(new User(nome, cognome, dataDiNascita, email, password))
                                 .addOnCompleteListener(taskUserValueSet -> {
                             if (taskUserValueSet.isSuccessful()) {
                                 success.onSuccess();

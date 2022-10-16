@@ -37,7 +37,7 @@ import com.malfaang.e_culture_tool_a.utility.NetworkConnectivity;
 
 import java.util.Objects;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginFireBaseActivity extends AppCompatActivity {
     private static final String TAG = "LoginActivity";
     private static FirebaseAuth mAuth;
     private static final int REQ_ONE_TAP = 2;  // Can be any integer unique to the Activity.
@@ -51,12 +51,12 @@ public class LoginActivity extends AppCompatActivity {
     private Button fbLoginBtn;
     private ControlloCredenziali checker;
 
-    public LoginActivity(){ /* TODO document why this constructor is empty */ }
+    public LoginFireBaseActivity(){ /* TODO document why this constructor is empty */ }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
         super.onCreate(savedInstanceState, persistentState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_login_locale);
 
         checker = new ControlloCredenziali();
         emailEdit = findViewById(R.id.idEdtUserName);
@@ -126,9 +126,9 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void signInEmailPassword(String email, String password) {
-        if(checker.checkEmail(emailEdit,LoginActivity.this) && checker.checkPassword(passwordEdit,LoginActivity.this)) {
+        if(checker.checkEmail(emailEdit, LoginFireBaseActivity.this) && checker.checkPassword(passwordEdit, LoginFireBaseActivity.this)) {
             if (!NetworkConnectivity.check(getApplicationContext())) {
-                Toast.makeText(LoginActivity.this, R.string.no_connection, Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginFireBaseActivity.this, R.string.no_connection, Toast.LENGTH_SHORT).show();
                 return;
             }
             mAuth.signInWithEmailAndPassword(email, password)
@@ -136,7 +136,7 @@ public class LoginActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             //TODO update UI with the signed-in user's information
                             Log.d(TAG, "signInWithEmail:success");
-                            Toast.makeText(LoginActivity.this, R.string.logged_in, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginFireBaseActivity.this, R.string.logged_in, Toast.LENGTH_SHORT).show();
                             addNewSessionUid(getApplicationContext(), FirebaseAuth.getInstance().getUid());
                             //FirebaseUser user = mAuth.getCurrentUser();
                             //updateUI(user);
@@ -144,7 +144,7 @@ public class LoginActivity extends AppCompatActivity {
                             finishAffinity();
                         } else {
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
-                            Toast.makeText(LoginActivity.this, "Authentication failed.",
+                            Toast.makeText(LoginFireBaseActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
                             updateUI(null);
                         }
