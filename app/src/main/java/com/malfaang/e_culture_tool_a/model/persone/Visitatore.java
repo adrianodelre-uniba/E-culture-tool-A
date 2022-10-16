@@ -10,7 +10,7 @@ public class Visitatore extends User {
     private LocalDate tempoDisponibile;
 
     public Visitatore(String nome, String cognome, LocalDate dateNascita,
-                      String cap, String cellulare, String email, String password) {
+                      String email, String password) {
         super(nome, cognome, dateNascita, email, password);
     }
 
