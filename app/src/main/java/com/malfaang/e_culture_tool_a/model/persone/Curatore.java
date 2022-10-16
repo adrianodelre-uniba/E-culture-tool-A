@@ -10,9 +10,9 @@ import java.util.Objects;
 public class Curatore extends User{
     private Luogo luogoGestito;
 
-    public Curatore(String nome, String cognome, LocalDate dateBirth,
-                    String cap, String cellulare, String email, String password) {
-        super(nome, cognome, dateBirth, cap, cellulare, email, password);
+    public Curatore(String nome, String cognome, LocalDate dateNascita,
+                    String email, String password) {
+        super(nome, cognome, dateNascita, email, password);
     }
 
     public Luogo getLuogoGestito() {

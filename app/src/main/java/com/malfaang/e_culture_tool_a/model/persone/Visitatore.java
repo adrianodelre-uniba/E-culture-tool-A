@@ -9,9 +9,9 @@ public class Visitatore extends User {
     private Genere genere;
     private LocalDate tempoDisponibile;
 
-    public Visitatore(String nome, String cognome, LocalDate dateBirth,
+    public Visitatore(String nome, String cognome, LocalDate dateNascita,
                       String cap, String cellulare, String email, String password) {
-        super(nome, cognome, dateBirth, cap, cellulare, email, password);
+        super(nome, cognome, dateNascita, email, password);
     }
 
     public Genere getGenere() {

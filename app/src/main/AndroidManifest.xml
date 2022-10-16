@@ -14,6 +14,11 @@
         android:theme="@style/Theme.EculturetoolA"
         tools:targetApi="31">
         <activity
+            android:name=".auth.RegistrazioneLocaleActivity"
+            android:exported="false"
+            android:label="@string/title_activity_registrazione_locale"
+            android:theme="@style/Theme.EculturetoolA.NoActionBar" />
+        <activity
             android:name=".auth.FirstActivity"
             android:exported="true"
             android:label="@string/title_activity_first"
@@ -25,7 +30,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".auth.RegistrazioneActivity"
+            android:name=".auth.RegistrazioneFireBaseActivity"
             android:exported="false" />
         <activity
             android:name=".auth.LoginActivity"

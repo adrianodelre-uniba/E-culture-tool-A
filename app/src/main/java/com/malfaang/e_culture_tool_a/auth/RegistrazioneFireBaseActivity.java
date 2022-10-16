@@ -35,7 +35,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
-public class RegistrazioneActivity extends AppCompatActivity {
+public class RegistrazioneFireBaseActivity extends AppCompatActivity {
     private static final String TAG = "EmailPassword";
     private static final String URI = "https://e-culture-tool-a-6f940-default-rtdb.europe-west1.firebasedatabase.app/";
     private static final FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance(URI);
@@ -55,12 +55,12 @@ public class RegistrazioneActivity extends AppCompatActivity {
     private TextInputEditText passwordEdit;
     private Button registrationBtn;
 
-    public RegistrazioneActivity(){ /* TODO document why this constructor is empty */ }
+    public RegistrazioneFireBaseActivity(){ /* TODO document why this constructor is empty */ }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registrazione);
+        // setContentView(R.layout.activity_registrazione);
 
         mAuth = FirebaseAuth.getInstance();
         checker = new ControlloCredenziali();
@@ -175,7 +175,7 @@ public class RegistrazioneActivity extends AppCompatActivity {
                         assert firebaseUser != null;
                         String userID = firebaseUser.getUid();
                         DatabaseReference actualReference = reference.child(userID);
-                        actualReference.setValue(new User(nome, cognome, dataDiNascita, email, password))
+                        actualReference.setValue(new User(nome, cognome, email, password))
                                 .addOnCompleteListener(taskUserValueSet -> {
                             if (taskUserValueSet.isSuccessful()) {
                                 success.onSuccess();

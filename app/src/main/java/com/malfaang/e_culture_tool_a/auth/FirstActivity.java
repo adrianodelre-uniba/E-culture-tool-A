@@ -59,7 +59,7 @@ public class FirstActivity extends AppCompatActivity implements View.OnClickList
                 signIn();
                 break;
             case R.id.button_register:
-                startActivity(new Intent(getApplicationContext(), RegistrazioneActivity.class));
+                startActivity(new Intent(getApplicationContext(), RegistrazioneFireBaseActivity.class));
         }
     }
 
