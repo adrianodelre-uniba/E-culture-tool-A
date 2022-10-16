@@ -1,5 +1,6 @@
 package com.malfaang.e_culture_tool_a.auth;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -22,8 +23,8 @@ public class LoginLocaleActivity extends AppCompatActivity {
     private ControlloCredenziali checker;
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_locale);
 
         checker = new ControlloCredenziali();
@@ -33,6 +34,11 @@ public class LoginLocaleActivity extends AppCompatActivity {
         String password = Objects.requireNonNull(passwordEdit.getText().toString());
         Button loginBtn = findViewById(R.id.idBtnLogin);
         loginBtn.setOnClickListener(view -> signInEmailPassword(email, password));
+        Button registerBtn = findViewById(R.id.Register);
+        registerBtn.setOnClickListener(view -> {
+            Intent intent = new Intent(LoginLocaleActivity.this, RegistrazioneLocaleActivity.class);
+            startActivity(intent);
+        });
     }
 
     public void signInEmailPassword(String email, String password) {

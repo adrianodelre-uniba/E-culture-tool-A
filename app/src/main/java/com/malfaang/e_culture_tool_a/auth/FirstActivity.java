@@ -12,25 +12,21 @@ import android.widget.TextView;
 
 import com.malfaang.e_culture_tool_a.R;
 
-public class FirstActivity extends AppCompatActivity implements View.OnClickListener {
-    private ImageView imageView;
-    private TextView textView;
-    private Button loginButton;
-    private Button registerButton;
+public class FirstActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_first);
 
-        imageView = findViewById(R.id.logo_id);
-        textView = findViewById(R.id.nome_app);
-        loginButton = findViewById(R.id.button_login);
-        registerButton = findViewById(R.id.button_register);
+        ImageView imageView = findViewById(R.id.logo_id);
+        TextView textView = findViewById(R.id.nome_app);
+        Button loginButton = findViewById(R.id.button_login);
+        Button registerButton = findViewById(R.id.button_register);
 
-        loginButton.setOnClickListener(this);
-        registerButton.setOnClickListener(this);
+        loginButton.setOnClickListener(task -> loginTransaction());
+        registerButton.setOnClickListener(task -> registrationTransaction());
 
 
         /*binding = ActivityFirstBinding.inflate(getLayoutInflater());
@@ -52,6 +48,16 @@ public class FirstActivity extends AppCompatActivity implements View.OnClickList
         });*/
     }
 
+    public void loginTransaction(){
+        Intent intent = new Intent(FirstActivity.this, LoginLocaleActivity.class);
+        startActivity(intent);
+    }
+
+    public void registrationTransaction(){
+        Intent intent = new Intent(FirstActivity.this, RegistrazioneLocaleActivity.class);
+        startActivity(intent);
+    }
+    /*
     @Override
     public void onClick(View view) {
         switch (view.getId()){
@@ -66,7 +72,7 @@ public class FirstActivity extends AppCompatActivity implements View.OnClickList
     private void signIn() {
     }
 
-    /*@Override
+    @Override
     public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_first);
         return NavigationUI.navigateUp(navController, appBarConfiguration)

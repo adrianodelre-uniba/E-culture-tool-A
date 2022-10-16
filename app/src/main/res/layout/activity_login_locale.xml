@@ -129,13 +129,13 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="590dp"
             android:text="@string/You_are_not_registered"
             android:textColor="@color/black"
-            android:textSize="24sp"
-            android:layout_marginStart="36dp"
-            android:layout_marginTop="590dp" />
+            android:textSize="24sp" />
 
-        <TextView
+        <Button
             android:id="@+id/Register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -143,8 +143,8 @@
             android:layout_marginTop="590dp"
             android:linksClickable="true"
             android:text="@string/Register"
-            android:textColor="@color/main_blue"
-            android:textSize="24sp" />
+            android:textColor="@color/white"
+            android:textSize="14sp" />
 
 
     </RelativeLayout>

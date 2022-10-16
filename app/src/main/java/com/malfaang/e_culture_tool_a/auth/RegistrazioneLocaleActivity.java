@@ -6,6 +6,8 @@ import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.ui.AppBarConfiguration;
+
+import com.malfaang.e_culture_tool_a.R;
 import com.malfaang.e_culture_tool_a.databinding.ActivityRegistrazioneLocaleBinding;
 
 public class RegistrazioneLocaleActivity extends AppCompatActivity {
@@ -16,7 +18,8 @@ public class RegistrazioneLocaleActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-/*
+        setContentView(R.layout.activity_registrazione_locale);
+        /*
         binding = ActivityRegistrazioneLocaleBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -32,14 +35,16 @@ public class RegistrazioneLocaleActivity extends AppCompatActivity {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
-        });*/
+        });
     }
 
     @Override
     public boolean onSupportNavigateUp() {
-        /*NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_registrazione_locale);
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_registrazione_locale);
         return NavigationUI.navigateUp(navController, appBarConfiguration)
-                || super.onSupportNavigateUp();*/
+                || super.onSupportNavigateUp();
         return false;
+    }
+    */
     }
 }
