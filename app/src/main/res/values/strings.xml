@@ -45,4 +45,5 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="title_activity_registrazione_locale">RegistrazioneLocaleActivity</string>
     <string name="title_activity_login_locale">LoginLocaleActivity</string>
+    <string name="title_activity_home">activityHome</string>
 </resources>
