@@ -46,4 +46,8 @@
     <string name="title_activity_registrazione_locale">RegistrazioneLocaleActivity</string>
     <string name="title_activity_login_locale">LoginLocaleActivity</string>
     <string name="title_activity_home">activityHome</string>
+
+    <!-- Strimgs used for home activity -->
+    <string name="Benvenuto">Benvenuto</string>
+    <string name="Luoghi_in_tendenza">Lugohi in tendenza</string>
 </resources>

@@ -12,13 +12,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:text="Benvenuto"
+            android:text="@string/Benvenuto"
             android:layout_marginTop="60dp"
             android:textColor="@color/black"
             android:textSize="30dp"/>
 
-        <View
-            android:id="@+id/download_1"
+        <ImageButton
+            android:id="@+id/Cubo1"
             android:layout_width="160dp"
             android:layout_height="80dp"
             android:layout_alignParentLeft="true"
@@ -27,8 +27,8 @@
             android:layout_marginTop="120dp"
             android:background="@drawable/cubi_home" />
 
-        <View
-            android:id="@+id/download_1_"
+        <ImageButton
+            android:id="@+id/Cubo2"
             android:layout_width="160dp"
             android:layout_height="80dp"
             android:layout_alignParentLeft="true"
@@ -37,6 +37,51 @@
             android:layout_marginTop="120dp"
             android:background="@drawable/cubi_home"
             />
+
+        <ImageButton
+            android:id="@+id/Cubo3"
+            android:layout_width="160dp"
+            android:layout_height="80dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="25dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="220dp"
+            android:background="@drawable/cubi_home"
+            />
+
+        <ImageButton
+            android:id="@+id/Cubo4"
+            android:layout_width="160dp"
+            android:layout_height="80dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="225dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="220dp"
+            android:background="@drawable/cubi_home"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="@string/Luoghi_in_tendenza"
+            android:layout_marginTop="330dp"
+            android:textColor="@color/black"
+            android:textSize="25dp"
+            />
+
+        <View
+            android:id="@+id/morning_fon"
+            android:layout_width="139dp"
+            android:layout_height="134dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="28dp"
+            android:layout_marginTop="380dp"
+            />
+
+
+
 
 
 
