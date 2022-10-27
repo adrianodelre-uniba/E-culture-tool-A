@@ -48,9 +48,9 @@ public class RegistrazioneFireBaseActivity extends AppCompatActivity {
     private boolean showOneTapUI = true;
     private static DatabaseReference reference;
     private static final String TABLE_NAME = "Users";
-    private TextInputEditText nameEdit;
-    private TextInputEditText surnameEdit;
-    private TextInputEditText birthdayEdit;
+    private TextInputEditText nomeEdit;
+    private TextInputEditText cognomeEdit;
+    private TextInputEditText compleannoEdit;
     private TextInputEditText emailEdit;
     private TextInputEditText passwordEdit;
     private Button registrationBtn;
@@ -65,17 +65,17 @@ public class RegistrazioneFireBaseActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         checker = new ControlloCredenziali();
 
-        nameEdit = findViewById(R.id.idEdtName);
-        surnameEdit = findViewById(R.id.idEdtSurname);
-        birthdayEdit = findViewById(R.id.idEdtBirthday);
-        emailEdit = findViewById(R.id.idEdtEmail);
-        passwordEdit = findViewById(R.id.idEdtPassword);
-        String name = Objects.requireNonNull(nameEdit.getText().toString());
-        String surname = Objects.requireNonNull(surnameEdit.getText().toString());
-        String birthday = Objects.requireNonNull(birthdayEdit.getText().toString());
+        nomeEdit = findViewById(R.id.idNome);
+        cognomeEdit = findViewById(R.id.idCognome);
+        compleannoEdit = findViewById(R.id.idCompleanno);
+        emailEdit = findViewById(R.id.idEmail);
+        passwordEdit = findViewById(R.id.idPassword);
+        String name = Objects.requireNonNull(nomeEdit.getText().toString());
+        String surname = Objects.requireNonNull(cognomeEdit.getText().toString());
+        String birthday = Objects.requireNonNull(compleannoEdit.getText().toString());
         String email = Objects.requireNonNull(emailEdit.getText().toString());
         String password = Objects.requireNonNull(passwordEdit.getText().toString());
-        registrationBtn = findViewById(R.id.idBtnRegistration);
+        registrationBtn = findViewById(R.id.idBtnRegistrazione);
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
         LocalDate birthdayLD = LocalDate.parse(birthday, formatter);

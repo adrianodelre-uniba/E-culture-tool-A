@@ -59,8 +59,8 @@ public class LoginFireBaseActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login_locale);
 
         checker = new ControlloCredenziali();
-        emailEdit = findViewById(R.id.idEdtUserName);
-        passwordEdit = findViewById(R.id.idEdtPassword);
+        emailEdit = findViewById(R.id.idUserName);
+        passwordEdit = findViewById(R.id.idPassword);
         String email = Objects.requireNonNull(emailEdit.getText().toString());
         String password = Objects.requireNonNull(passwordEdit.getText().toString());
         Button loginBtn = findViewById(R.id.idBtnLogin);

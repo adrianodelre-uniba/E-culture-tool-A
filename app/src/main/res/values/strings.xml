@@ -50,4 +50,5 @@
     <!-- Strimgs used for home activity -->
     <string name="Benvenuto">Benvenuto</string>
     <string name="Luoghi_in_tendenza">Lugohi in tendenza</string>
+    <string name="title_activity_home_page">HomePageActivity</string>
 </resources>

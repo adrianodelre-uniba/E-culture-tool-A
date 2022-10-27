@@ -2,12 +2,15 @@ package com.malfaang.e_culture_tool_a.database;
 
 public class ConstantTable {
 
+    // TODO aggiungere le chiavi esterne alle relative tabelle
+
     //Tabella Utente
     public static final String TABELLA_UTENTE = "utente";
     public static final String COL_ID_UTENTE = "ID_UTENTE";
     public static final String COL_NOME_UTENTE = "NOME_UTENTE";
     public static final String COL_COGNOME_UTENTE = "COGNOME_UTENTE";
-    public static final String COL_UTENTE_MAIL = "EMAIL_UTENTE";
+    public static final String COL_DATA_NASCITA_UTENTE = "DATA_NASCITA_UTENTE";
+    public static final String COL_EMAIL_UTENTE = "EMAIL_UTENTE";
     public static final String COL_PASSWORD_UTENTE = "PASSWORD_UTENTE";
     public static final String COL_CODICE_CATEGORIA_UTENTE = "CODICE_CATEGORIA_UTENTE";
 
@@ -20,8 +23,8 @@ public class ConstantTable {
 
     //Tabella Zona
     public static final String TABELLA_ZONA = "zona";
-    public static final String COL_NOME_ZONA= "NOME_ZONA";
     public static final String COL_ID_ZONA = "ID_ZONA";
+    public static final String COL_NOME_ZONA= "NOME_ZONA";
     public static final String COL_CAPIENZA_OGGETTI_ZONA = "CAPIENZA_OGGETTI_ZONA";
     public static final String COL_NUMERO_OGGETTI_ZONA= "NUMERO_OGGETTI_ZONA";
 

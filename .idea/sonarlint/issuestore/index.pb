@@ -7,5 +7,3 @@ w
 Gapp/src/main/java/com/malfaang/e_culture_tool_a/model/persone/User.java,a\a\aa368dba400c2f258193dbc3f50a5f9652d746ff
 y
 Iapp/src/main/java/com/malfaang/e_culture_tool_a/model/persone/Genere.java,c\b\cb1432fad2a0a7d16d641346b35d6890c6f57c2f
-w
-Gapp/src/main/java/com/malfaang/e_culture_tool_a/auth/LoginActivity.java,e\9\e91c642cb0f5167fcf44fb8628a826d3ec9aa99b

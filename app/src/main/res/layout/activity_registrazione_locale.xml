@@ -30,7 +30,7 @@
             android:textSize="20sp" />
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/idEdtName"
+            android:id="@+id/idNome"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginLeft="30dp"
@@ -48,7 +48,7 @@
             android:textSize="14sp" />
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/idEdtSurname"
+            android:id="@+id/idCognome"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginLeft="30dp"
@@ -66,7 +66,7 @@
             android:textSize="14sp" />
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/idEdtBirthday"
+            android:id="@+id/idCompleanno"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginLeft="30dp"
@@ -81,11 +81,10 @@
             android:paddingTop="10dp"
             android:paddingEnd="12dp"
             android:textColor="@color/black"
-            android:textColorHint="@color/black"
-            android:textSize="14sp" />
+            android:textSize="14sp"/>
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/idEdtEmail"
+            android:id="@+id/idEmail"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginLeft="30dp"
@@ -103,7 +102,7 @@
             android:textSize="14sp" />
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/idEdtPassword"
+            android:id="@+id/idPassword"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginLeft="30dp"
@@ -121,7 +120,7 @@
             android:textSize="14sp" />
 
         <Button
-            android:id="@+id/idBtnRegistration"
+            android:id="@+id/idBtnRegistrazione"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"

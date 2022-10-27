@@ -2,59 +2,69 @@ package com.malfaang.e_culture_tool_a.database;
 
 import static com.malfaang.e_culture_tool_a.database.ConstantTable.*;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DatabaseHelper extends SQLiteOpenHelper {
 
-    static final String DB_NAME = "EcultureDb";
+    public static final String DB_NAME = "EcultureDb";
     static final int DB_VERSION = 1;
+    SQLiteDatabase db;
 
-    // --------------------------- INIZIO QUERY ----------------------------------
+    // --------------------------- INIZIO QUERY CREAZIONE TABELLE ----------------------------------
     String queryCreazioneUtente = "CREATE TABLE " + TABELLA_UTENTE + " (" +
-            COL_ID_UTENTE + "INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            COL_NOME_UTENTE + "TEXT NOT NULL," +
-            COL_COGNOME_UTENTE + "TEXT," +
-            COL_UTENTE_MAIL + "TEXT NOT NULL," +
-            COL_PASSWORD_UTENTE + "TEXT NOT NULL," +
-            COL_CODICE_CATEGORIA_UTENTE + "TEXT NOT NULL)";
+            COL_ID_UTENTE + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            COL_NOME_UTENTE + " TEXT NOT NULL," +
+            COL_COGNOME_UTENTE + " TEXT NOT NULL," +
+            COL_DATA_NASCITA_UTENTE + " TEXT NOT NULL," +
+            COL_EMAIL_UTENTE + " TEXT NOT NULL," +
+            COL_PASSWORD_UTENTE + " TEXT NOT NULL," +
+            COL_CODICE_CATEGORIA_UTENTE + " TEXT )"; //TODO da aggiungere not null
     String queryCreazioneLuogo = "CREATE TABLE " + TABELLA_LUOGO + " (" +
-            COL_ID_LUOGO + "INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            COL_NOME_LUOGO + "TEXT NOT NULL," +
-            COL_INDIRIZZO_LUOGO + "TEXT NOT NULL," +
-            COL_TIPOLOGIA_LUOGO + "TEXT)";
+            COL_ID_LUOGO + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            COL_NOME_LUOGO + " TEXT NOT NULL," +
+            COL_INDIRIZZO_LUOGO + " TEXT NOT NULL," +
+            COL_TIPOLOGIA_LUOGO + " TEXT)";
     String queryCreazioneZona = "CREATE TABLE " + TABELLA_ZONA + " (" +
-            COL_ID_ZONA + "INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            COL_FK_ID_LUOGO + "INTEGER NOT NULL REFERENCES TABELLA_LUOGO (COL_ID_LUOGO)," +
-            COL_NOME_ZONA + "TEXT NOT NULL, " +
-            COL_CAPIENZA_OGGETTI_ZONA + "INTEGER NOT NULL, " +
-            COL_NUMERO_OGGETTI_ZONA + "INTEGER NOT NULL)";
+            COL_ID_ZONA + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            COL_FK_ID_LUOGO + " INTEGER NOT NULL REFERENCES TABELLA_LUOGO (COL_ID_LUOGO)," +
+            COL_NOME_ZONA + " TEXT NOT NULL, " +
+            COL_CAPIENZA_OGGETTI_ZONA + " INTEGER NOT NULL, " +
+            COL_NUMERO_OGGETTI_ZONA + " INTEGER NOT NULL)";
     String queryCreazioneOggetto = "CREATE TABLE " + TABELLA_OGGETTO + " (" +
-            COL_ID_OGGETTO + "INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            COL_FK_ID_ZONA + "INTEGER NOT NULL REFERENCES TABELLA_ZONA (COL_ID_ZONA)," +
-            COL_NOME_OGGETTO + "TEXT NOT NULL," +
-            COL_DESCRIZIONE_OGGETTO + "TEXT NOT NULL," +
-            COL_FOTO_OGGETTO + "BYTE[]," + //La foto va convertita in una stringa di numeri per poter essere memorizzata
-            COL_CODICE_QR + "TEXT," + //Non bisogna salvare propriamente lui, ma il testo a cui si riferisce il QR CODE
-            COL_CODICE_IOT + "TEXT)";
+            COL_ID_OGGETTO + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            COL_FK_ID_ZONA + " INTEGER NOT NULL REFERENCES TABELLA_ZONA (COL_ID_ZONA)," +
+            COL_NOME_OGGETTO + " TEXT NOT NULL," +
+            COL_DESCRIZIONE_OGGETTO + " TEXT NOT NULL," +
+            COL_FOTO_OGGETTO + " BYTE[]," + //La foto va convertita in una stringa di numeri per poter essere memorizzata
+            COL_CODICE_QR + " TEXT," + //Non bisogna salvare propriamente lui, ma il testo a cui si riferisce il QR CODE
+            COL_CODICE_IOT + " TEXT)";
     String queryCreazioneVisita = "CREATE TABLE " + TABELLA_VISITA + " (" +
-            COL_ID_VISITA + "INTEGER PRIMARY KEY AUTOINCREMENT," +
-            COL_FK_ID_LUOGO + "INTEGER NOT NULL REFERENCES LUOGO (COL_ID_LUOGO), " +
-            COL_FK_ID_UTENTE + "INTEGER NOT NULL REFERENCES UTENTE (COL_ID_UTENTE))";
+            COL_ID_VISITA + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+            COL_FK_ID_LUOGO + " INTEGER NOT NULL REFERENCES LUOGO (COL_ID_LUOGO), " +
+            COL_FK_ID_UTENTE + " INTEGER NOT NULL REFERENCES UTENTE (COL_ID_UTENTE))";
 //          COL_FK_ID_LUOGO + "INTEGER NOT NULL, FOREIGN KEY (" + COL_ID_LUOGO + ") REFERENCES " + TABELLA_LUOGO + " (" + COL_ID_LUOGO + ") ON UPDATE CASCADE ON DELETE CASCADE, " +
 //          COL_FK_ID_UTENTE + "INTEGER NOT NULL, FOREIGN KEY (" + COL_ID_UTENTE + ") REFERENCES "+ TABELLA_UTENTE+" ("+COL_ID_UTENTE+") ON UPDATE CASCADE ON DELETE CASCADE)";
-    // --------------------------- FINE QUERY ----------------------------------
+    // --------------------------- FINE QUERY CREAZIONE TABELLE ----------------------------------
 
 
     public DatabaseHelper(@Nullable Context context) {
         super(context, DB_NAME, null, DB_VERSION);
+        this.db = getWritableDatabase();
+
     }
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
+
 
         sqLiteDatabase.execSQL(queryCreazioneUtente);
         sqLiteDatabase.execSQL(queryCreazioneLuogo);
@@ -67,4 +77,79 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
 
     }
+
+    public void insertUtente(String nome, String cognome, String dataNascita, String email, String password) {
+
+        ContentValues values = new ContentValues();
+        values.put(COL_NOME_UTENTE, nome);
+        values.put(COL_COGNOME_UTENTE, cognome);
+        values.put(COL_DATA_NASCITA_UTENTE, dataNascita);
+        values.put(COL_EMAIL_UTENTE, email);
+        values.put(COL_PASSWORD_UTENTE, password);
+        values.put(COL_CODICE_CATEGORIA_UTENTE, 2); //TODO da aggiungere nella schermata di registrazione => in tutte le parti del codice
+
+        db.insert(TABELLA_UTENTE, null, values);
+    }
+
+    public void insertLuogo(String nomeLuogo, String indirizzoLuogo, String tipologiaLuogo) {
+
+        ContentValues values = new ContentValues();
+        values.put(COL_NOME_LUOGO, nomeLuogo);
+        values.put(COL_INDIRIZZO_LUOGO, indirizzoLuogo);
+        values.put(COL_TIPOLOGIA_LUOGO, tipologiaLuogo);
+
+        db.insert(TABELLA_LUOGO, null, values);
+    }
+
+    public void insertVisita(String idUtente, String idLuogo) {
+
+        ContentValues values = new ContentValues();
+        values.put(COL_FK_ID_UTENTE, idUtente);
+        values.put(COL_FK_ID_LUOGO, idLuogo);
+
+        db.insert(TABELLA_VISITA, null, values);
+    }
+
+    public void insertZona(String nomeZona, String capienzaOggettiZona, String numeroOggettiZona) {
+
+        ContentValues values = new ContentValues();
+        values.put(COL_NOME_ZONA, nomeZona);
+        values.put(COL_CAPIENZA_OGGETTI_ZONA, capienzaOggettiZona);
+        values.put(COL_NUMERO_OGGETTI_ZONA, numeroOggettiZona);
+
+        db.insert(TABELLA_ZONA, null, values);
+    }
+
+    public void insertOggetto(String nomeOggetto, String descrizioneOggetto, String fotoOggetto, String codiceQR, String attivitaAssociata, String codiceIOT) {
+
+        ContentValues values = new ContentValues();
+        values.put(COL_NOME_OGGETTO, nomeOggetto);
+        values.put(COL_DESCRIZIONE_OGGETTO, descrizioneOggetto);
+        values.put(COL_FOTO_OGGETTO, fotoOggetto);
+        values.put(COL_CODICE_QR, codiceQR);
+        values.put(COL_ATTIVITA_ASSOCCIATA, attivitaAssociata);
+        values.put(COL_CODICE_IOT, codiceIOT);
+
+        db.insert(TABELLA_OGGETTO, null, values);
+    }
+
+    public  List<String> selectUtente(String email) {
+
+        String queryString = "SELECT " + COL_EMAIL_UTENTE + ", " + COL_PASSWORD_UTENTE + " FROM " + TABELLA_UTENTE + " WHERE " + COL_EMAIL_UTENTE + " = " + "'"+email+"'";
+        System.out.println(queryString);
+
+        List<String> results = new ArrayList<String>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(queryString, null);
+        if (cursor.moveToFirst()) {
+                results.add(cursor.getString(0));
+            results.add(cursor.getString(1));
+
+        } else {
+            cursor.close();
+            db.close();
+        }
+        return results;
+    }
+
 }
