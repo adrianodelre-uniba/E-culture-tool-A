@@ -18,6 +18,9 @@ public class ControlloCredenziali {
     public static final int SPACE = 32;
     public static final int MAX_EMAIL = 50;
 
+    public ControlloCredenziali() {
+    }
+
 
     /**
      * Funzione che verifica la correttezza della password inserita dell'utente
@@ -28,16 +31,16 @@ public class ControlloCredenziali {
      * @param activity, referimento all'activity genitore
      * @return true se la password inserita è corretta, altrimenti ritorna false
      */
-    public boolean checkPassword(@NonNull TextInputEditText firstPassword,
-                                 @NonNull TextInputEditText secondPassword, Activity activity) {
+    public final boolean checkPassword(@NonNull TextInputEditText firstPassword,
+                                       @NonNull TextInputEditText secondPassword, Activity activity) {
         String txtPassword = Objects.requireNonNull(firstPassword.getText()).toString();
         String txtSecondPassword = Objects.requireNonNull(secondPassword.getText()).toString();
-        if (!checkGenericStringGeneral("password", firstPassword, MAX_PASSWORD, txtPassword, activity)) {
+        if (checkGenericStringGeneral("password", firstPassword, MAX_PASSWORD, txtPassword, activity)) {
             return false;
         }
-        final int len = txtPassword.length();
+        int len = txtPassword.length();
         if (len < MIN_PASSWORD) {
-            firstPassword.setError(activity.getString(R.string.psw_too_short,MIN_PASSWORD));
+            firstPassword.setError(activity.getString(R.string.psw_too_short, Integer.valueOf(MIN_PASSWORD)));
             firstPassword.requestFocus();
             return false;
         }
@@ -68,14 +71,14 @@ public class ControlloCredenziali {
      * @param activity, referimento all'activity genitore
      * @return true se la password inserita è corretta, altrimenti ritorna false
      */
-    public boolean checkPassword(@NonNull TextInputEditText firstPassword, Activity activity) {
+    public final boolean checkPassword(@NonNull TextInputEditText firstPassword, Activity activity) {
         String txtPassword = Objects.requireNonNull(firstPassword.getText()).toString();
-        if (!checkGenericStringGeneral("password", firstPassword, MAX_PASSWORD, txtPassword, activity)) {
+        if (checkGenericStringGeneral("password", firstPassword, MAX_PASSWORD, txtPassword, activity)) {
             return false;
         }
-        final int len = txtPassword.length();
+        int len = txtPassword.length();
         if (len < MIN_PASSWORD) {
-            firstPassword.setError(activity.getString(R.string.psw_too_short,MIN_PASSWORD));
+            firstPassword.setError(activity.getString(R.string.psw_too_short, Integer.valueOf(MIN_PASSWORD)));
             firstPassword.requestFocus();
             return false;
         }
@@ -93,29 +96,29 @@ public class ControlloCredenziali {
      * Funzione che verifica la correttezza di una stringa generica inserita dell'utente
      * sia in termini di lunghezza ma anche se è eventualmente vuota
      * @param tag, tag della stringa
-     * @param string, TextInputEditText in cui è stata inserita la stringa dell'utente
+     * @param stringa, TextInputEditText in cui è stata inserita la stringa dell'utente
      * @param MAX, lunghezza massima che la striga può avere
      * @param txtString, stringa inserita dall'utente
      * @param activity, referimento all'activity genitore
      * @return true se la stringa generica inserita è corretta, altrimenti ritorna false
      */
-    public boolean checkGenericStringGeneral(String tag, TextInputEditText string, int MAX,
-                                             String txtString, Activity activity) {
+    public final boolean checkGenericStringGeneral(String tag, TextInputEditText stringa, int MAX,
+                                                   String txtString, Activity activity) {
         if (txtString == null) {
-            txtString = Objects.requireNonNull(string.getText()).toString().trim();
+            txtString = Objects.requireNonNull(stringa.getText()).toString().trim();
         }
         if (txtString.isEmpty()) {
-            string.setError(activity.getString(R.string.field_empty, tag));
-            string.requestFocus();
-            return false;
+            stringa.setError(activity.getString(R.string.field_empty, tag));
+            stringa.requestFocus();
+            return true;
         }
-        final int len = txtString.length();
+        int len = txtString.length();
         if (len > MAX) {
-            string.setError(activity.getString(R.string.field_too_long, tag, MAX));
-            string.requestFocus();
-            return false;
+            stringa.setError(activity.getString(R.string.field_too_long, tag, Integer.valueOf(MAX)));
+            stringa.requestFocus();
+            return true;
         }
-        return true;
+        return false;
     }
 
     /**
@@ -125,9 +128,9 @@ public class ControlloCredenziali {
      * @param activity, referimento all'activity genitore
      * @return true se l'email inserita è corretta, altrimenti ritorna false
      */
-    public boolean checkEmail(@NonNull TextInputEditText email, Activity activity) {
+    public final boolean checkEmail(@NonNull TextInputEditText email, Activity activity) {
         String txtEmail = Objects.requireNonNull(email.getText()).toString().trim();
-        if (!checkGenericStringGeneral("email", email, MAX_EMAIL, txtEmail,activity)) {
+        if (checkGenericStringGeneral("email", email, MAX_EMAIL, txtEmail, activity)) {
             return false;
         }
         if (!Patterns.EMAIL_ADDRESS.matcher(txtEmail).matches()) {

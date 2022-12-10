@@ -44,4 +44,7 @@ public class ConstantTable {
     public static final String COL_FK_ID_UTENTE = "ID_UTENTE";
     public static final String COL_FK_ID_LUOGO = "ID_LUOGO";
     public static final String COL_FK_ID_ZONA = "ID_ZONA";
+
+    public ConstantTable() {
+    }
 }

@@ -8,7 +8,7 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 public class Curatore extends User{
-    private Luogo luogoGestito;
+    private Luogo luogoGestito = null;
 
     public Curatore(String nome, String cognome, LocalDate dateNascita,
                     String email, String password) {
@@ -16,15 +16,15 @@ public class Curatore extends User{
     }
 
     public Luogo getLuogoGestito() {
-        return luogoGestito;
+        return this.luogoGestito;
     }
 
-    public void setLuogoGestito(Luogo luogoGestito) {
-        this.luogoGestito = luogoGestito;
+    public void setLuogoGestito(Luogo luogoGestito2) {
+        this.luogoGestito = luogoGestito2;
     }
 
     @Override
-    public boolean equals(Object o) {
+    public final boolean equals(Object o) {
         if (this == o){
             return true;
         }
@@ -35,12 +35,12 @@ public class Curatore extends User{
             return false;
         }
         Curatore curatore = (Curatore) o;
-        return Objects.equals(luogoGestito, curatore.luogoGestito);
+        return Objects.equals(luogoGestito, curatore.getLuogoGestito());
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(super.hashCode(), luogoGestito);
+    public final int hashCode() {
+        return Objects.hash(Integer.valueOf(super.hashCode()), luogoGestito);
     }
 
     @NonNull

@@ -10,17 +10,22 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import com.malfaang.e_culture_tool_a.io.GestioneFile;
+
+import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DatabaseHelper extends SQLiteOpenHelper {
+public class DatabaseHelper extends SQLiteOpenHelper implements Serializable {
 
     public static final String DB_NAME = "EcultureDb";
     static final int DB_VERSION = 1;
-    SQLiteDatabase db;
+    private static final long serialVersionUID = 1856014446291459063L;
+    private static SQLiteDatabase db;
 
     // --------------------------- INIZIO QUERY CREAZIONE TABELLE ----------------------------------
-    String queryCreazioneUtente = "CREATE TABLE " + TABELLA_UTENTE + " (" +
+    final String queryCreazioneUtente = "CREATE TABLE " + TABELLA_UTENTE + " (" +
             COL_ID_UTENTE + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
             COL_NOME_UTENTE + " TEXT NOT NULL," +
             COL_COGNOME_UTENTE + " TEXT NOT NULL," +
@@ -28,26 +33,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             COL_EMAIL_UTENTE + " TEXT NOT NULL," +
             COL_PASSWORD_UTENTE + " TEXT NOT NULL," +
             COL_CODICE_CATEGORIA_UTENTE + " TEXT )"; //TODO da aggiungere not null
-    String queryCreazioneLuogo = "CREATE TABLE " + TABELLA_LUOGO + " (" +
+    final String queryCreazioneLuogo = "CREATE TABLE " + TABELLA_LUOGO + " (" +
             COL_ID_LUOGO + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
             COL_NOME_LUOGO + " TEXT NOT NULL," +
             COL_INDIRIZZO_LUOGO + " TEXT NOT NULL," +
             COL_TIPOLOGIA_LUOGO + " TEXT)";
-    String queryCreazioneZona = "CREATE TABLE " + TABELLA_ZONA + " (" +
+    final String queryCreazioneZona = "CREATE TABLE " + TABELLA_ZONA + " (" +
             COL_ID_ZONA + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
             COL_FK_ID_LUOGO + " INTEGER NOT NULL REFERENCES TABELLA_LUOGO (COL_ID_LUOGO)," +
             COL_NOME_ZONA + " TEXT NOT NULL, " +
             COL_CAPIENZA_OGGETTI_ZONA + " INTEGER NOT NULL, " +
             COL_NUMERO_OGGETTI_ZONA + " INTEGER NOT NULL)";
-    String queryCreazioneOggetto = "CREATE TABLE " + TABELLA_OGGETTO + " (" +
+    final String queryCreazioneOggetto = "CREATE TABLE " + TABELLA_OGGETTO + " (" +
             COL_ID_OGGETTO + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
             COL_FK_ID_ZONA + " INTEGER NOT NULL REFERENCES TABELLA_ZONA (COL_ID_ZONA)," +
             COL_NOME_OGGETTO + " TEXT NOT NULL," +
             COL_DESCRIZIONE_OGGETTO + " TEXT NOT NULL," +
-            COL_FOTO_OGGETTO + " BYTE[]," + //La foto va convertita in una stringa di numeri per poter essere memorizzata
+            COL_FOTO_OGGETTO + " BYTE," + //La foto va convertita in una stringa di numeri per poter essere memorizzata
             COL_CODICE_QR + " TEXT," + //Non bisogna salvare propriamente lui, ma il testo a cui si riferisce il QR CODE
             COL_CODICE_IOT + " TEXT)";
-    String queryCreazioneVisita = "CREATE TABLE " + TABELLA_VISITA + " (" +
+    final String queryCreazioneVisita = "CREATE TABLE " + TABELLA_VISITA + " (" +
             COL_ID_VISITA + " INTEGER PRIMARY KEY AUTOINCREMENT," +
             COL_FK_ID_LUOGO + " INTEGER NOT NULL REFERENCES LUOGO (COL_ID_LUOGO), " +
             COL_FK_ID_UTENTE + " INTEGER NOT NULL REFERENCES UTENTE (COL_ID_UTENTE))";
@@ -58,19 +63,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public DatabaseHelper(@Nullable Context context) {
         super(context, DB_NAME, null, DB_VERSION);
-        this.db = getWritableDatabase();
+        db = getWritableDatabase();
 
     }
 
     @Override
-    public void onCreate(SQLiteDatabase sqLiteDatabase) {
+    public final void onCreate(SQLiteDatabase sqLiteDatabase) {
 
 
-        sqLiteDatabase.execSQL(queryCreazioneUtente);
-        sqLiteDatabase.execSQL(queryCreazioneLuogo);
-        sqLiteDatabase.execSQL(queryCreazioneZona);
-        sqLiteDatabase.execSQL(queryCreazioneOggetto);
-        sqLiteDatabase.execSQL(queryCreazioneVisita);
+        sqLiteDatabase.execSQL(this.queryCreazioneUtente);
+        sqLiteDatabase.execSQL(this.queryCreazioneLuogo);
+        sqLiteDatabase.execSQL(this.queryCreazioneZona);
+        sqLiteDatabase.execSQL(this.queryCreazioneOggetto);
+        sqLiteDatabase.execSQL(this.queryCreazioneVisita);
     }
 
     @Override
@@ -86,7 +91,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(COL_DATA_NASCITA_UTENTE, dataNascita);
         values.put(COL_EMAIL_UTENTE, email);
         values.put(COL_PASSWORD_UTENTE, password);
-        values.put(COL_CODICE_CATEGORIA_UTENTE, 2); //TODO da aggiungere nella schermata di registrazione => in tutte le parti del codice
+        values.put(COL_CODICE_CATEGORIA_UTENTE, Integer.valueOf(2)); //TODO da aggiungere nella schermata di registrazione => in tutte le parti del codice
 
         db.insert(TABELLA_UTENTE, null, values);
     }
@@ -133,23 +138,40 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.insert(TABELLA_OGGETTO, null, values);
     }
 
-    public  List<String> selectUtente(String email) {
+    public List<String> selectUtente(String email) {
 
         String queryString = "SELECT " + COL_EMAIL_UTENTE + ", " + COL_PASSWORD_UTENTE + " FROM " + TABELLA_UTENTE + " WHERE " + COL_EMAIL_UTENTE + " = " + "'"+email+"'";
         System.out.println(queryString);
 
-        List<String> results = new ArrayList<String>();
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery(queryString, null);
+        List<String> results = new ArrayList<>();
+        SQLiteDatabase db2 = getReadableDatabase();
+        Cursor cursor = db2.rawQuery(queryString, null);
         if (cursor.moveToFirst()) {
                 results.add(cursor.getString(0));
             results.add(cursor.getString(1));
 
         } else {
             cursor.close();
-            db.close();
+            db2.close();
         }
         return results;
     }
 
+    public void serializzaDB(){
+        GestioneFile gf = new GestioneFile();
+        gf.serializzazione("DatabaseSerializzato.txt", db);
+    }
+
+    public SQLiteDatabase deserializzaDB() throws IOException {
+        GestioneFile gf2 = new GestioneFile();
+        return (SQLiteDatabase) gf2.deSerializzazione("DatabaseSerializzato.txt");
+    }
+
+    public static SQLiteDatabase getDb() {
+        return db;
+    }
+
+    // TODO Completare implementazione di serializzazione del DB
+    // TODO Completare implementazione di deserializzazione del DB
+    // TODO Implementare salvataggio e manipolazione dati tramite SharedPreferences
 }

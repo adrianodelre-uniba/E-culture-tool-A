@@ -7,18 +7,16 @@ import java.util.Objects;
 
 public class User {
     private int id;
-    private String nome;
-    private String cognome;
-    private String email;
-    private String password;
-    private LocalDate dataNascita;
+    private String nome = null;
+    private String cognome = null;
+    private String email = null;
+    private String password = null;
 
-    public User(String nome, String cognome, LocalDate dataNascita, String email, String password){
-        this.nome = nome;
-        this.cognome = cognome;
-        this.email = email;
-        this.password = password;
-        this.dataNascita = dataNascita;
+    public User(String nome2, String cognome2, LocalDate dataNascita2, String email2, String password2){
+        this.nome = nome2;
+        this.cognome = cognome2;
+        this.email = email2;
+        this.password = password2;
     }
 
     public int getId() {
@@ -27,26 +25,26 @@ public class User {
     public String getNome() {
         return nome;
     }
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNome(String nome2) {
+        this.nome = nome2;
     }
     public String getCognome() {
         return cognome;
     }
-    public void setCognome(String cognome) {
-        this.cognome = cognome;
+    public void setCognome(String cognome2) {
+        this.cognome = cognome2;
     }
     public String getEmail() {
         return email;
     }
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEmail(String email2) {
+        this.email = email2;
     }
     public String getPassword() {
         return password;
     }
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPassword(String password2) {
+        this.password = password2;
     }
 
     @Override
@@ -58,13 +56,13 @@ public class User {
             return false;
         }
         User user = (User) o;
-        return id == user.id && nome.equals(user.nome) && cognome.equals(user.cognome)
-                && email.equals(user.email) && password.equals(user.password);
+        return id == user.getId() && nome.equals(user.getNome()) && cognome.equals(user.getCognome())
+                && email.equals(user.getEmail()) && password.equals(user.getPassword());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nome, cognome, email, password);
+        return Objects.hash(Integer.valueOf(id), nome, cognome, email, password);
     }
 
     @NonNull
@@ -77,5 +75,9 @@ public class User {
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 '}';
+    }
+
+    public void setId(int id2) {
+        this.id = id2;
     }
 }

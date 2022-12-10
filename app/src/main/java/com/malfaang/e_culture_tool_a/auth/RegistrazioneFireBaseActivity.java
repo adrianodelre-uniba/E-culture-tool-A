@@ -39,43 +39,34 @@ public class RegistrazioneFireBaseActivity extends AppCompatActivity {
     private static final String TAG = "EmailPassword";
     private static final String URI = "https://e-culture-tool-a-6f940-default-rtdb.europe-west1.firebasedatabase.app/";
     private static final FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance(URI);
-    private FirebaseAuth mAuth;
-    private User user;
-    private SignInClient oneTapClient;
-    private BeginSignInRequest signUpRequest;
-    private ControlloCredenziali checker;
+    private FirebaseAuth mAuth = null;
+    private User user = null;
+    private SignInClient oneTapClient = null;
     private static final int REQ_ONE_TAP = 2;
-    private boolean showOneTapUI = true;
-    private static DatabaseReference reference;
+    private static DatabaseReference reference = null;
     private static final String TABLE_NAME = "Users";
-    private TextInputEditText nomeEdit;
-    private TextInputEditText cognomeEdit;
-    private TextInputEditText compleannoEdit;
-    private TextInputEditText emailEdit;
-    private TextInputEditText passwordEdit;
-    private Button registrationBtn;
 
     public RegistrazioneFireBaseActivity(){ /* TODO document why this constructor is empty */ }
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState);
+    public final void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
+        onCreate(savedInstanceState);
         // setContentView(R.layout.activity_registrazione);
 
         mAuth = FirebaseAuth.getInstance();
-        checker = new ControlloCredenziali();
+        ControlloCredenziali checker = new ControlloCredenziali();
 
-        nomeEdit = findViewById(R.id.idNome);
-        cognomeEdit = findViewById(R.id.idCognome);
-        compleannoEdit = findViewById(R.id.idCompleanno);
-        emailEdit = findViewById(R.id.idEmail);
-        passwordEdit = findViewById(R.id.idPassword);
-        String name = Objects.requireNonNull(nomeEdit.getText().toString());
-        String surname = Objects.requireNonNull(cognomeEdit.getText().toString());
-        String birthday = Objects.requireNonNull(compleannoEdit.getText().toString());
-        String email = Objects.requireNonNull(emailEdit.getText().toString());
-        String password = Objects.requireNonNull(passwordEdit.getText().toString());
-        registrationBtn = findViewById(R.id.idBtnRegistrazione);
+        TextInputEditText nomeEdit = findViewById(R.id.idNome);
+        TextInputEditText cognomeEdit = findViewById(R.id.idCognome);
+        TextInputEditText compleannoEdit = findViewById(R.id.idCompleanno);
+        TextInputEditText emailEdit = findViewById(R.id.idEmail);
+        TextInputEditText passwordEdit = findViewById(R.id.idPassword);
+        String name = Objects.requireNonNull(Objects.requireNonNull(nomeEdit.getText()).toString());
+        String surname = Objects.requireNonNull(Objects.requireNonNull(cognomeEdit.getText()).toString());
+        String birthday = Objects.requireNonNull(Objects.requireNonNull(compleannoEdit.getText()).toString());
+        String email = Objects.requireNonNull(Objects.requireNonNull(emailEdit.getText()).toString());
+        String password = Objects.requireNonNull(Objects.requireNonNull(passwordEdit.getText()).toString());
+        Button registrationBtn = findViewById(R.id.idBtnRegistrazione);
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
         LocalDate birthdayLD = LocalDate.parse(birthday, formatter);
@@ -87,51 +78,49 @@ public class RegistrazioneFireBaseActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    protected final void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        switch (requestCode) {
-            case REQ_ONE_TAP:
-                try {
-                    SignInCredential credential = oneTapClient.getSignInCredentialFromIntent(data);
-                    String idToken = credential.getGoogleIdToken();
-                    if (idToken !=  null) {
-                        Log.d(TAG, "Got ID token.");
-                        AuthCredential firebaseCredential = GoogleAuthProvider.getCredential(idToken, null);
-                        mAuth.signInWithCredential(firebaseCredential)
-                                .addOnCompleteListener(this, task -> {
-                                    if (task.isSuccessful()) {
-                                        //TODO update UI with the signed-in user's information
-                                        Log.d(TAG, "signInWithCredential:success");
-                                        FirebaseUser user = mAuth.getCurrentUser();
-                                        updateUI(user);
-                                    } else {
-                                        Log.w(TAG, "signInWithCredential:failure", task.getException());
-                                        updateUI(null);
-                                    }
-                                });
-                    }
-                } catch (ApiException e) {
-                    switch (e.getStatusCode()) {
-                        case CommonStatusCodes.CANCELED:
-                            Log.d(TAG, "One-tap dialog was closed.");
-                            showOneTapUI = false;
-                            break;
-                        case CommonStatusCodes.NETWORK_ERROR:
-                            Log.d(TAG, "One-tap encountered a network error.");
-                            break;
-                        default:
-                            Log.d(TAG, "Couldn't get credential from result."
-                                    + e.getLocalizedMessage());
-                            break;
-                    }
+        if (requestCode == REQ_ONE_TAP) {
+            try {
+                SignInCredential credential = oneTapClient.getSignInCredentialFromIntent(data);
+                String idToken = credential.getGoogleIdToken();
+                if (idToken != null) {
+                    Log.d(TAG, "Got ID token.");
+                    AuthCredential firebaseCredential = GoogleAuthProvider.getCredential(idToken, null);
+                    mAuth.signInWithCredential(firebaseCredential)
+                            .addOnCompleteListener(this, task -> {
+                                if (task.isSuccessful()) {
+                                    //TODO update UI with the signed-in user's information
+                                    Log.d(TAG, "signInWithCredential:success");
+                                    FirebaseUser user2 = mAuth.getCurrentUser();
+                                    updateUI(user2);
+                                } else {
+                                    Log.w(TAG, "signInWithCredential:failure", task.getException());
+                                    updateUI(null);
+                                }
+                            });
                 }
-                break;
+            } catch (ApiException e) {
+                switch (e.getStatusCode()) {
+                    case CommonStatusCodes.CANCELED:
+                        Log.d(TAG, "One-tap dialog was closed.");
+                        boolean showOneTapUI = false;
+                        break;
+                    case CommonStatusCodes.NETWORK_ERROR:
+                        Log.d(TAG, "One-tap encountered a network error.");
+                        break;
+                    default:
+                        Log.d(TAG, "Couldn't get credential from result."
+                                + e.getLocalizedMessage());
+                        break;
+                }
+            }
         }
     }
 
     @Override
-    public void onStart() {
+    public final void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
@@ -171,7 +160,7 @@ public class RegistrazioneFireBaseActivity extends AppCompatActivity {
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
-                        final FirebaseUser firebaseUser = mAuth.getCurrentUser();
+                        FirebaseUser firebaseUser = mAuth.getCurrentUser();
                         assert firebaseUser != null;
                         String userID = firebaseUser.getUid();
                         DatabaseReference actualReference = reference.child(userID);
@@ -193,7 +182,7 @@ public class RegistrazioneFireBaseActivity extends AppCompatActivity {
 
     private void creaAccountGoogle() {
         oneTapClient = Identity.getSignInClient(this);
-        signUpRequest = BeginSignInRequest.builder()
+        BeginSignInRequest signUpRequest = BeginSignInRequest.builder()
                 .setGoogleIdTokenRequestOptions(BeginSignInRequest.GoogleIdTokenRequestOptions.builder()
                         .setSupported(true)
                         .setServerClientId(getString(R.string.default_web_client_id))
@@ -211,29 +200,27 @@ public class RegistrazioneFireBaseActivity extends AppCompatActivity {
                         Log.e(TAG, "Couldn't start One Tap UI: " + e.getLocalizedMessage());
                     }
                 })
-                .addOnFailureListener(this, e -> {
-                    Log.d(TAG, e.getLocalizedMessage());
-                });
+                .addOnFailureListener(this, e -> Log.d(TAG, e.getLocalizedMessage()));
     }
 
     private void sendEmailVerification() {
         // Send verification email
-        final FirebaseUser user = mAuth.getCurrentUser();
-        assert user != null;
-        user.sendEmailVerification()
+        FirebaseUser user2 = mAuth.getCurrentUser();
+        assert user2 != null;
+        user2.sendEmailVerification()
                 .addOnCompleteListener(this, task -> {
                     // Email sent
                 });
     }
 
 
-    private void updateUI(FirebaseUser user) {
+    private void updateUI(FirebaseUser user2) {
         // TODO document why this method is empty
     }
 
     // Gestisce il pulsante "back" nella action bar
     @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+    public final boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
             onBackPressed();
             return true;
@@ -242,7 +229,7 @@ public class RegistrazioneFireBaseActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onBackPressed() {
+    public final void onBackPressed() {
         super.onBackPressed();
     }
 

@@ -5,9 +5,10 @@ import androidx.annotation.NonNull;
 import java.time.LocalDate;
 import java.util.Objects;
 
+@SuppressWarnings("AccessingNonPublicFieldOfAnotherObject")
 public class Visitatore extends User {
-    private Genere genere;
-    private LocalDate tempoDisponibile;
+    private Genere genere = null;
+    private LocalDate tempoDisponibile = null;
 
     public Visitatore(String nome, String cognome, LocalDate dateNascita,
                       String email, String password) {
@@ -18,20 +19,21 @@ public class Visitatore extends User {
         return genere;
     }
 
-    public void setGenere(Genere genere) {
-        this.genere = genere;
+    public void setGenere(Genere genere2) {
+        this.genere = genere2;
     }
 
     public LocalDate getTempoDisponibile() {
         return tempoDisponibile;
     }
 
-    public void setTempoDisponibile(LocalDate tempoDisponibile) {
-        this.tempoDisponibile = tempoDisponibile;
+    public void setTempoDisponibile(LocalDate tempoDisponibile2) {
+        this.tempoDisponibile = tempoDisponibile2;
     }
 
+    @SuppressWarnings("AccessingNonPublicFieldOfAnotherObject")
     @Override
-    public boolean equals(Object o) {
+    public final boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -41,13 +43,14 @@ public class Visitatore extends User {
         if (!super.equals(o)){
             return false;
         }
-        Visitatore that = (Visitatore) o;
-        return genere == that.genere && Objects.equals(tempoDisponibile, that.tempoDisponibile);
+        Visitatore visitatore = (Visitatore) o;
+        //noinspection AccessingNonPublicFieldOfAnotherObject
+        return genere == visitatore.genere && Objects.equals(tempoDisponibile, visitatore.tempoDisponibile);
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(super.hashCode(), genere, tempoDisponibile);
+    public final int hashCode() {
+        return Objects.hash(Integer.valueOf(super.hashCode()), genere, tempoDisponibile);
     }
 
     @NonNull

@@ -14,14 +14,14 @@ import java.util.Objects;
 
 public class Area extends Luogo{
 
-    private String nomeArea;
-    private int capienzaArea;
+    private String nomeArea = null;
+    private int capienzaArea = 0;
 
     public Area(String nome, int capienza, String indirizzo,
-                LocalDate orarioApertura, LocalDate orarioChiusura, String nomeArea, int capienzaArea) {
+                LocalDate orarioApertura, LocalDate orarioChiusura, String nomeArea2, int capienzaArea2) {
         super(nome, capienza, indirizzo, orarioApertura, orarioChiusura);
-        this.nomeArea = nomeArea;
-        this.capienzaArea = capienzaArea;
+        this.nomeArea = nomeArea2;
+        this.capienzaArea = capienzaArea2;
     }
 
     @NonNull
@@ -34,7 +34,7 @@ public class Area extends Luogo{
     }
 
     @Override
-    public boolean equals(Object o) {
+    public final boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -45,27 +45,27 @@ public class Area extends Luogo{
             return false;
         }
         Area area = (Area) o;
-        return capienzaArea == area.capienzaArea && nomeArea.equals(area.nomeArea);
+        return capienzaArea == area.getCapienzaArea() && nomeArea.equals(area.getNomeArea());
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(super.hashCode(), nomeArea, capienzaArea);
+    public final int hashCode() {
+        return Objects.hash(Integer.valueOf(super.hashCode()), nomeArea, Integer.valueOf(capienzaArea));
     }
 
     public String getNomeArea() {
-        return nomeArea;
+        return this.nomeArea;
     }
 
-    public void setNomeArea(String nomeArea) {
-        this.nomeArea = nomeArea;
+    public void setNomeArea(String nomeArea2) {
+        this.nomeArea = nomeArea2;
     }
 
     public int getCapienzaArea() {
-        return capienzaArea;
+        return this.capienzaArea;
     }
 
-    public void setCapienzaArea(int capienzaArea) {
-        this.capienzaArea = capienzaArea;
+    public void setCapienzaArea(int capienzaArea2) {
+        this.capienzaArea = capienzaArea2;
     }
 }

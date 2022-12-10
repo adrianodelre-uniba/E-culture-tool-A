@@ -5,7 +5,6 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -15,8 +14,11 @@ import com.malfaang.e_culture_tool_a.R;
 public class FirstActivity extends AppCompatActivity {
 
 
+    public FirstActivity() {
+    }
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected final void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first);
 
@@ -49,12 +51,12 @@ public class FirstActivity extends AppCompatActivity {
     }
 
     public void loginTransaction(){
-        Intent intent = new Intent(FirstActivity.this, LoginLocaleActivity.class);
+        Intent intent = new Intent(this, LoginLocaleActivity.class);
         startActivity(intent);
     }
 
     public void registrationTransaction(){
-        Intent intent = new Intent(FirstActivity.this, RegistrazioneLocaleActivity.class);
+        Intent intent = new Intent(this, RegistrazioneLocaleActivity.class);
         startActivity(intent);
     }
     /*
