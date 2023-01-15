@@ -24,6 +24,7 @@ public class LoginLocaleActivity extends AppCompatActivity {
 
     @Override
     public final void onCreate(Bundle savedInstanceState) {
+        getSupportActionBar().hide();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_locale);
 
@@ -65,7 +66,6 @@ public class LoginLocaleActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
             }
-            //TODO passare dati a DatabaseHelper
 }
 
 

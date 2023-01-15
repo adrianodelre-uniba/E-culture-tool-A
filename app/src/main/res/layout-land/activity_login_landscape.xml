@@ -1,45 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".auth.LoginFireBaseActivity"
-    style="">
-    <include layout="@layout/toolbar"/>
+    style=""
+    tools:ignore="MissingDefaultResource">
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/toolbar" />
 
     <ImageView
         android:id="@+id/logo_image"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginStart="160dp"
+        android:layout_marginStart="312dp"
+        android:layout_marginTop="0dp"
         android:src="@drawable/pngtree_exquisite_architectural_landmark_of_roman_colosseum_png_image_6942934"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintTop_toBottomOf="@id/txt_Eculture"
-        app:layout_constraintVertical_bias="0.141" />
+        app:layout_constraintVertical_bias="0.209" />
 
     <TextView
         android:id="@+id/txt_Eculture"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
+        android:layout_marginStart="312dp"
+        android:layout_marginBottom="216dp"
         android:text="@string/E_Culture_tool_A"
         android:textColor="@color/black"
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logo_image"
-        app:layout_constraintVertical_bias="0.024" />
-
-    <!-- EditText username -->
+        app:layout_constraintTop_toBottomOf="@+id/logo_image"/>
 
     <EditText
         android:id="@+id/Email"
-        android:layout_width="342dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="15dp"
+        android:layout_width="272dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="4dp"
         android:ems="10"
         android:hint="@string/prompt_email"
         android:inputType="textEmailAddress"
@@ -47,93 +50,92 @@
         android:textColorHint="@color/heading_gray"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.183"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_Eculture" />
 
-    <!-- EditText password -->
-
     <EditText
         android:id="@+id/Password"
-        android:layout_width="342dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="50dp"
+        android:layout_width="272dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="4dp"
         android:ems="10"
         android:hint="@string/prompt_password"
         android:inputType="textPassword"
-        app:passwordToggleEnabled="true"
-        tools:layout_editor_absoluteX="97dp"
-        tools:layout_editor_absoluteY="406dp"
         android:textColor="@color/heading_gray"
         android:textColorHint="@color/heading_gray"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.819"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Email"/>
+        app:layout_constraintRight_toRightOf="@+id/Email"
+        app:layout_constraintTop_toBottomOf="@+id/txt_Eculture"
+        app:passwordToggleEnabled="true" />
 
-    <!-- Bottone Login -->
     <Button
         android:id="@+id/idBtnLogin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="337dp"
+        android:layout_height="35dp"
         android:layout_marginStart="25dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="25dp"
         android:background="@drawable/button_shape"
         android:text="@string/login"
         android:textAllCaps="true"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Password" />
-
+        app:layout_constraintTop_toBottomOf="@+id/Email" />
 
     <TextView
         android:id="@+id/SignIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
         android:text="@string/sign_in_with"
         android:textColor="@color/black"
-        android:layout_marginTop="20dp"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.423"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/idBtnLogin" />
 
-
     <ImageButton
         android:id="@+id/idBtnGoogle"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="15dp"
+        android:layout_width="48dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="4dp"
         android:scaleType="fitCenter"
         android:src="@drawable/google__g__logo_svg"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.603"
+        app:layout_constraintRight_toRightOf="@+id/SignIn"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SignIn" />
-
+        app:layout_constraintTop_toBottomOf="@+id/idBtnLogin" />
 
     <TextView
         android:id="@+id/notRegistered"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="8dp"
         android:text="@string/You_are_not_registered"
         android:textColor="@color/black"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.108"
+        app:layout_constraintHorizontal_bias="0.284"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/idBtnGoogle" />
 
     <Button
         android:id="@+id/Register"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_width="113dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="8dp"
         android:linksClickable="true"
         android:text="@string/Register"
         android:textColor="@color/white"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.937"
+        app:layout_constraintHorizontal_bias="0.644"
         app:layout_constraintRight_toRightOf="@+id/notRegistered"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/idBtnGoogle" />

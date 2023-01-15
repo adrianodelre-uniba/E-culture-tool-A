@@ -8,7 +8,7 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 public class Curatore extends User{
-    private Luogo luogoGestito = null;
+    private Luogo luogoGestito = null; //posso gestire più luoghi
 
     public Curatore(String nome, String cognome, LocalDate dateNascita,
                     String email, String password) {
