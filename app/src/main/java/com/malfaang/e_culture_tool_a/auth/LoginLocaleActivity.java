@@ -1,5 +1,6 @@
 package com.malfaang.e_culture_tool_a.auth;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -22,6 +23,7 @@ public class LoginLocaleActivity extends AppCompatActivity {
     public LoginLocaleActivity() {
     }
 
+    @SuppressLint("WrongViewCast")
     @Override
     public final void onCreate(Bundle savedInstanceState) {
         getSupportActionBar().hide();
@@ -29,7 +31,7 @@ public class LoginLocaleActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login_locale);
 
         ControlloCredenziali checker = new ControlloCredenziali();
-        emailEdit = findViewById(R.id.idUserName);
+        emailEdit = findViewById(R.id.Email);
         passwordEdit = findViewById(R.id.idPassword);
         Button loginBtn = findViewById(R.id.idBtnLogin);
         loginBtn.setOnClickListener(view -> signInEmailPassword());

@@ -7,7 +7,7 @@ import java.util.Objects;
 
 @SuppressWarnings("AccessingNonPublicFieldOfAnotherObject")
 public class Visitatore extends User {
-    private Genere genere = null;
+    private Genere genere = null; // Un utente generico non ha genere???
     private LocalDate tempoDisponibile = null;
 
     public Visitatore(String nome, String cognome, LocalDate dateNascita,
