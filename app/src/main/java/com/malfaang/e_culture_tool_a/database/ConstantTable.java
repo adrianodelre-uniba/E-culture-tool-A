@@ -36,7 +36,7 @@ public class ConstantTable {
     public static final String COL_CAPIENZA_OGGETTI_ZONA = "CAPIENZA_OGGETTI_ZONA";
     public static final String COL_NUMERO_OGGETTI_ZONA= "NUMERO_OGGETTI_ZONA";
 
-    //Tabella Oggetto
+    //Tabella Oggetto TODO Questa la consideriamo come opera?
     public static final String TABELLA_OGGETTO = "oggetto";
     public static final String COL_ID_OGGETTO = "ID_OGGETTO";
     public static final String COL_NOME_OGGETTO = "NOME_OGGETTO";
@@ -52,6 +52,13 @@ public class ConstantTable {
     //public static final String COL_FK_ID_UTENTE = "ID_UTENTE";
     public static final String COL_FK_ID_LUOGO = "ID_LUOGO";
     public static final String COL_FK_ID_ZONA = "ID_ZONA";
+
+    //Tabella del Valore Distanza (Distance Value)
+    public static String TABELLA_DISTANZA_VALORE = "distanceValue";
+    public static String COL_ID_OPERA1 = "COL_ID_OPERA1";
+    public static String COL_ID_OPERA2= "COL_ID_OPERA2";;
+    public static String COL_DISTANZA= "COL_DISTANZA";;
+
 
     public ConstantTable() {
     }

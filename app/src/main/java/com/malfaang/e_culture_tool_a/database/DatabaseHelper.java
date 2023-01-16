@@ -58,6 +58,11 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Serializable {
             COL_FK_ID_UTENTE + " INTEGER NOT NULL REFERENCES UTENTE (COL_ID_UTENTE))";
 //          COL_FK_ID_LUOGO + "INTEGER NOT NULL, FOREIGN KEY (" + COL_ID_LUOGO + ") REFERENCES " + TABELLA_LUOGO + " (" + COL_ID_LUOGO + ") ON UPDATE CASCADE ON DELETE CASCADE, " +
 //          COL_FK_ID_UTENTE + "INTEGER NOT NULL, FOREIGN KEY (" + COL_ID_UTENTE + ") REFERENCES "+ TABELLA_UTENTE+" ("+COL_ID_UTENTE+") ON UPDATE CASCADE ON DELETE CASCADE)";
+    final String queryCreazioneDistanceValue = "CREATE TABLE " + TABELLA_DISTANZA_VALORE + " (" +
+        COL_ID_OPERA1 + " INTEGER, " +
+        COL_ID_OPERA2 + " INTEGER, " +
+        COL_DISTANZA + " INTEGER, " +
+        "PRIMARY KEY ("+ COL_ID_OPERA1 + ", " + COL_ID_OPERA2 +"))";
     // --------------------------- FINE QUERY CREAZIONE TABELLE ----------------------------------
 
 
@@ -174,4 +179,33 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Serializable {
     // TODO Completare implementazione di serializzazione del DB
     // TODO Completare implementazione di deserializzazione del DB
     // TODO Implementare salvataggio e manipolazione dati tramite SharedPreferences
+
+    public void insertDistanceValue(int idOpera1, int idOpera2, int distance){
+        ContentValues values = new ContentValues();
+        values.put(COL_ID_OPERA1, idOpera1);
+        values.put(COL_ID_OPERA2, idOpera2);
+        values.put(COL_DISTANZA, distance);
+
+        db.insert(TABELLA_DISTANZA_VALORE, null, values);
+
+    }
+
+    public int selectDistanceValue(int idOpera1, int idOpera2){
+        int distanceValue = 0;
+        String queryString = "SELECT " + COL_DISTANZA + " FROM " + TABELLA_DISTANZA_VALORE + " WHERE " + COL_ID_OPERA1 + " = " + "'"+idOpera1+"'" +
+                " AND " + COL_ID_OPERA2 + " = " + "'"+idOpera2+"'";
+        System.out.println(queryString); // Per Debug gg
+
+//        List<String> results = new ArrayList<>();
+        SQLiteDatabase db2 = getReadableDatabase();
+        Cursor cursor = db2.rawQuery(queryString, null);
+        if (cursor.moveToFirst()) {
+            distanceValue = cursor.getInt(0);
+        } else {
+            cursor.close();
+            db2.close();
+        }
+        return distanceValue;
+    }
+
 }
