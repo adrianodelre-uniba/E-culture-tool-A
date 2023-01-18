@@ -50,7 +50,6 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Serializable {
             COL_NOME_OGGETTO + " TEXT NOT NULL," +
             COL_DESCRIZIONE_OGGETTO + " TEXT NOT NULL," +
             COL_FOTO_OGGETTO + " BYTE," + //La foto va convertita in una stringa di numeri per poter essere memorizzata
-            COL_CODICE_QR + " TEXT," + //Non bisogna salvare propriamente lui, ma il testo a cui si riferisce il QR CODE
             COL_CODICE_IOT + " TEXT)";
     final String queryCreazioneVisita = "CREATE TABLE " + TABELLA_VISITA + " (" +
             COL_ID_VISITA + " INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -136,7 +135,6 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Serializable {
         values.put(COL_NOME_OGGETTO, nomeOggetto);
         values.put(COL_DESCRIZIONE_OGGETTO, descrizioneOggetto);
         values.put(COL_FOTO_OGGETTO, fotoOggetto);
-        values.put(COL_CODICE_QR, codiceQR);
         values.put(COL_ATTIVITA_ASSOCCIATA, attivitaAssociata);
         values.put(COL_CODICE_IOT, codiceIOT);
 
@@ -206,6 +204,27 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Serializable {
             db2.close();
         }
         return distanceValue;
+    }
+
+    public void insertOpera(String titolo, String descrizione) {
+        ContentValues values = new ContentValues();
+        values.put(COL_NOME_OGGETTO, titolo);
+        values.put(COL_DESCRIZIONE_OGGETTO, descrizione);
+        // TODO inserire gli altri campi della tabella
+        // TODO Cambiare il nome da OGGETTO AD OPERA
+        db.insert(TABELLA_OGGETTO, null, values);
+
+    }
+
+    // Update per modificare tramite il QR
+    public void updateOpera(String titolo, String descrizione, int id) {
+        ContentValues values = new ContentValues();
+        values.put(COL_NOME_OGGETTO, titolo);
+        values.put(COL_DESCRIZIONE_OGGETTO, descrizione);
+        // TODO inserire gli altri campi della tabella
+        // TODO Cambiare il nome da OGGETTO AD OPERA
+        db.update(TABELLA_OGGETTO, values, COL_ID_OGGETTO + "=?", new String[]{String.valueOf(id)});
+
     }
 
 }

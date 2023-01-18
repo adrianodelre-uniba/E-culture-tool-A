@@ -37,12 +37,12 @@ public class ConstantTable {
     public static final String COL_NUMERO_OGGETTI_ZONA= "NUMERO_OGGETTI_ZONA";
 
     //Tabella Oggetto TODO Questa la consideriamo come opera?
+    // Il codice QR non serve, perchè esso conterrà l'ID dell'opera
     public static final String TABELLA_OGGETTO = "oggetto";
     public static final String COL_ID_OGGETTO = "ID_OGGETTO";
     public static final String COL_NOME_OGGETTO = "NOME_OGGETTO";
     public static final String COL_DESCRIZIONE_OGGETTO = "DESCRIZIONE_OGGETTO";
     public static final String COL_FOTO_OGGETTO = "FOTO_OGGETTO";
-    public static final String COL_CODICE_QR= "CODICE_QR";
     public static final String COL_ATTIVITA_ASSOCCIATA = "ATTIVITA_ASSOCIATA";
     public static final String COL_CODICE_IOT= "CODICE_IOT";
 

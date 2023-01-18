@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.malfaang.e_culture_tool_a.R;
@@ -17,8 +18,8 @@ import java.util.Objects;
 
 
 public class LoginLocaleActivity extends AppCompatActivity {
-    private TextInputEditText emailEdit = null;
-    private TextInputEditText passwordEdit = null;
+    private EditText emailEdit;
+    private EditText passwordEdit;
 
     public LoginLocaleActivity() {
     }
@@ -32,7 +33,9 @@ public class LoginLocaleActivity extends AppCompatActivity {
 
         ControlloCredenziali checker = new ControlloCredenziali();
         emailEdit = findViewById(R.id.Email);
-        passwordEdit = findViewById(R.id.idPassword);
+        emailEdit.setText("mail@test.com");
+        passwordEdit = findViewById(R.id.Password);
+        passwordEdit.setText("12345678");
         Button loginBtn = findViewById(R.id.idBtnLogin);
         loginBtn.setOnClickListener(view -> signInEmailPassword());
         Button registerBtn = findViewById(R.id.Register);

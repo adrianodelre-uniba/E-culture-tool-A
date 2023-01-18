@@ -29,7 +29,7 @@
             android:textColor="@color/black"
             android:textSize="20sp" />
 
-        <com.google.android.material.textfield.TextInputEditText
+        <EditText
             android:id="@+id/idNome"
             android:layout_width="match_parent"
             android:layout_height="48dp"
@@ -47,7 +47,7 @@
             android:textColorHint="@color/black"
             android:textSize="14sp" />
 
-        <com.google.android.material.textfield.TextInputEditText
+        <EditText
             android:id="@+id/idCognome"
             android:layout_width="match_parent"
             android:layout_height="48dp"
@@ -65,7 +65,7 @@
             android:textColorHint="@color/black"
             android:textSize="14sp" />
 
-        <com.google.android.material.textfield.TextInputEditText
+        <EditText
             android:id="@+id/idCompleanno"
             android:layout_width="match_parent"
             android:layout_height="48dp"
@@ -83,7 +83,7 @@
             android:textColor="@color/black"
             android:textSize="14sp"/>
 
-        <com.google.android.material.textfield.TextInputEditText
+        <EditText
             android:id="@+id/idEmail"
             android:layout_width="match_parent"
             android:layout_height="48dp"
@@ -101,7 +101,7 @@
             android:textColorHint="@color/black"
             android:textSize="14sp" />
 
-        <com.google.android.material.textfield.TextInputEditText
+        <EditText
             android:id="@+id/idPassword"
             android:layout_width="match_parent"
             android:layout_height="48dp"

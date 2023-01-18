@@ -5,7 +5,7 @@ import androidx.annotation.NonNull;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public abstract class User {
+public class User {
     private int id;
     private String nome = null;
     private String cognome = null;
