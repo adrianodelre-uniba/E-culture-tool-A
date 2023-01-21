@@ -12,6 +12,10 @@ import com.malfaang.e_culture_tool_a.R;
 
 import java.util.Objects;
 
+/*
+ *
+ *  @author adrianodelre
+ */
 public class ControlloCredenziali {
     public static final int MAX_PASSWORD = 30;
     public static final int MIN_PASSWORD = 8;

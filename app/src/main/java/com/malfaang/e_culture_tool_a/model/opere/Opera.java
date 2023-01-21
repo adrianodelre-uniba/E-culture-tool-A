@@ -1,7 +1,10 @@
-package com.malfaang.e_culture_tool_a.model.opera;
+package com.malfaang.e_culture_tool_a.model.opere;
 
+/*
+ *
+ *  @author adrianodelre
+ */
 public class Opera {
-
     private  String nome;
     private  String descrizione;
     private  String foto; //forse è da convertire in Base64
@@ -9,7 +12,8 @@ public class Opera {
     private  String attivitaAssociata;
     private  String codiceIot; //forse è da convertire in Base64
 
-    public Opera(String nome, String descrizione, String foto, String codiceQR, String attivitaAssociata, String codiceIot) {
+    public Opera(String nome, String descrizione, String foto,
+                 String codiceQR, String attivitaAssociata, String codiceIot) {
         this.nome = nome;
         this.descrizione = descrizione;
         this.foto = foto;

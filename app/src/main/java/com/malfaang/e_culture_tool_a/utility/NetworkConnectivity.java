@@ -6,6 +6,10 @@ import android.net.NetworkInfo;
 
 import java.util.Objects;
 
+/*
+ *
+ *  @author adrianodelre
+ */
 public class NetworkConnectivity {
 
     public NetworkConnectivity() {

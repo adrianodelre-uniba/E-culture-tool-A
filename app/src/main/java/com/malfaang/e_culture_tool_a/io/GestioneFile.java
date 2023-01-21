@@ -25,6 +25,10 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+/*
+ *
+ *  @author adrianodelre
+ */
 public class GestioneFile {
     private static final Pattern SLASH = Pattern.compile(" / ");
     private static final Pattern SLASH2 = Pattern.compile("/");

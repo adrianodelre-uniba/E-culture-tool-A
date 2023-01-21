@@ -35,6 +35,10 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
+/*
+ *
+ *  @author adrianodelre
+ */
 public class RegistrazioneFireBaseActivity extends AppCompatActivity {
     private static final String TAG = "EmailPassword";
     private static final String URI = "https://e-culture-tool-a-6f940-default-rtdb.europe-west1.firebasedatabase.app/";
