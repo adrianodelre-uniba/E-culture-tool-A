@@ -1,4 +1,4 @@
-package com.malfaang.e_culture_tool_a.auth;
+package com.malfaang.e_culture_tool_a.fireBase;
 
 import android.content.Context;
 import android.content.Intent;
@@ -31,6 +31,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.auth.UserProfileChangeRequest;
 import com.malfaang.e_culture_tool_a.R;
+import com.malfaang.e_culture_tool_a.registrazioneAndLogin.ControlloCredenziali;
 import com.malfaang.e_culture_tool_a.utility.NetworkConnectivity;
 
 import java.util.Objects;

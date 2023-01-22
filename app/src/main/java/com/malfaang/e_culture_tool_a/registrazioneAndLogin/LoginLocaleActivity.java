@@ -1,19 +1,19 @@
-package com.malfaang.e_culture_tool_a.auth;
+package com.malfaang.e_culture_tool_a.registrazioneAndLogin;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
-import com.google.android.material.textfield.TextInputEditText;
 import com.malfaang.e_culture_tool_a.R;
 import com.malfaang.e_culture_tool_a.database.DatabaseHelper;
 
-import java.util.List;
 import java.util.Objects;
 
 
@@ -55,12 +55,29 @@ public class LoginLocaleActivity extends AppCompatActivity {
                 Toast.makeText(LoginLocaleActivity.this, R.string.no_connection, Toast.LENGTH_SHORT).show();
                 return;
             } else {*/
-        List<String> res;
+        String ciao = "";
+        DatabaseHelper db = new DatabaseHelper(this);
+        Cursor cursor = db.controlloCredenzialiLogin(email,password);
+        if (cursor.moveToFirst()) {
+
+            do {
+                Toast.makeText(this, "entratio", Toast.LENGTH_SHORT).show();
+                ciao = cursor.getString(0);
+
+
+                cursor.moveToNext();
+
+
+            } while (!cursor.isAfterLast());
+        }
+        // TODO Rimuovere alla fine di tutto
+        Toast.makeText(this, "ccc" + ciao, Toast.LENGTH_SHORT).show();
+       /* List<String> res;
         try (DatabaseHelper db = new DatabaseHelper(this)) {
             res = db.selectUtente(email);
         }
         System.out.println(res);
-                if(res.isEmpty()){
+                if(ciao.isEmpty()){
                     System.out.println("Utente non trovato");
                     //TODO inserire una label con messaggio di errore "Utente non trovato"
                     //TODO Far diventare le texfield rosse per notificare l'errore
@@ -70,7 +87,10 @@ public class LoginLocaleActivity extends AppCompatActivity {
                     Intent intent = new Intent(this, HomeActivity.class);
                     startActivity(intent);
                 }
-            }
+            }*/
+        Intent intent = new Intent(this, HomeActivity.class);
+        startActivity(intent);
+    }
 }
 
 

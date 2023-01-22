@@ -4,13 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".auth.RegistrazioneLocaleActivity">
+    tools:context=".registrazioneAndLogin.RegistrazioneLocaleActivity">
     <include layout="@layout/toolbar"/>
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:ignore="MissingConstraints">
+        android:layout_width="411dp"
+        android:layout_height="846dp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="47dp">
 
         <ImageView
             android:id="@+id/logo_image"
@@ -19,15 +21,6 @@
             android:layout_marginLeft="155dp"
             android:layout_marginTop="60dp"
             android:src="@drawable/pngtree_exquisite_architectural_landmark_of_roman_colosseum_png_image_6942934" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="135dp"
-            android:layout_marginTop="160dp"
-            android:text="@string/E_Culture_tool_A"
-            android:textColor="@color/black"
-            android:textSize="20sp" />
 
         <EditText
             android:id="@+id/idNome"
@@ -73,15 +66,15 @@
             android:layout_marginTop="320dp"
             android:layout_marginRight="30dp"
             android:background="@drawable/input"
+            android:editable="false"
             android:ems="10"
             android:hint="@string/Date_of_birthday"
             android:inputType="none"
-            android:editable="false"
             android:paddingStart="12dp"
             android:paddingTop="10dp"
             android:paddingEnd="12dp"
             android:textColor="@color/black"
-            android:textSize="14sp"/>
+            android:textSize="14sp" />
 
         <EditText
             android:id="@+id/idEmail"
@@ -92,7 +85,7 @@
             android:layout_marginRight="30dp"
             android:background="@drawable/input"
             android:ems="10"
-        android:hint="@string/Email"
+            android:hint="@string/Email"
             android:inputType="textEmailAddress"
             android:paddingStart="12dp"
             android:paddingTop="10dp"
@@ -130,12 +123,17 @@
             android:text="@string/Registration"
             android:textAllCaps="true" />
 
-
-
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="135dp"
+            android:layout_marginTop="160dp"
+            android:text="@string/E_Culture_tool_A"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
 
 
     </RelativeLayout>
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

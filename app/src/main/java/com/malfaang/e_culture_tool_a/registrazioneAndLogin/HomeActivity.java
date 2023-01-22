@@ -1,4 +1,4 @@
-package com.malfaang.e_culture_tool_a.auth;
+package com.malfaang.e_culture_tool_a.registrazioneAndLogin;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.widget.Button;
 
 import com.malfaang.e_culture_tool_a.R;
+import com.malfaang.e_culture_tool_a.gestioneOpere.InsertOperaActivity;
 
 public class HomeActivity extends AppCompatActivity {
 

@@ -1,13 +1,18 @@
-package com.malfaang.e_culture_tool_a.auth;
+package com.malfaang.e_culture_tool_a.registrazioneAndLogin;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.ui.AppBarConfiguration;
 
-import com.google.android.material.textfield.TextInputEditText;
 import com.malfaang.e_culture_tool_a.R;
 import com.malfaang.e_culture_tool_a.database.DatabaseHelper;
 
@@ -27,7 +32,7 @@ public class RegistrazioneLocaleActivity extends AppCompatActivity {
     private String password = null;
 
     final Calendar myCalendar = Calendar.getInstance();
-    private TextInputEditText eNome = null, eCognome = null, eCompleanno = null, eEmail = null, ePassword = null;
+    private EditText eNome , eCognome, eCompleanno, eEmail, ePassword;
 
     private static final String REGEX_NOME = "[a-zA-Z]+";
     private static final String REGEX_COGNOME = "[A-Z]+[:space:]+([ '-][a-zA-Z]+)*";
@@ -63,49 +68,53 @@ public class RegistrazioneLocaleActivity extends AppCompatActivity {
             myCalendar.set(Calendar.DAY_OF_MONTH, day);
             updateLabel();
         };
-
+        email = eEmail.getText().toString();
         eCompleanno.setOnClickListener(view -> new DatePickerDialog(this, date,
                 myCalendar.get(Calendar.YEAR),
                 myCalendar.get(Calendar.MONTH),
                 myCalendar.get(Calendar.DAY_OF_MONTH)).show());
 
-        bIdBtnRegistrazione.setOnClickListener(view -> {
+      /*  bIdBtnRegistrazione.setOnClickListener(view -> {
             if(checkInputString()){
                 DatabaseHelper db = new DatabaseHelper(this);
                 db.insertUtente(nome, cognome, dataNascita, email, password);
             }
+
             //TODO questo metodo ti deve permettere di caricare la pagina successiva ovvero la homePage dopo il controllo sull'input
             // TODO ndò cazz sta l'homepage?
-        });
-
-
-        /*
-        binding = ActivityRegistrazioneLocaleBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
-
-        setSupportActionBar(binding.toolbar);
-
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_registrazione_locale);
-        appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-
-        binding.fab.setOnClickListener(new View.OnClickListener() {
+        });*/
+        bIdBtnRegistrazione.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                if(checkInputString()){
+                    DatabaseHelper db = new DatabaseHelper(getApplicationContext());
+                    Cursor cursor = db.controllo(email);
+                    String ciao="";
+                    if (cursor.moveToFirst()) {
+
+                        do {
+                            Toast.makeText(getApplicationContext(), "entratio", Toast.LENGTH_SHORT).show();
+                            ciao = cursor.getString(0);
+
+
+                            cursor.moveToNext();
+
+
+                        } while (!cursor.isAfterLast());
+                    }
+                    if(ciao.isEmpty()){
+                        db.insertUtente(nome, cognome, dataNascita, email, password);
+                        Intent intent = new Intent(getApplicationContext(),HomeActivity.class);
+                        startActivity(intent);
+                }
+                else{
+                        Toast.makeText(getApplicationContext(), "cambia email", Toast.LENGTH_SHORT).show();
+                        Log.d("risposta","sei un coglione");
+                }
+                }
             }
         });
-    }
 
-    @Override
-    public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_registrazione_locale);
-        return NavigationUI.navigateUp(navController, appBarConfiguration)
-                || super.onSupportNavigateUp();
-        return false;
-    }
-    */
     }
 
     // Convalida dei campi di registrazione
@@ -132,11 +141,10 @@ public class RegistrazioneLocaleActivity extends AppCompatActivity {
         if(cognome.isEmpty()) {
             System.out.println("Il campo cognome è obbligatorio!");
             check = false;
-        }
-        /*} else if(!cognome.matches(REGEX_COGNOME)){
+        } else if(!cognome.matches(REGEX_COGNOME)){
             System.out.println("Nel campo cognome non si possono usare caratteri speciali, solo ' è consetito.");
-            check = false;
-        }*/
+            check = false; // da controllare
+        }
         if(dataNascita.isEmpty()){
             System.out.println("Il campo Data di nascita è obbligatorio!");
             check = false;

@@ -63,7 +63,7 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Serializable {
         COL_DISTANZA + " INTEGER, " +
         "PRIMARY KEY ("+ COL_ID_OPERA1 + ", " + COL_ID_OPERA2 +"))";
     // --------------------------- FINE QUERY CREAZIONE TABELLE ----------------------------------
-
+//sharedpreferences
 
     public DatabaseHelper(@Nullable Context context) {
         super(context, DB_NAME, null, DB_VERSION);
@@ -86,6 +86,17 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Serializable {
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
 
     }
+public Cursor controllo(String email){
+        String query = "SELECT " + COL_EMAIL_UTENTE + " FROM " + TABELLA_UTENTE + " WHERE " + COL_EMAIL_UTENTE + " = '" + email + "' " ;
+    Cursor cursor=null;
+    db=this.getReadableDatabase();
+
+    if (db != null ){
+        cursor = db.rawQuery(query,null);
+    }
+    return cursor;
+}
+    // TODO Provare boolean oppure facciamo un altro cursor e nel codice java verifichiamo se è già presente l'email e comparirà un TOAST che dice di cambiare email.
 
     public void insertUtente(String nome, String cognome, String dataNascita, String email, String password) {
 
@@ -227,4 +238,15 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Serializable {
 
     }
 
+    public Cursor controlloCredenzialiLogin(String email, String password) {
+        String query = "SELECT " + COL_EMAIL_UTENTE + "," + COL_PASSWORD_UTENTE + " FROM " + TABELLA_UTENTE + " WHERE "
+                + COL_EMAIL_UTENTE + " = '" + email + "' AND " + COL_PASSWORD_UTENTE + " = '" + password + "' " ;
+        Cursor cursor=null;
+        db=this.getReadableDatabase();
+
+        if (db != null ){
+            cursor = db.rawQuery(query,null);
+        }
+        return cursor;
+    }
 }

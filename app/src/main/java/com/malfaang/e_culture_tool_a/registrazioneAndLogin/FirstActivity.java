@@ -1,10 +1,11 @@
-package com.malfaang.e_culture_tool_a.auth;
+package com.malfaang.e_culture_tool_a.registrazioneAndLogin;
 
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -27,9 +28,22 @@ public class FirstActivity extends AppCompatActivity {
         Button loginButton = findViewById(R.id.button_login);
         Button registerButton = findViewById(R.id.button_register);
 
-        loginButton.setOnClickListener(task -> loginTransaction());
-        registerButton.setOnClickListener(task -> registrationTransaction());
-
+        //loginButton.setOnClickListener(task -> loginTransaction());
+        //registerButton.setOnClickListener(task -> registrationTransaction());
+loginButton.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
+        Intent intent = new Intent(getApplicationContext(), LoginLocaleActivity.class);
+        startActivity(intent);
+    }
+});
+registerButton.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
+        Intent intent = new Intent(getApplicationContext(), RegistrazioneLocaleActivity.class);
+        startActivity(intent);
+    }
+});
 
         /*binding = ActivityFirstBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());*/

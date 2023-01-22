@@ -1,4 +1,4 @@
-package com.malfaang.e_culture_tool_a.auth;
+package com.malfaang.e_culture_tool_a.gestioneOpere;
 
 import androidx.appcompat.app.AppCompatActivity;
 

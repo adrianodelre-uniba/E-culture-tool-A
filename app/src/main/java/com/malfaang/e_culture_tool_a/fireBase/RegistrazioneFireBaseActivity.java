@@ -1,4 +1,4 @@
-package com.malfaang.e_culture_tool_a.auth;
+package com.malfaang.e_culture_tool_a.fireBase;
 
 import android.content.Intent;
 import android.content.IntentSender;
@@ -27,6 +27,7 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.malfaang.e_culture_tool_a.R;
+import com.malfaang.e_culture_tool_a.registrazioneAndLogin.ControlloCredenziali;
 import com.malfaang.e_culture_tool_a.listeners.FailureListener;
 import com.malfaang.e_culture_tool_a.listeners.SuccessListener;
 import com.malfaang.e_culture_tool_a.model.persone.User;

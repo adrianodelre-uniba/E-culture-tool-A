@@ -10,26 +10,27 @@
         android:padding="10dp">
         
         <ImageView
+            android:id="@+id/backArrow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/left_icon"
             android:layout_centerVertical="true"
             android:src="@drawable/ic_baseline_arrow_back_24"/>
         
         <TextView
+            android:id="@+id/titolo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_toEndOf="@+id/left_icon"
+            android:layout_toEndOf="@+id/backArrow"
             android:text="@string/E_Culture_tool_A"
             android:textColor="@color/white"
             android:layout_centerVertical="true"
             android:textSize="20sp"/>
 
         <ImageView
+            android:id="@+id/burgerMenu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/right_icon"
             android:layout_alignParentEnd="true"
             android:src="@drawable/ic_baseline_menu_24"/>
     </RelativeLayout>
