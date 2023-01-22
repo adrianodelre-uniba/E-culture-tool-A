@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import com.malfaang.e_culture_tool_a.R;
+
 
 public class RegistrazioneActivity extends AppCompatActivity {
 
