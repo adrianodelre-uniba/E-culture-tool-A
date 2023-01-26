@@ -266,7 +266,7 @@ public class Navigazione {
             return 0;
         }
     }
-
+    // TODO Rivedere perchè è probabile che ci siano molti errori
     private List<NodoOpera<Opera>[]> generaCombinazioni(NodoOpera<Opera>[] opereArray, int k){
         List<NodoOpera<Opera>[]> combinazioni = new ArrayList<>();
         int[] combinazione = new int[k];
@@ -294,6 +294,7 @@ public class Navigazione {
     //TODO Il void sarà "Percorso"
     public void calcolaPercorso(List<Opera> opereSelezionate, GrafoLuogo luogo) {
         //TODO Capire come implementare questione che uscita di una stanza è entrata di altra stanza
+        //TODO Usare indexed for loop al posto di for each per evitare raw type e unchecked assignment
 
         // Bisogna suddividere le opere in relazione alle stanze
         List<GrafoStanza<NodoOpera<Opera>>> stanze = luogo.getStanzeLuogo();
@@ -307,25 +308,37 @@ public class Navigazione {
                     }
                 }
             }
-
             // Per ogni stanza, creare combinazioni di opere appartenenti alla stanza
             NodoOpera<Opera>[] opereSelezionateInStanzaArray = new NodoOpera[opereSelezionateInStanza.size()];
             opereSelezionateInStanzaArray = opereSelezionateInStanza.toArray(opereSelezionateInStanzaArray);
             List<NodoOpera<Opera>[]> combinazioni =
                     generaCombinazioni(opereSelezionateInStanzaArray, opereSelezionateInStanzaArray.length);
-
+            int[] contatoreArray = new int[combinazioni.size()];
             // Calcolare distanza tra nodi da matrice e usare counter per avere int risultato di distanza
             // tra nodo alpha e omega passando per le opere selezionate nella stanza
-            for(NodoOpera<Opera>[] combinazioneArray : combinazioni){
+            for (int j = 0; j < combinazioni.size(); j++) {
+                NodoOpera<Opera>[] combinazioneArray = combinazioni.get(j);
                 int counter = 0;
-                for(int i = 0; i < combinazioneArray.length; i++){
-                    // calcolare distanza tra ingresso e prima opera e aggiungere a counter
-                    counter += calcolaDistanzaBinariaTraNodi(combinazioneArray[i], combinazioneArray[i+1]);
-                    // calcolare distanza tra ultima opera e uscita e aggiungere a counter
+                // calcolare distanza tra ingresso e prima opera e aggiungere a counter
+                counter += calcolaDistanzaTraNodiDaMatrice(stanza.getIngresso(), combinazioneArray[0]);
+                for (int i = 0; i < combinazioneArray.length; i++) {
+                    counter += calcolaDistanzaTraNodiDaMatrice(combinazioneArray[i], combinazioneArray[i + 1]);
                 }
-                //TODO Continuare da qui
-                // USare counter per capire quale combinazione arriva dall'entrata all'uscita con effort minore
+                // calcolare distanza tra ultima opera e uscita e aggiungere a counter
+                counter += calcolaDistanzaTraNodiDaMatrice(combinazioneArray[combinazioneArray.length - 1],
+                        stanza.getUscita());
+                contatoreArray[j] = counter;
             }
+            // Usare counter per capire quale combinazione arriva dall'entrata all'uscita con effort minore
+            int[] contatoreArray2 = contatoreArray;
+            Arrays.sort(contatoreArray);
+            NodoOpera<Opera>[] combinazioneMigliore = null;
+            for(int i = 0; i < contatoreArray2.length; i++){
+                if(contatoreArray[0] == contatoreArray2[i]){
+                    combinazioneMigliore = combinazioni.get(i);
+                }
+            }
+
         }
         //TODO To be done
         // Per risultato numericamente minore, creare Percorso per stanza

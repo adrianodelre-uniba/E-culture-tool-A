@@ -14,6 +14,8 @@ public class GrafoStanza<T> {
     private T stanzaNodo;
     private T stanzaSuccessiva;
     private T stanzaPrecedente;
+    private NodoOpera<Opera> ingresso;
+    private NodoOpera<Opera> uscita;
 
     public GrafoStanza(){
 
@@ -79,5 +81,21 @@ public class GrafoStanza<T> {
 
     public void setStanzaPrecedente(T stanzaPrecedente) {
         this.stanzaPrecedente = stanzaPrecedente;
+    }
+
+    public NodoOpera<Opera> getIngresso() {
+        return ingresso;
+    }
+
+    public void setIngresso(NodoOpera<Opera> ingresso) {
+        this.ingresso = ingresso;
+    }
+
+    public NodoOpera<Opera> getUscita() {
+        return uscita;
+    }
+
+    public void setUscita(NodoOpera<Opera> uscita) {
+        this.uscita = uscita;
     }
 }
