@@ -1,4 +1,4 @@
-package com.malfaang.e_culture_tool_a.fireBase;
+package com.malfaang.e_culture_tool_a.firebase;
 
 import android.content.Intent;
 import android.content.IntentSender;

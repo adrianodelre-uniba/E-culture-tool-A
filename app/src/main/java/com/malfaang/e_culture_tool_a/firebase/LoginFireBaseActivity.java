@@ -1,4 +1,4 @@
-package com.malfaang.e_culture_tool_a.fireBase;
+package com.malfaang.e_culture_tool_a.firebase;
 
 import android.content.Context;
 import android.content.Intent;

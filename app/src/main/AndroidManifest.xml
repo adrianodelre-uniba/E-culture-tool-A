@@ -57,10 +57,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".fireBase.RegistrazioneFireBaseActivity"
+            android:name=".firebase.RegistrazioneFireBaseActivity"
             android:exported="false" />
         <activity
-            android:name=".fireBase.LoginFireBaseActivity"
+            android:name=".firebase.LoginFireBaseActivity"
             android:exported="false" />
     </application>
 
