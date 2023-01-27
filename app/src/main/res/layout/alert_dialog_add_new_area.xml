@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:gravity="center_horizontal"
+    android:background="@drawable/alert_dialog_bg"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textview_new_edit_area"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center_horizontal"
+        android:text="@string/alert_dialog_new_area"
+        android:textSize="20dp"
+        android:textColor="@color/color_Primary_500"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/areaName_alert_dialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:gravity="center"
+        android:hint="@string/Name_Area"
+        android:textColor="@color/black"
+        android:background="@android:drawable/edit_text"
+        android:textStyle="normal" />
+
+    <EditText
+        android:id="@+id/areaDescr_alert_dialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:gravity="center"
+        android:hint="@string/Description"
+        android:textColor="@color/black"
+        android:background="@android:drawable/edit_text"
+        android:textStyle="normal" />
+
+    <EditText
+        android:id="@+id/areaTypology_alert_dialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:gravity="center"
+        android:hint="@string/Tipology"
+        android:textColor="@color/black"
+        android:background="@android:drawable/edit_text"
+        android:textStyle="normal" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginTop="12dp">
+
+
+        <Button
+            android:id="@+id/ad_button_do"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:text="@string/bt_do_alert_dialog" />
+
+    </LinearLayout>
+</LinearLayout>

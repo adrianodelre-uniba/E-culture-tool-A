@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    style="">
 
     <include layout="@layout/toolbar" />
 
@@ -13,7 +16,10 @@
         android:layout_marginTop="60dp"
         android:text="@string/Benvenuto"
         android:textColor="@color/black"
-        android:textSize="30dp" />
+        android:textSize="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/Cubo1"
@@ -21,9 +27,10 @@
         android:layout_height="80dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="25dp"
+        android:layout_marginStart="25dp"
         android:layout_marginTop="120dp"
-        android:background="@drawable/cubi_home" />
+        android:background="@drawable/cubi_home"
+        android:backgroundTint="@drawable/colosseo"/>
 
     <ImageButton
         android:id="@+id/Cubo2"
