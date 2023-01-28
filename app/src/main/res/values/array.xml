@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="items_language">
+        <item>Auto</item>
+        <item>Italiano</item>
+        <item>Tedesco</item>
+        <item>Inglese</item>
+        <item>Spagnolo</item>
+        <item>Francese</item>
+        <item>Giapponese</item>
+        <item>Russo</item>
+    </string-array>
+
+    <string-array name="items_value">
+        <item>Auto</item>
+        <item>Italiano</item>
+        <item>Tedesco</item>
+        <item>Inglese</item>
+        <item>Spagnolo</item>
+        <item>Francese</item>
+        <item>Giapponese</item>
+        <item>Russo</item>
+    </string-array>
+
+    <!-- Reply Preference -->
+    <string-array name="reply_entries">
+        <item>Reply</item>
+        <item>Reply to all</item>
+    </string-array>
+
+    <string-array name="reply_values">
+        <item>reply</item>
+        <item>reply_all</item>
+    </string-array>
+
+    <string-array name="books">
+        <item>"The Da Vinci Code"</item>
+        <item>"The Girl On The Train"</item>
+        <item>"Harry Potter"</item>
+        <item>"Hunger Games"</item>
+        <item>"Lord of the Rings"</item>
+        <item>"Moby Dick"</item>
+        <item>"To Kill a Mockingbird"</item>
+        <item>"The Godfather"</item>
+    </string-array>
+
+    <string-array name="authors">
+        <item>Dan Brown</item>
+        <item>Paula Hawkins</item>
+        <item>J. K. Rowling</item>
+        <item>Suzanne Collins</item>
+        <item>J. R. R. Tolkien</item>
+        <item>Herman Melville</item>
+        <item>Harper Lee</item>
+        <item>Mario Puzo</item>
+    </string-array>
+</resources>
