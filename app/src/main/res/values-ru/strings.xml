@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">E-Culture Tool</string>
+    <string name="navigation_drawer_open">Откройте навигационный ящик</string>
+    <string name="navigation_drawer_close">Закрыть навигационный ящик</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Навигационный заголовок</string>
+    <string name="action_settings">Настройки</string>
+
+    <string name="menu_home">Главная</string>
+    <string name="menu_gallery">Галерея</string>
+    <string name="menu_slideshow">Слайд-шоу</string>
+    <string name="menu_settings">Настройки</string>
+    <string name="menu_login">Вход в систему</string>
+
+    <string name="Language">Язык</string>
+    <string name="General">Общий</string>
+    <string name="menu_qr">Qr-код</string>
+    <string name="title_activity_login">Активность входа в систему</string>
+    <string name="prompt_email">Электронная почта</string>
+    <string name="prompt_password">Пароль</string>
+    <string name="action_sign_in">Войдите или зарегистрируйтесь</string>
+    <string name="action_sign_in_short">Войти</string>
+    <string name="welcome">"Добро пожаловать !"</string>
+    <string name="invalid_username">Недействительное имя пользователя</string>
+    <string name="invalid_password">Пароль должен состоять из >5 символов</string>
+    <string name="login_failed">"Не удалось войти в систему"</string>
+    <!-- Preference Titles -->
+    <string name="messages_header">Сообщения</string>
+    <string name="sync_header">Синхронизация</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Ваша подпись</string>
+    <string name="reply_title">Действие ответа по умолчанию</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Периодическая синхронизация электронной почты</string>
+    <string name="attachment_title">Загрузить входящее вложение</string>
+    <string name="attachment_summary_on">Автоматическая загрузка вложений для входящих сообщений электронной почты</string>
+    <string name="attachment_summary_off">Загружайте вложения только при ручном запросе</string>
+    <string name="title_activity_settings">Деятельность по настройке</string>
+    <string name="menu_logout">Выход из системы</string>
+    <string name="forgot_password">Пароль забыт</string>
+    <string name="title_passDim">Восстановление пароля</string>
+    <string name="RecuperoPass">Восстановление пароля</string>
+    <string name="DescRecuperoPassword">Введите свой email для получения пароля</string>
+    <string name="conferma_password">Подтверждение пароля</string>
+    <string name="Email">Электронная почта</string>
+    <string name="Nome">Имя</string>
+    <string name="Name">Имя</string>
+    <string name="password">Пароль</string>
+    <string name="Cognome">Фамилия</string>
+    <string name="Surname">Фамилия</string>
+    <string name="Date_of_birthday" translatable="true">Дата рождения</string>
+    <string name="Telefono">Телефон</string>
+    <string name="Tipologia">Тип</string>
+    <string name="Benvenuto">Добро пожаловать</string>
+    <string name="Luoghi_in_tendenza">Продвигающиеся места</string>
+    <string name="Registrati">Зарегистрироваться</string>
+    <string name="visitatore">Посетитель</string>
+    <string name="curatore">Куратор</string>
+    <string name="guida">Руководство</string>
+    <string name="bt_yes_alert_dialog">Да</string>
+    <string name="bt_no_alert_dialog">Нет</string>
+    <string name="alert_dialog_phrase">Вы собираетесь выйти из системы. Вы уверены, что хотите продолжать?</string>
+    <string name="alert_dialog_answer">Вы уверены?</string>
+    <string name="alert_dialog_new_route">Создать новый маршрут</string>
+    <string name="bt_do_alert_dialog">Выполнено</string>
+    <string name="None_areas_in_the_list">Отсутствие зоны в списке</string>
+    <string name="alert_dialog_new_area">Создать новую область</string>
+    <string name="None_items_in_the_list">Ни один объект в</string>
+    <string name="alert_dialog_new_item">Добавить новый объект</string>
+    <string name="Title">Название</string>
+    <string name="Description">Описание</string>
+    <string name="Tipology">Тип</string>
+    <string name="Name_Area">Имя</string>
+    <string name="Name_Item">Имя объекта</string>
+    <string name="Site_name">Название объекта</string>
+    <string name="city">Города</string>
+    <string name="opening_time">Часы работы</string>
+    <string name="closing_time">Часы закрытия</string>
+    <string name="undo">Отмена</string>
+    <string name="alert_dialog_edit_area">Область редактирования</string>
+    <string name="alert_dialog_edit_item">Редактировать статью</string>
+    <string name="alert_dialog_share_qr_code">Поделиться QR-кодом Opera</string>
+    <string name="textview_share_qr_code">Чтобы поделиться, отсканируйте QR-код выше.</string>
+    <string name="Area">Зона</string>
+    <string name="Areas">Зоны</string>
+    <string name="Item">товары</string>
+    <string name="Camera">камера</string>
+    <string name="Gallery">Галерея</string>
+    <string name="created_on">Создано на</string>
+    <string name="Route_Title">Маршруты</string>
+    <string name="Area_Title">Зоны</string>
+    <string name="alert_dialog_add_area">Добавить к маршруту</string>
+    <string name="do_login">"Не вошел в систему"</string>
+    <string name="Aggiornato">Обновленный</string>
+    <string name="Item_Title">Объекты</string>
+    <string name="bt_find">Поиск</string>
+    <string name="bt_filters">Фильтр</string>
+    <string name="bt_share_route">Поделиться</string>
+    <string name="bt_show_route">Показать маршрут</string>
+    <string name="bt_add_new_route">Добавить маршрут</string>
+    <string name="find_dot">Поиск...</string>
+    <string name="branches">Филиалы</string>
+    <string name="Conferma_Modifica">Изменения подтверждены</string>
+    <string name="Errore_fb">Ошибка соединения с сервером, проверьте, активно ли соединение или нет</string>
+    <string name="campi">Все необходимые поля</string>
+    <string name="Entrata">Приветствуем пользователя</string>
+    <string name="auth_falli">Аутентификация не прошла</string>
+    <string name="password_non_coincide">Пароль не совпадает</string>
+    <string name="password_corta">В пароле отсутствует цифра или специальный символ или он слишком короткий</string>
+    <string name="nome_non_valido">Неверное имя/фамилия</string>
+    <string name="telefono_non_valido">Неверный номер телефона</string>
+    <string name="logout_eseguito">Выход выполнен</string>
+    <string name="Scansione">Работа гидом в музее</string>
+    <string name="inquadra">Введите код</string>
+    <string name="fallito">Ошибка, что-то пошло не так и не может быть завершено</string>
+    <string name="update">Проведено обновление</string>
+    <string name="aggiunto_fb">Добавлено</string>
+    <string name="Concesso">Разрешение уже выдано</string>
+    <string name="Concesso_camera">Разрешение на съемку получено</string>
+    <string name="Concesso_camera_non">Разрешение на съемку не выдается</string>
+    <string name="Concesso_galleria">Разрешение на строительство галереи получено</string>
+    <string name="Concesso_galleria_non">Разрешение на галерею не выдается</string>
+    <string name="Percorso_file">Не удалось найти файл пути</string>
+    <string name="foto_no">Нет фотографий</string>
+    <string name="download_file">Файл был загружен на мобильный телефон</string>
+    <string name="End">КОНЕЦ</string>
+    <string name="start">Начало</string>
+    <string name="bt_tutorial">Показать учебник</string>
+    <string name="route_tutorial">В этом разделе вы можете создавать новые маршруты, добавляя учитываемые области, и видеть для каждого маршрута
+        работы, связанные с каждой введенной областью.
+    </string>
+    <string name="filters_tutorial">Вы можете фильтровать различные категории ресурсов, такие как маршруты, зоны и объекты.
+    Для каждой из этих категорий вы сможете просмотреть дополнительную информацию, такую как Тип, Описание и Связанные элементы.
+    </string>
+    <string name="resources_tutorial">В своих ресурсах вы можете вставлять новые зоны и объекты, связанные с вашим сайтом, связывать объекты с зонами и иметь возможность редактировать и удалять их.
+    после создания, просто перетаскивая вправо для редактирования и влево для удаления</string>
+    <string name="site_tutorial">В этом разделе вы можете редактировать информацию о своем сайте</string>
+    <string name="fab_associates_guide">Работа гидом в музее</string>
+    <string name="fab_tutorial">Отсюда вы можете поделиться Qr-кодом, который должен быть отсканирован гидом, чтобы быть связанным с сайтом</string>
+    <string name="share_route_tutorial">Отсюда вы можете загрузить и поделиться файлом, содержащим созданные маршруты</string>
+    <string name="Tutorial">Учебник</string>
+    <string name="Presenza_non">больше не существует</string>
+    <string name="None_route_in_the_list">Отсутствие пути в списке</string>
+    <string name="ema">Электронная почта отправлена</string>
+    <string name="logu">Выход выполнен</string>
+    <string name="ema_non">Электронная почта не вставляется</string>
+    <string name="ema_non_invi">Электронная почта не отправлена</string>
+    <string name="login">Вход в систему</string>
+    <string name="registrati">Зарегистрироваться</string>
+    <string name="Oggetti">Объекты</string>
+    <string name="museo">Епархиальный музей</string>
+    <string name="Aggiungi_b">Добавить</string>
+    <string name="percorsi_">Маршруты</string>
+    <string name="galleri">Галерея</string>
+    <string name="fotocamera__">Камера</string>
+    <string name="filtri">
+Filter</string>
+    <string name="Chiudi">Закрывать</string>
+    <string name="Cerca">Искать в</string>
+    <string name="img">Изображение</string>
+    <string name="scatt">Сделать \ n снимко</string>
+    <string name="indiet">Можете ли вы вернуться к местам, которые вы уже посетили??</string>
+    <string name="Descri">Описание</string>
+    <string name="creazi">Создайте свой Путь</string>
+    <string name="aggiu_zo">Добавить зону и предмет</string>
+    <string name="gestio">Управление сайтом</string>
+    <string name="miei_per">Ваши пути</string>
+    <string name="miei_ris">Ваши ресурсы</string>
+    <string name="mod_sit">Добавить или изменить сайт </string>
+    <string name="tito_non">Название не найдено</string>
+    <string name="desc_non">Описание не найдено </string>
+    <string name="inv">Отправлять</string>
+    <string name="info">Информация</string>
+    <string name="opere">Работает</string>
+    <string name="bt_edit_alert_dialog">Редактировать</string>
+    <string name="bt_delete_alert_dialog">Удалить</string>
+    <string name="cre_mod">
+Создание или изменение маршрутов </string>
+    <string name="sito_m">
+Твой сайт </string>
+</resources>

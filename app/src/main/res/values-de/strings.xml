@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">E-Culture Tool</string>
+    <string name="navigation_drawer_open">Navigationsschublade öffnen</string>
+    <string name="navigation_drawer_close">Navigationsschublade schließen</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation Kopfzeile</string>
+    <string name="action_settings">Einstellungen</string>
+
+    <string name="menu_home">Startseite</string>
+    <string name="menu_gallery">Galerie</string>
+    <string name="menu_slideshow">Diashow</string>
+    <string name="menu_settings">Einstellungen</string>
+    <string name="menu_login">Anmeldung</string>
+
+    <string name="Language">Sprache</string>
+    <string name="General">General</string>
+    <string name="menu_qr">Qr-code</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Passwort</string>
+    <string name="action_sign_in">Anmelden oder registrieren</string>
+    <string name="action_sign_in_short">Eintragen</string>
+    <string name="welcome">"Willkommen !"</string>
+    <string name="invalid_username">Kein gültiger Benutzername</string>
+    <string name="invalid_password">Passwort muss >5 Zeichen sein</string>
+    <string name="login_failed">"Anmeldung fehlgeschlagen"</string>
+    <!-- Preference Titles -->
+    <string name="messages_header">Nachrichten</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Ihre Unterschrift</string>
+    <string name="reply_title">Standard-Antwortaktion</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Regelmäßige E-Mail-Synchronisierung</string>
+    <string name="attachment_title">Eingehende Anhänge herunterladen</string>
+    <string name="attachment_summary_on">Automatisches Herunterladen von Anhängen für eingehende E-Mails</string>
+    <string name="attachment_summary_off">Anhänge nur herunterladen wenn sie manuell angefordert werden</string>
+    <string name="title_activity_settings">Einstellungstätigkeit</string>
+    <string name="menu_logout">Ausloggen</string>
+    <string name="forgot_password">Passwort vergessen</string>
+    <string name="title_passDim">Passwort-Wiederherstellung</string>
+    <string name="RecuperoPass">Passwort-Wiederherstellung</string>
+    <string name="DescRecuperoPassword">Geben Sie die E-Mail-Adresse ein um Ihr Passwort wiederherzustellen</string>
+    <string name="conferma_password">Passwort bestätigen</string>
+    <string name="Email">Email</string>
+    <string name="Nome">Vorname</string>
+    <string name="Name">Vorname</string>
+    <string name="password">Passwort</string>
+    <string name="Cognome">Nachname</string>
+    <string name="Surname">Nachname</string>
+    <string name="Date_of_birthday">Geburtsdatum</string>
+    <string name="Benvenuto">Willkommen</string>
+    <string name="Luoghi_in_tendenza">Tendenzielle Standorte</string>
+    <string name="Telefono">Telefon</string>
+    <string name="Tipologia">Typologie</string>
+    <string name="Benvenuto">Benvenuto</string>
+    <string name="Registrati">Einloggen</string>
+    <string name="visitatore">Besucher</string>
+    <string name="curatore">Kurator</string>
+    <string name="guida">Führen</string>
+    <string name="bt_yes_alert_dialog">Jawohl</string>
+    <string name="bt_no_alert_dialog">Nein</string>
+    <string name="alert_dialog_phrase">Sie sind dabei, sich abzumelden. Bist du dir sicher, dass du weitermachen willst?</string>
+    <string name="alert_dialog_answer">Bist du dir sicher?</string>
+    <string name="alert_dialog_new_route">Neue Route erstellen</string>
+    <string name="bt_do_alert_dialog">Erledigt</string>
+    <string name="None_areas_in_the_list">Keine Zone in der Liste</string>
+    <string name="alert_dialog_new_area">Neuen Bereich erstellen</string>
+    <string name="None_items_in_the_list">Kein Objekt in</string>
+    <string name="alert_dialog_new_item">Neues Objekt hinzufügen</string>
+    <string name="Title">Titel</string>
+    <string name="Description">Beschreibung</string>
+    <string name="Tipology">Typ</string>
+    <string name="Name_Area">Name</string>
+    <string name="Name_Item">Objekt Name</string>
+    <string name="Site_name">Name des Standorts</string>
+    <string name="city">Städte</string>
+    <string name="opening_time">Die Öffnungszeiten</string>
+    <string name="closing_time">Schließzeiten</string>
+    <string name="undo">Abbrechen</string>
+    <string name="alert_dialog_edit_area">Bereich bearbeiten</string>
+    <string name="alert_dialog_edit_item">Artikel bearbeiten</string>
+    <string name="alert_dialog_share_qr_code">QR-Code Opera teilen</string>
+    <string name="textview_share_qr_code">Zum Teilen scannen Sie den obigen QR-Code.</string>
+    <string name="Area">Zone</string>
+    <string name="Areas">Zonen</string>
+    <string name="Item">Artikel</string>
+    <string name="Camera">Kamera</string>
+    <string name="Gallery">Galerie</string>
+    <string name="created_on">Erstellt am</string>
+    <string name="Route_Title">Routen</string>
+    <string name="Area_Title">Zonen</string>
+    <string name="alert_dialog_add_area">Zur Route hinzufügen</string>
+    <string name="do_login">"Nicht eingeloggt"</string>
+    <string name="Aggiornato">Aktualisiert</string>
+    <string name="Item_Title">Objekte</string>
+    <string name="bt_find">Suche</string>
+    <string name="bt_filters">Filter</string>
+    <string name="bt_share_route">Teilen Sie</string>
+    <string name="bt_show_route">Route anzeigen</string>
+    <string name="bt_add_new_route">Route hinzufügen</string>
+    <string name="find_dot">Suche...</string>
+    <string name="branches">Zweigstellen</string>
+    <string name="Conferma_Modifica">Änderung bestätigt</string>
+    <string name="Errore_fb">Verbindungsfehler mit dem Server, prüfen Sie, ob die Verbindung aktiv ist oder nicht</string>
+    <string name="campi">Alle erforderlichen Felder</string>
+    <string name="Entrata">Willkommen Benutzer</string>
+    <string name="auth_falli">Authentifizierung fehlgeschlagen</string>
+    <string name="password_non_coincide">Passwort stimmt nicht überein</string>
+    <string name="password_corta">Dem Passwort fehlt eine Zahl oder ein Sonderzeichen oder es ist zu kurz</string>
+    <string name="nome_non_valido">Ungültiger Vorname/Nachname</string>
+    <string name="telefono_non_valido">Ungültige Telefonnummer</string>
+    <string name="logout_eseguito">Abmeldung Ausgeführt</string>
+    <string name="Scansione">Assoziieren Sie einen Museumsführer</string>
+    <string name="inquadra">Geben Sie den Code ein</string>
+    <string name="fallito">Fehler, etwas ist schief gelaufen und konnte nicht abgeschlossen werden</string>
+    <string name="update">Aktualisierung durchgeführt</string>
+    <string name="aggiunto_fb">Hinzugefügt</string>
+    <string name="Concesso">Bereits erteilte Genehmigung</string>
+    <string name="Concesso_camera">Kameraerlaubnis erteilt</string>
+    <string name="Concesso_camera_non">Kameraerlaubnis nicht erteilt</string>
+    <string name="Concesso_galleria">Genehmigung für die Galerie erteilt</string>
+    <string name="Concesso_galleria_non">Galeriegenehmigung nicht erteilt</string>
+    <string name="Percorso_file">Die Pfaddatei konnte nicht gefunden werden</string>
+    <string name="foto_no">Es sind keine Fotos vorhanden</string>
+    <string name="download_file">Die Datei wurde auf das Mobiltelefon heruntergeladen</string>
+    <string name="End">ENDE</string>
+    <string name="start">Start</string>
+    <string name="bt_tutorial">Tutorial anzeigen</string>
+    <string name="route_tutorial">In diesem Abschnitt können Sie neue Routen erstellen, die zu berücksichtigenden Gebiete hinzufügen und für jede Route sehen
+        die mit jedem eingegebenen Bereich verbundenen Arbeiten.
+    </string>
+    <string name="filters_tutorial">Sie können die verschiedenen Ressourcenkategorien wie Routen, Zonen und Objekte filtern.
+    Für jede dieser Kategorien können Sie dann zusätzliche Informationen wie Typ, Beschreibung und verwandte Artikel anzeigen.
+    </string>
+    <string name="resources_tutorial">In Ihren Ressourcen können Sie neue Zonen und Objekte in Bezug auf Ihre Website einfügen, Objekte mit den Zonen verknüpfen und sie bearbeiten und löschen können
+    nach der Erstellung, einfach durch Ziehen nach rechts zum Bearbeiten und nach links zum Löschen</string>
+    <string name="site_tutorial">In diesem Bereich können Sie Informationen über Ihre Website bearbeiten</string>
+    <string name="fab_associates_guide">Assoziieren Sie einen Museumsführer</string>
+    <string name="fab_tutorial">Von hier aus können Sie den Qr-Code freigeben, der von einem Führer gescannt wird, um mit der Website verbunden zu werden</string>
+    <string name="share_route_tutorial">Von hier aus können Sie die Datei mit den erstellten Routen herunterladen und weitergeben</string>
+    <string name="Tutorial">Tutorial</string>
+    <string name="None_route_in_the_list">Kein Pfad in der Liste</string>
+    <string name="Presenza_non">nicht mehr vorhanden</string>
+    <string name="ema">E-Mail gesendet</string>
+    <string name="logu">Abmeldung Ausgeführt</string>
+    <string name="ema_non">E-Mail nicht eingefügt</string>
+    <string name="ema_non_invi">E-Mail nicht gesendet</string>
+    <string name="login">Anmeldung</string>
+    <string name="registrati">Einloggen</string>
+    <string name="Oggetti">Objekte</string>
+    <string name="museo">Diözesanmuseum für</string>
+    <string name="Aggiungi_b">hinzufügen</string>
+    <string name="percorsi_">Routen</string>
+    <string name="galleri">Galerie</string>
+    <string name="fotocamera__">Kamera</string>
+    <string name="filtri">
+Filter</string>
+    <string name="Chiudi">Nah dran</string>
+    <string name="Cerca">Suchen in</string>
+    <string name="img">Bild</string>
+    <string name="scatt">Machen Sie \ n Bilder</string>
+    <string name="indiet">Kannst du zu Gebieten zurückkehren, die du bereits besucht hast?</string>
+    <string name="Descri">Beschreibung</string>
+    <string name="creazi">Erstellen Sie Ihren Pfad</string>
+    <string name="aggiu_zo">Zone und Artikel hinzufügen</string>
+    <string name="gestio">Website verwalten</string>
+    <string name="miei_per">Deine Wege</string>
+    <string name="miei_ris">Ihre Ressourcen</string>
+    <string name="mod_sit">Fügen Sie die Site hinzu oder bearbeiten Sie sie </string>
+    <string name="tito_non">Titel nicht gefunden </string>
+    <string name="desc_non">Beschreibung nicht gefunden </string>
+    <string name="inv">Senden </string>
+    <string name="info">Funktioniert</string>
+    <string name="opere">Bearbeiten</string>
+    <string name="bt_edit_alert_dialog">Modifica</string>
+    <string name="bt_delete_alert_dialog">Elimina</string>
+    <string name="cre_mod">
+Routen erstellen oder bearbeiten </string>
+    <string name="sito_m">
+Deine Seite </string>
+</resources>

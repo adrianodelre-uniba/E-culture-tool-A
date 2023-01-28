@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">E-Culture Tool</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_settings">Settings</string>
+    <string name="menu_login">Login</string>
+
+    <string name="Language">Language</string>
+    <string name="General">General</string>
+    <string name="menu_qr">Qr code</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+    <string name="menu_logout">Logout</string>
+    <string name="forgot_password">Forgot Password </string>
+    <string name="title_passDim">Recovery Password</string>
+    <string name="RecuperoPass">Recovery Password</string>
+    <string name="DescRecuperoPassword">Insert the email to recover your password</string>
+    <string name="conferma_password">Confirm Password</string>
+    <string name="Email">Email</string>
+    <string name="Nome">Name</string>
+    <string name="Name">Name</string>
+    <string name="password">Password</string>
+    <string name="Cognome">Surname</string>
+    <string name="Surname">Surname</string>
+    <string name="Date_of_birthday">Date of birthday</string>
+    <string name="Telefono">Telephone</string>
+    <string name="Tipologia">Type</string>
+    <string name="Benvenuto">Welcome</string>
+    <string name="Luoghi_in_tendenza">Trending locations</string>
+    <string name="Registrati">Sign Up</string>
+    <string name="visitatore">Visitor</string>
+    <string name="curatore">Administrator</string>
+    <string name="guida">Guide</string>
+    <string name="bt_yes_alert_dialog">Yes</string>
+    <string name="bt_no_alert_dialog">No</string>
+    <string name="alert_dialog_phrase">You are about to log out. Are you sure you want to continue?</string>
+    <string name="alert_dialog_answer">Are you sure?</string>
+    <string name="alert_dialog_new_route">Create New Route</string>
+    <string name="bt_do_alert_dialog">Done</string>
+    <string name="None_areas_in_the_list">No Zone in the List</string>
+    <string name="alert_dialog_new_area">Create New Area</string>
+    <string name="None_items_in_the_list">No items in</string>
+    <string name="alert_dialog_new_item">Add New Item</string>
+    <string name="Title">Title</string>
+    <string name="Description">Description</string>
+    <string name="Tipology">Tipology</string>
+    <string name="Name_Area">Name</string>
+    <string name="Name_Item">Item Name</string>
+    <string name="Site_name">Site Name</string>
+    <string name="city">City</string>
+    <string name="opening_time">Opening Hours</string>
+    <string name="closing_time">Closing Time</string>
+    <string name="undo">Cancel</string>
+    <string name="alert_dialog_edit_area">Edit Area</string>
+    <string name="alert_dialog_edit_item">Edit Item</string>
+    <string name="alert_dialog_share_qr_code">Share QR Code Opera</string>
+    <string name="textview_share_qr_code">To share, scan the QR code above.</string>
+    <string name="Area">Area</string>
+    <string name="Areas">Areas</string>
+    <string name="Item">Items</string>
+    <string name="Camera">Camera</string>
+    <string name="Gallery">Gallery</string>
+    <string name="created_on">Created on</string>
+    <string name="Route_Title">Routes</string>
+    <string name="Area_Title">Areas</string>
+    <string name="alert_dialog_add_area">Add to Route</string>
+    <string name="do_login">"Not logging in"</string>
+    <string name="Aggiornato">Updated</string>
+    <string name="Item_Title">Items</string>
+    <string name="bt_find">Search</string>
+    <string name="bt_filters">Filters</string>
+    <string name="bt_share_route">Share</string>
+    <string name="bt_show_route">Show Route</string>
+    <string name="bt_add_new_route">Add Route</string>
+    <string name="find_dot">Search...</string>
+    <string name="branches">Branches</string>
+    <string name="Conferma_Modifica">Change confirmed</string>
+    <string name="Errore_fb">Connection error with server, check whether connection is active or not</string>
+    <string name="campi">All required fields</string>
+    <string name="Entrata">Welcome User</string>
+    <string name="auth_falli">Authentication failed</string>
+    <string name="password_non_coincide">Password does not match</string>
+    <string name="password_corta">The password is missing a number or special character or is too short</string>
+    <string name="nome_non_valido">Name/Surname invalid</string>
+    <string name="telefono_non_valido">Invalid phone number</string>
+    <string name="logout_eseguito">Logout Executed</string>
+    <string name="Scansione">Associate a Museum Guide</string>
+    <string name="inquadra">Frame the code</string>
+    <string name="fallito">Error, something went wrong and the operation could not be completed</string>
+    <string name="update">Update done</string>
+    <string name="aggiunto_fb">Added</string>
+    <string name="Concesso">Permission already granted</string>
+    <string name="Concesso_camera">Camera permit granted</string>
+    <string name="Concesso_camera_non">Camera permit not granted</string>
+    <string name="Concesso_galleria">Gallery permit granted</string>
+    <string name="Concesso_galleria_non">Gallery permit not granted</string>
+    <string name="Percorso_file">The path file could not be found</string>
+    <string name="foto_no">There are no photos</string>
+    <string name="download_file">The file was downloaded to the cell phone</string>
+    <string name="End">END</string>
+    <string name="start">Start</string>
+    <string name="bt_tutorial">Show Tutorial</string>
+    <string name="route_tutorial">In this section you can create new routes, adding the areas under consideration and see for each route,
+        the works associated with each area entered.
+    </string>
+    <string name="filters_tutorial">You can filter different categories of resources such as Paths, Zones, and Objects.
+    For each of these categories you can later view additional information such as Type, Description and related items
+    </string>
+    <string name="resources_tutorial">In your resources you will be able to insert new zones and objects related to your site, associate objects with the zones, and be able to edit and delete them
+    following creation, simply by dragging to the right to edit and to the left to delete</string>
+    <string name="site_tutorial">In this section you will be able to edit information pertaining to your own site</string>
+    <string name="fab_associates_guide">Associate a guide to the museum</string>
+    <string name="fab_tutorial">From here you can share the Qr Code to be scanned by a guide to have it associated with the site</string>
+    <string name="share_route_tutorial">From here you can download and share the file containing the paths created</string>
+    <string name="Tutorial">Tutorial</string>
+    <string name="Presenza_non">not present anymore</string>
+    <string name="None_route_in_the_list">No Path in the List</string>
+    <string name="ema">Email sent</string>
+    <string name="logu">Logout Executed</string>
+    <string name="ema_non">Email not entered</string>
+    <string name="ema_non_invi">Email not sent</string>
+    <string name="login">Login</string>
+    <string name="registrati">Register</string>
+    <string name="Oggetti">Objects</string>
+    <string name="museo">Diocesan Museum of</string>
+    <string name="Aggiungi_b">Add</string>
+    <string name="percorsi_">Pathways</string>
+    <string name="galleri">Gallery</string>
+    <string name="fotocamera__">Camera</string>
+    <string name="filtri">
+Filter</string>
+    <string name="Chiudi">Close</string>
+    <string name="Cerca">Search in</string>
+    <string name="img">Image</string>
+    <string name="scatt">Take \ n pictures</string>
+    <string name="indiet">Can you go back to areas you have already visited?</string>
+    <string name="Descri">Description</string>
+    <string name="creazi">Create your Path</string>
+    <string name="aggiu_zo">Add Zone and Item</string>
+    <string name="gestio">Manage Site</string>
+    <string name="miei_per">Your paths</string>
+    <string name="miei_ris">Your Resources</string>
+    <string name="mod_sit">Add or edit the Site </string>
+    <string name="tito_non">Title not found </string>
+    <string name="desc_non">Description not found </string>
+    <string name="inv">Send </string>
+    <string name="info">Info</string>
+    <string name="opere">Works</string>
+    <string name="bt_edit_alert_dialog">Edit</string>
+    <string name="bt_delete_alert_dialog">Delete</string>
+    <string name="cre_mod">Create or edit routes </string>
+    <string name="sito_m">
+Your Site </string>
+</resources>

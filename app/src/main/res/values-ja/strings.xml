@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">E-Culture Tool</string>
+    <string name="navigation_drawer_open">ナビゲーションドローワを開く</string>
+    <string name="navigation_drawer_close">ナビゲーションドローワを閉じる</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">ナビゲーションヘッダー</string>
+    <string name="action_settings">設定</string>
+
+    <string name="menu_home">ホーム</string>
+    <string name="menu_gallery">ギャラリー</string>
+    <string name="menu_slideshow">スライドショー</string>
+    <string name="menu_settings">設定</string>
+    <string name="menu_login">ログイン</string>
+
+    <string name="Language">言語</string>
+    <string name="General">ジェネラル</string>
+    <string name="menu_qr">QRコード</string>
+    <string name="title_activity_login">ログインアクティビティ</string>
+    <string name="prompt_email">電子メール</string>
+    <string name="prompt_password">パスワード</string>
+    <string name="action_sign_in">サインインまたは登録</string>
+    <string name="action_sign_in_short">サインイン</string>
+    <string name="welcome">"ようこそ!"</string>
+    <string name="invalid_username">有効なユーザー名ではありません</string>
+    <string name="invalid_password">パスワードは5文字以上でなければなりません。</string>
+    <string name="login_failed">"ログインに失敗しました"</string>
+    <!-- Preference Titles -->
+    <string name="messages_header">メッセージ</string>
+    <string name="sync_header">シンク</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">あなたのサイン</string>
+    <string name="reply_title">デフォルトの返信動作</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">定期的なメールの同期</string>
+    <string name="attachment_title">受信した添付ファイルをダウンロードする</string>
+    <string name="attachment_summary_on">受信したメールの添付ファイルを自動的にダウンロード</string>
+    <string name="attachment_summary_off">手動で要求された場合のみ、添付ファイルをダウンロードする</string>
+    <string name="title_activity_settings">設定活動</string>
+    <string name="menu_logout">ログアウト</string>
+    <string name="forgot_password">パスワードを忘れた</string>
+    <string name="title_passDim">パスワードリカバリ</string>
+    <string name="RecuperoPass">パスワードリカバリ</string>
+    <string name="DescRecuperoPassword">パスワードを取得するためにEメールを入力してください</string>
+    <string name="conferma_password">パスワードの確認</string>
+    <string name="Email">電子メール</string>
+    <string name="Nome">名称</string>
+    <string name="Name">名称</string>
+    <string name="password">パスワード</string>
+    <string name="Cognome">苗字</string>
+    <string name="Surname">苗字</string>
+    <string name="Telefono">電話番号</string>
+    <string name="Date_of_birthday" translatable="true">生年月日</string>
+    <string name="Tipologia">タイプ</string>
+    <string name="Benvenuto">ようこそ</string>
+    <string name="Luoghi_in_tendenza">トレンドの場所</string>
+    <string name="Registrati">登録</string>
+    <string name="visitatore">来場者</string>
+    <string name="curatore">キュレーター</string>
+    <string name="guida">ガイド</string>
+    <string name="bt_yes_alert_dialog">はい</string>
+    <string name="bt_no_alert_dialog">いいえ</string>
+    <string name="alert_dialog_phrase">ログアウトしようとしている。本当に続けるんですか？</string>
+    <string name="alert_dialog_answer">本当にいいんですか？</string>
+    <string name="alert_dialog_new_route">新規ルート作成</string>
+    <string name="bt_do_alert_dialog">完了</string>
+    <string name="None_areas_in_the_list">リストにゾーンがない</string>
+    <string name="alert_dialog_new_area">新規エリアの作成</string>
+    <string name="None_items_in_the_list">のオブジェクトはありません。</string>
+    <string name="alert_dialog_new_item">新規オブジェクトの追加</string>
+    <string name="Title">タイトル</string>
+    <string name="Description">商品説明</string>
+    <string name="Tipology">タイプ</string>
+    <string name="Name_Area">名称</string>
+    <string name="Name_Item">オブジェクト名</string>
+    <string name="Site_name">サイト名</string>
+    <string name="city">都市</string>
+    <string name="opening_time">営業時間</string>
+    <string name="closing_time">閉館時間</string>
+    <string name="undo">キャンセル</string>
+    <string name="alert_dialog_edit_area">編集エリア</string>
+    <string name="alert_dialog_edit_item">編集項目</string>
+    <string name="alert_dialog_share_qr_code">QRコードオペラを共有する</string>
+    <string name="textview_share_qr_code">シェアするには、上のQRコードをスキャンしてください。</string>
+    <string name="Area">ゾーン</string>
+    <string name="Areas">ゾーン</string>
+    <string name="Item">アイテム</string>
+    <string name="Camera">カメラ</string>
+    <string name="Gallery">ギャラリー</string>
+    <string name="created_on">作成日</string>
+    <string name="Route_Title">ルート</string>
+    <string name="Area_Title">ゾーン</string>
+    <string name="alert_dialog_add_area">ルートに追加</string>
+    <string name="do_login">"ログインしていない"</string>
+    <string name="Aggiornato">更新</string>
+    <string name="Item_Title">対象物</string>
+    <string name="bt_find">検索</string>
+    <string name="bt_filters">フィルター</string>
+    <string name="bt_share_route">シェア</string>
+    <string name="bt_show_route">ルートを表示</string>
+    <string name="bt_add_new_route">ルート追加</string>
+    <string name="find_dot">検索...</string>
+    <string name="branches">支店</string>
+    <string name="Conferma_Modifica">変更確定</string>
+    <string name="Errore_fb">サーバーとの接続エラー、接続が有効かどうかの確認</string>
+    <string name="campi">すべての必須項目</string>
+    <string name="Entrata">ようこそユーザー</string>
+    <string name="auth_falli">認証に失敗した</string>
+    <string name="password_non_coincide">パスワードが一致しない</string>
+    <string name="password_corta">パスワードに数字や特殊文字が含まれていない、または短すぎる</string>
+    <string name="nome_non_valido">無効な姓/名</string>
+    <string name="telefono_non_valido">無効な電話番号</string>
+    <string name="logout_eseguito">ログアウト実行</string>
+    <string name="Scansione">ミュージアムガイドをする</string>
+    <string name="inquadra">コードを入力してください</string>
+    <string name="fallito">エラー、何か問題が発生したため、完了できませんでした。</string>
+    <string name="update">アップデート実施</string>
+    <string name="aggiunto_fb">追加</string>
+    <string name="Concesso">すでに許可されている</string>
+    <string name="Concesso_camera">カメラ使用許可</string>
+    <string name="Concesso_camera_non">カメラ使用許諾が得られない</string>
+    <string name="Concesso_galleria">ギャラリー許可証</string>
+    <string name="Concesso_galleria_non">ギャラリー許可証不許可</string>
+    <string name="Percorso_file">パスファイルが見つかりませんでした</string>
+    <string name="foto_no">写真はございません</string>
+    <string name="download_file">携帯電話にダウンロードされたファイル</string>
+    <string name="End">終了</string>
+    <string name="start">スタート</string>
+    <string name="bt_tutorial">チュートリアルを表示</string>
+    <string name="route_tutorial">このセクションでは、新しいルートを作成し、考慮された領域を追加し、各ルートで確認することができます。
+        各エリアに関連する作品
+    </string>
+    <string name="filters_tutorial">ルート、ゾーン、オブジェクトなどの異なるリソースカテゴリをフィルタリングすることができます。
+    これらのカテゴリーごとに、タイプ、説明、関連項目などの追加情報を表示することができます。
+    </string>
+    <string name="resources_tutorial">リソースでは、サイトに関連する新しいゾーンやオブジェクトを挿入し、オブジェクトをゾーンに関連付け、編集や削除を行うことができます。
+    作成後、右へドラッグすると編集、左へドラッグすると削除できます。</string>
+    <string name="site_tutorial">このセクションでは、あなたのサイトに関する情報を編集することができます</string>
+    <string name="fab_associates_guide">ミュージアムガイドをする</string>
+    <string name="fab_tutorial">ここから、サイトに関連するガイドにスキャンさせるQrコードを共有することができます</string>
+    <string name="share_route_tutorial">ここから、作成した経路を含むファイルをダウンロードし、共有することができます</string>
+    <string name="Tutorial">チュートリアル</string>
+    <string name="Presenza_non">いなくなった</string>
+    <string name="None_route_in_the_list">リストにパスがない</string>
+    <string name="ema">メール送信</string>
+    <string name="logu">ログアウト実行</string>
+    <string name="ema_non">電子メール未挿入</string>
+    <string name="ema_non_invi">メールが送信されない</string>
+    <string name="login">ログイン</string>
+    <string name="registrati">登録</string>
+    <string name="Oggetti">対象物</string>
+    <string name="museo">教区博物館</string>
+    <string name="Aggiungi_b">追加</string>
+    <string name="percorsi_">ルート</string>
+    <string name="galleri">ギャラリー</string>
+    <string name="fotocamera__">カメラ</string>
+    <string name="filtri">
+近い</string>
+    <string name="Chiudi">で検索</string>
+    <string name="Cerca">画像</string>
+    <string name="img">画像</string>
+    <string name="scatt">\ n 写真を撮る</string>
+    <string name="indiet">すでに訪れたエリアに戻ることはできますか?</string>
+    <string name="Descri">説明</string>
+    <string name="creazi">パスを作成する</string>
+    <string name="aggiu_zo">ゾーンとアイテムを追加</string>
+    <string name="gestio">サイトの管理</string>
+    <string name="miei_per">あなたのパス</string>
+    <string name="miei_ris">あなたのリソース</string>
+    <string name="mod_sit">サイトを追加または編集する </string>
+    <string name="tito_non">タイトルが見つかりません </string>
+    <string name="desc_non">説明が見つかりません </string>
+    <string name="inv">送信 </string>
+    <string name="info">情報</string>
+    <string name="opere">作品</string>
+    <string name="bt_edit_alert_dialog">編集</string>
+    <string name="bt_delete_alert_dialog">消去</string>
+    <string name="cre_mod">
+ルートの作成または編集 </string>
+    <string name="sito_m">
+あなたのサイト </string>
+</resources>
