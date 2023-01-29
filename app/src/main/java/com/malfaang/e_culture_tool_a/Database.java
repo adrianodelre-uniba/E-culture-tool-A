@@ -491,8 +491,8 @@ public class Database extends SQLiteOpenHelper {
 
     }
 
-    public String addRecord_Sito(String id_sito,String titolo, String city, String email, String telefono, String orario_apertura,
-                                 String orario_chiusura, String data_ultima_modifica, String id_ute){
+    public String addRecordSito(String id_sito, String titolo, String city, String email, String telefono, String orario_apertura,
+                                String orario_chiusura, String data_ultima_modifica, String id_ute){
 
         SQLiteDatabase db = this.getWritableDatabase() ;
 
@@ -517,7 +517,7 @@ public class Database extends SQLiteOpenHelper {
             return "Success" ;
 
     }
-    public String addRecordSito_Utente(String id_sito,String id_utente){
+    public String addRecordSitoUtente(String id_sito, String id_utente){
         SQLiteDatabase db= this.getWritableDatabase();
 
         ContentValues cv=new ContentValues();
