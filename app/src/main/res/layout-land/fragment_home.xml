@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/newRouteButtton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="250dp"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/new_root_bg"
+            android:text="@string/creazi"
+            android:textColor="@color/white"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toTopOf="@+id/addElements"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/addElements"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="250dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/new_root_bg"
+            android:text="@string/aggiu_zo"
+            android:textColor="@color/white"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toTopOf="@+id/newSiteButtton"
+            app:layout_constraintTop_toBottomOf="@+id/newRouteButtton"
+            tools:layout_editor_absoluteX="31dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/newSiteButtton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="250dp"
+            android:background="@drawable/new_root_bg"
+            android:text="@string/gestio"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toTopOf="@+id/fab"
+            app:layout_constraintTop_toBottomOf="@+id/newRouteButtton"
+            app:layout_constraintVertical_bias="0.756" />
+    </LinearLayout>
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.898"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.500"
+        app:maxImageSize="34dp"
+        app:srcCompat="@drawable/ic_baseline_qr_code_24_black"
+        android:backgroundTint="@color/teal_700"
+        android:tooltipText="@string/fab_associates_guide"/>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="50dp">
+
+
+        <EditText
+            android:id="@+id/email1"
+            android:layout_width="249dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/edit_text_bg"
+            android:hint="@string/Email"
+            android:paddingLeft="20dp"
+
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/password1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cognome"
+            app:layout_constraintWidth_percent=".8" />
+
+        <EditText
+            android:id="@+id/conferma_pass"
+            android:layout_width="249dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/edit_text_bg"
+
+            android:hint="@string/conferma_password"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/Telefono"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.537"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/password1"
+            app:layout_constraintWidth_percent=".8" />
+
+        <EditText
+            android:id="@+id/nome"
+            android:layout_width="249dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edit_text_bg"
+            android:hint="@string/Nome"
+
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent=".8" />
+
+        <EditText
+            android:id="@+id/password1"
+            android:layout_width="249dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/edit_text_bg"
+            android:hint="@string/password"
+            android:paddingLeft="20dp"
+
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/conferma_pass"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/email1"
+            app:layout_constraintWidth_percent=".8" />
+
+        <EditText
+            android:id="@+id/cognome"
+            android:layout_width="249dp"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="50dp"
+            android:background="@drawable/edit_text_bg"
+            android:hint="@string/Cognome"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/email1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nome"
+            app:layout_constraintWidth_percent=".8" />
+
+        <EditText
+            android:id="@+id/Telefono"
+            android:layout_width="249dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/edit_text_bg"
+
+            android:hint="@string/Telefono"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/Tipologia_Area"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/conferma_pass"
+            app:layout_constraintWidth_percent=".8" />
+
+        <Button
+            android:id="@+id/signup"
+            android:layout_width="249dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:text="@string/Registrati"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Tipologia_Area"
+            app:layout_constraintWidth_percent=".8" />
+
+        <RadioGroup
+            android:id="@+id/Tipologia_Area"
+            android:layout_width="257dp"
+            android:layout_height="142dp"
+            android:layout_marginTop="50dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/signup"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.525"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Telefono">
+
+            <RadioButton
+                android:id="@+id/radio_curatore"
+                android:layout_width="249dp"
+                android:layout_height="wrap_content"
+
+                android:text="@string/curatore"
+                android:textAlignment="center" />
+
+            <RadioButton
+                android:id="@+id/radio_visitatore"
+                android:layout_width="249dp"
+                android:layout_height="wrap_content"
+
+                android:text="@string/visitatore"
+                android:textAlignment="center" />
+
+            <RadioButton
+                android:id="@+id/radio_guida"
+                android:layout_width="249dp"
+                android:layout_height="wrap_content"
+
+                android:text="@string/guida"
+                android:textAlignment="center" />
+
+        </RadioGroup>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
