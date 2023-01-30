@@ -27,3 +27,17 @@ r
 Bapp/src/main/java/com/malfaang/e_culture_tool_a/newRoute/Item.java,7\a\7a2ede00fd0dd3851958b80f3b454d32ffedabff
 ƒ
 Sapp/src/main/java/com/malfaang/e_culture_tool_a/firebase/LoginFireBaseActivity.java,a\1\a1e41c96cd3463dc63d55fe170b52d61b57caf9c
+|
+Lapp/src/main/java/com/malfaang/e_culture_tool_a/gallery/GalleryFragment.java,7\4\74214ef84710ca238c3fdaaba7cba98abcda752c
+}
+Mapp/src/main/java/com/malfaang/e_culture_tool_a/gallery/GalleryViewModel.java,1\3\13557f67fdb0b9c2443b2f8e8595c7fb0e54dcda
+v
+Fapp/src/main/java/com/malfaang/e_culture_tool_a/home/HomeFragment.java,8\7\873eccf670ae4a37b712879cdaf987a4956cc29a
+w
+Gapp/src/main/java/com/malfaang/e_culture_tool_a/home/HomeViewModel.java,c\8\c861b063dc65b72508e0babc09f5dafcc4e81a19
+y
+Iapp/src/main/java/com/malfaang/e_culture_tool_a/newRoute/AreaAdapter.java,8\1\812346be882d04935169f3f4e9ffda00889f1f2d
+u
+Eapp/src/main/java/com/malfaang/e_culture_tool_a/routes/Item_Info.java,9\7\97090f4741b1323836c8fd5896145c0581f0d8aa
+y
+Iapp/src/main/java/com/malfaang/e_culture_tool_a/newRoute/ItemAdapter.java,4\e\4eefa7edf48e31017d7589e59d76eff3217665e5
