@@ -32,13 +32,13 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.malfaang.e_culture_tool_a.Database;
 import com.malfaang.e_culture_tool_a.MainActivity;
-//import com.example.prvaloocale.R;
-//import com.example.prvaloocale.Splash_Screen;
+import com.malfaang.e_culture_tool_a.R;
+import com.malfaang.e_culture_tool_a.Splash_Screen;
 import com.malfaang.e_culture_tool_a.databinding.FragmentHomeBinding;
 import com.malfaang.e_culture_tool_a.addElements.AddElements;
 import com.malfaang.e_culture_tool_a.newRoute.Area_Order;
 import com.malfaang.e_culture_tool_a.newRoute.Route;
-import com.malfaang.e_culture_tool_a.QRcode.CaptureAct;
+import com.malfaang.e_culture_tool_a.qrCode.CaptureAct;
 
 import com.malfaang.e_culture_tool_a.routes.Add_Route;
 import com.malfaang.e_culture_tool_a.sito.NewSite;
@@ -263,8 +263,8 @@ public class HomeFragment extends Fragment {
             editor.putString("Id_Sito",str);
             editor.commit();
             String id_utente = preference.getString("Id_Utente", "");
-            LocalDB.addRecordSito_Utente(str,id_utente);
-            mDatabase3.push().setValue(new Sito_Utente(str,id_utente));
+            LocalDB.addRecordSitoUtente(str,id_utente);
+            mDatabase3.push().setValue(new SitoUtente(str,id_utente));
 
 
             startActivity(opera);

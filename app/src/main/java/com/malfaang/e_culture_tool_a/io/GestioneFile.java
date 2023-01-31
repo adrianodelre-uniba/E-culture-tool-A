@@ -1,5 +1,6 @@
 package com.malfaang.e_culture_tool_a.io;
 
+import android.os.Build;
 import android.os.Environment;
 
 import java.io.BufferedReader;
@@ -127,29 +128,39 @@ public class GestioneFile {
     }
 
     public static File cercaPerNome(Path path, String nome) throws IOException {
-        List<Path> result;
-        try(Stream<Path> pathStream = Files.find(path, Integer.MAX_VALUE,
-                (p, basicFileAttributes) ->{
-                    if(Files.isDirectory(p) || !Files.isReadable(p)){
-                        return false;
-                    }
-                    return p.getFileName().toString().equalsIgnoreCase(nome);
-                })
-        ){
-            result = pathStream.collect(Collectors.toList());
-            result.forEach(System.out::println);
+        List<Path> result = null;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            try(Stream<Path> pathStream = Files.find(path, Integer.MAX_VALUE,
+                    (p, basicFileAttributes) ->{
+                        if(Files.isDirectory(p) || !Files.isReadable(p)){
+                            return false;
+                        }
+                        return p.getFileName().toString().equalsIgnoreCase(nome);
+                    })
+            ){
+                result = pathStream.collect(Collectors.toList());
+                result.forEach(System.out::println);
+            }
         }
-        if(result.stream().findFirst().isPresent()){
-            return result.stream().findFirst().get().toFile();
-        }else{
-            return null;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            if(result.stream().findFirst().isPresent()){
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    return result.stream().findFirst().get().toFile();
+                }
+            }else{
+                return null;
+            }
         }
+        return null;
     }
 
     public File cercaFile(String nomeFile) throws IOException {
         String path = "E-culture_tool_A" + SLASH2;
         String pathname = path + nomeFile;
-        Path path2 = Path.class.cast(path);
+        Path path2 = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            path2 = Path.class.cast(path);
+        }
         File file = cercaPerNome(path2, nomeFile);
         if (file != null && file.exists()) {
             return file;

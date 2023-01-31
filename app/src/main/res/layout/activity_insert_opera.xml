@@ -14,7 +14,8 @@
         android:inputType="textPersonName"
         android:text="Name"
         tools:layout_editor_absoluteX="96dp"
-        tools:layout_editor_absoluteY="88dp" />
+        tools:layout_editor_absoluteY="88dp"
+        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/descrizione"
@@ -24,7 +25,8 @@
         android:inputType="textPersonName"
         android:text="Name"
         tools:layout_editor_absoluteX="101dp"
-        tools:layout_editor_absoluteY="186dp" />
+        tools:layout_editor_absoluteY="186dp"
+        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/foto"
@@ -34,7 +36,8 @@
         android:inputType="textPersonName"
         android:text="Name"
         tools:layout_editor_absoluteX="97dp"
-        tools:layout_editor_absoluteY="276dp" />
+        tools:layout_editor_absoluteY="276dp"
+        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/attivita"
@@ -44,7 +47,8 @@
         android:inputType="textPersonName"
         android:text="Name"
         tools:layout_editor_absoluteX="100dp"
-        tools:layout_editor_absoluteY="371dp" />
+        tools:layout_editor_absoluteY="371dp"
+        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/codiceIOT"
@@ -54,7 +58,8 @@
         android:inputType="textPersonName"
         android:text="Name"
         tools:layout_editor_absoluteX="96dp"
-        tools:layout_editor_absoluteY="442dp" />
+        tools:layout_editor_absoluteY="442dp"
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/salva"
@@ -62,5 +67,6 @@
         android:layout_height="wrap_content"
         android:text="Button"
         tools:layout_editor_absoluteX="151dp"
-        tools:layout_editor_absoluteY="544dp" />
+        tools:layout_editor_absoluteY="544dp"
+        tools:ignore="MissingConstraints" />
 </androidx.constraintlayout.widget.ConstraintLayout>

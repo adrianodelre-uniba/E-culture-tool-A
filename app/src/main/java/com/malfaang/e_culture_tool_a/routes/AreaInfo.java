@@ -1,5 +1,7 @@
 package com.malfaang.e_culture_tool_a.routes;
 
+import static com.malfaang.e_culture_tool_a.routes.Add_Area_To_Route.getImage;
+
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -68,7 +70,7 @@ public class AreaInfo extends AppCompatActivity implements RecyclerViewClickInte
         tvDescrizione.setText(areaSelected.getAreaDescr());
         localRouteItem(idArea);
         ImageView img = findViewById(R.id.IMG_Area);
-        img.setImageBitmap(BitmapFactory.decodeResource(getResources(),R.drawable.logo_app));
+        img.setImageBitmap(BitmapFactory.decodeResource(getResources(),R.drawable.logo_app_ok));
         if(itemList != null){
             adapterItem = new RecyclerItemAdapter( itemList,imageList, this);
             recyclerViewItem = findViewById(R.id.itemListArea);

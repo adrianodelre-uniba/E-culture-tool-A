@@ -71,7 +71,7 @@ public class RecyclerItemAdapter extends RecyclerView.Adapter<RecyclerItemAdapte
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(!clickInterface.toString().contains("com.example.prvaloocale.ui.Routes.Add_Area_To_Route")){
+                    if(!clickInterface.toString().contains("com.malfaang.e_culture_tool_a.routes.Add_Area_To_Route")){
                         clickInterface.onItemClick(getAdapterPosition());
                     }
                 }

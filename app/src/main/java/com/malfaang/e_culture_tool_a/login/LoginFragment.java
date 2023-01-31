@@ -29,6 +29,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.malfaang.e_culture_tool_a.Database;
 import com.malfaang.e_culture_tool_a.R;
+import com.malfaang.e_culture_tool_a.Splash_Screen;
 import com.malfaang.e_culture_tool_a.sito.NewSite;
 
 public class  LoginFragment extends Fragment {

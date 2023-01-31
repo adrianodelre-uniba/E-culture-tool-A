@@ -136,7 +136,7 @@ public class Splash_Screen extends AppCompatActivity {
                         String data = snapshot1.child("data_Ultima_Modifica").getValue().toString();
 
 
-                        String result = LocalDB.addRecord_Sito(id_sito, nome, city, email, telefono, apertura, chiusura, data, utente);
+                        String result = LocalDB.addRecordSito(id_sito, nome, city, email, telefono, apertura, chiusura, data, utente);
                         if (!result.equals("Success")) {
                             Toast.makeText(getApplicationContext(), errore, Toast.LENGTH_SHORT).show();
                         }

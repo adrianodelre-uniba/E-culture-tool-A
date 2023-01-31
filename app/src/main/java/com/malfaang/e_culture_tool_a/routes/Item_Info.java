@@ -23,7 +23,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.malfaang.e_culture_tool_a.Database;
-//import com.example.prvaloocale.R;
+import com.malfaang.e_culture_tool_a.R;
 import com.malfaang.e_culture_tool_a.addElements.RecyclerAreaAdapter;
 import com.malfaang.e_culture_tool_a.newRoute.Area;
 import com.malfaang.e_culture_tool_a.newRoute.Item;

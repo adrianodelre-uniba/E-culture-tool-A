@@ -4,6 +4,8 @@ import static android.app.Activity.RESULT_OK;
 import static android.content.Context.MODE_PRIVATE;
 //TODO Importa Routes.Add_Area_To_Route.getImage;
 
+import static com.malfaang.e_culture_tool_a.routes.Add_Area_To_Route.getImage;
+
 import android.Manifest;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -65,6 +67,7 @@ import com.malfaang.e_culture_tool_a.login.FireCallback;
 import com.malfaang.e_culture_tool_a.newRoute.Image;
 import com.malfaang.e_culture_tool_a.newRoute.Item;
 import com.malfaang.e_culture_tool_a.newRoute.RecyclerViewClickInterface;
+import com.malfaang.e_culture_tool_a.routes.Item_Info;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -472,8 +475,8 @@ public class ItemFragment extends Fragment implements RecyclerViewClickInterface
                     fotoItem.putBytes(fotoIt).addOnSuccessListener(taskSnapshot -> Toast.makeText(getContext(),aggiu,Toast.LENGTH_LONG).show());
                 }//foto non inserita e quindi viene inserita la foto di default nel sistema
                 else{
-                    byte[] fotoBase = getBitmapAsByteArray(BitmapFactory.decodeResource(getResources(),R.drawable.logo_app));
-                    localDB.addFoto_Items(getBitmapAsByteArray(BitmapFactory.decodeResource(getResources(),R.drawable.logo_app)) ,cursor.getString(0));
+                    byte[] fotoBase = getBitmapAsByteArray(BitmapFactory.decodeResource(getResources(),R.drawable.logo_app_ok));
+                    localDB.addFoto_Items(getBitmapAsByteArray(BitmapFactory.decodeResource(getResources(),R.drawable.logo_app_ok)) ,cursor.getString(0));
                     StorageReference fotoItem = mStorageFoto.child(ref2.getKey());
                     fotoItem.putBytes(fotoBase).addOnSuccessListener(taskSnapshot -> Toast.makeText(getContext(),aggiu,Toast.LENGTH_LONG).show());
                 }
@@ -578,14 +581,14 @@ public class ItemFragment extends Fragment implements RecyclerViewClickInterface
         }
     }
     //Lettura dati da locale e aggiunto nell'ArrayList di item e di immagine
-    private void localRouteItem(String id){
+    private void localRouteItem(String ID){
         String titolo;
         String descrizione;
         String tipologia;
         String idSito2;
         String idZona2;
         String id;
-        Cursor cursor= localDB.readItem(id);
+        Cursor cursor= localDB.readItem(ID);
         byte[] foto;
         int j=0;
         if(cursor.moveToFirst() ) {

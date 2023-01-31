@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"> //TODO Togliere ">" dopo eliminazione commento riga sotto
+    android:layout_height="match_parent">
 <!--    tools:context=".ui.login.LoginActivity">-->
 
     <ImageView
@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/login_bg"
+        android:src="@drawable/loging_bg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent=".215"
@@ -64,7 +64,7 @@
         android:id="@+id/imageView3"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:src="@mipmap/ic_launcher_round"
+        android:src="@drawable/logo_app_ok_w"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/constraintLayout2"
         app:layout_constraintStart_toStartOf="parent"

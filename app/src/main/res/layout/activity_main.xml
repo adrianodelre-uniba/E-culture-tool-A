@@ -14,8 +14,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-<!--    <com.google.android.material.navigation.NavigationView-->
-        android:id="@+id/action_bar"
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:src="@drawable/logo_app_ok_w"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"

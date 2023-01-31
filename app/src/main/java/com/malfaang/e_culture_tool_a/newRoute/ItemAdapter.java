@@ -16,7 +16,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-//import com.example.prvaloocale.R;
+import com.malfaang.e_culture_tool_a.R;
 import com.malfaang.e_culture_tool_a.addElements.ImageSql;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;

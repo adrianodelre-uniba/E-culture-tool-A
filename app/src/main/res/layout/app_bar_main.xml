@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"> //TODO Togliere ">" dopo eliminazione commento riga sotto
+    android:layout_height="match_parent">
 <!--    tools:context=".MainActivity">-->
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/Theme.PrvaLoocale.AppBarOverlay">
+        android:theme="@style/Theme.EculturetoolA.AppBarOverlay">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
@@ -17,7 +17,7 @@
             android:layout_height="?attr/actionBarSize"
 
             android:background="@color/color_Primary_500"
-            app:popupTheme="@style/Theme.PrvaLoocale.PopupOverlay" />
+            app:popupTheme="@style/Theme.EculturetoolA.PopupOverlay" />
 
     </com.google.android.material.appbar.AppBarLayout>
 

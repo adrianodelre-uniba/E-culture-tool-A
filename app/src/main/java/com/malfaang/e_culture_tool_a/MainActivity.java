@@ -139,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
         TextView tvTutorial = view.findViewById(R.id.tutorial_desc);
         AlertDialog dialog = new AlertDialog.Builder(this).setView(view).create();
 
-        imgTutorial.setImageDrawable(getResources().getDrawable(R.drawable.button_route));
+        imgTutorial.setImageDrawable(getResources().getDrawable(R.drawable.buttonRoute));
         tvTutorial.setText(getResources().getString(R.string.route_tutorial));
         dialog.getWindow().setGravity(Gravity.CENTER);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
