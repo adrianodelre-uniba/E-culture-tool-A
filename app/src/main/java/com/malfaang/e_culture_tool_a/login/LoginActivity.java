@@ -10,8 +10,8 @@ import com.google.android.material.tabs.TabLayout;
 import com.malfaang.e_culture_tool_a.R;
 
 public class LoginActivity extends AppCompatActivity {
-    private TabLayout tabLayout;
-    private ViewPager viewPager;
+    private TabLayout tablayout;
+    private ViewPager viewpager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,19 +19,19 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         ActionBar ab = getSupportActionBar();
         ab.setDisplayHomeAsUpEnabled(true);
-        tabLayout =findViewById(R.id.tab_layout);
-        viewPager =findViewById(R.id.view_pager);
-        tabLayout.addTab(tabLayout.newTab().setText(getResources().getString(R.string.login)));
-        tabLayout.addTab(tabLayout.newTab().setText(getResources().getString(R.string.registrati)));
-        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
-        final LoginAdapter adapter= new LoginAdapter(getSupportFragmentManager(),this, tabLayout.getTabCount());
-        viewPager.setAdapter(adapter);
-        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener(){
+        tablayout =findViewById(R.id.tab_layout);
+        viewpager =findViewById(R.id.view_pager);
+        tablayout.addTab(tablayout.newTab().setText(getResources().getString(R.string.login)));
+        tablayout.addTab(tablayout.newTab().setText(getResources().getString(R.string.registrati)));
+        tablayout.setTabGravity(TabLayout.GRAVITY_FILL);
+        final LoginAdapter adapter= new LoginAdapter(getSupportFragmentManager(),this, tablayout.getTabCount());
+        viewpager.setAdapter(adapter);
+        viewpager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tablayout));
+        tablayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener(){
 
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                viewPager.setCurrentItem(tab.getPosition());
+                viewpager.setCurrentItem(tab.getPosition());
             }
 
             @Override

@@ -2,28 +2,28 @@ package com.malfaang.e_culture_tool_a.databaseFirebase;
 
 //Classe per l'ArrayList zona
 public class Zone {
-    private String descrizione;
-    private String tipologia;
+    private String Descrizione;
+    private String Tipologia;
 
     public Zone(String descrizione, String tipologia) {
-        this.descrizione = descrizione;
-        this.tipologia = tipologia;
+        this.Descrizione = descrizione;
+        this.Tipologia = tipologia;
     }
 
     public String getDescrizione() {
-        return this.descrizione;
+        return this.Descrizione;
     }
 
     public String getTipologia() {
-        return this.tipologia;
+        return this.Tipologia;
     }
 
     public void setDescrizione(String descrizione) {
-        this.descrizione = descrizione;
+        this.Descrizione = descrizione;
     }
 
     public void setTipologia(String tipologia) {
-        this.tipologia = tipologia;
+        this.Tipologia = tipologia;
     }
 }
 

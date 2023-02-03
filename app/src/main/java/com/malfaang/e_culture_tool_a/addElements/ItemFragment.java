@@ -74,32 +74,32 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class ItemFragment extends Fragment implements RecyclerViewClickInterface {
-    private Database localDB;
+    private Database LocalDB;
     private ArrayList<Item> itemList;
     private ArrayList<String> areaList;
     private ArrayList<String> areaKeyList;
     private ArrayList<String> areaFireKeyList;
     private ArrayList<ImageSql> imageList;
-    private ArrayList<String> fireKeyListItem;
+    private ArrayList<String> FireKeyList_Item;
     private RecyclerItemAdapter adapter;
-    private String idSito; //Chiave di Sito (Loggato)
-    private String idZona = "";
-    private RecyclerView recyclerViewItem;
+    private String id_sito; //Chiave di Sito (Loggato)
+    private String id_zona = "";
+    private RecyclerView recyclerView_Item;
     private ActionBar ab;
     private DatabaseReference mDatabase,mDatabase2;
     private Button fot;
     private ImageView pick;
     private StorageReference mStorageFoto;
-    private String[] idItem = new String[MAX_ROUTE];
-    private String[] titoTemp = new String[MAX_ROUTE];
+    private String[] id_Item = new String[MAX_ROUTE];
+    private String[] tito_temp = new String[MAX_ROUTE];
     private final int GALLERY_REQ_CODE = 1000;
     private final int CAMERA_REQ_CODE = 100;
     private final int CAMERA_PERMISSION_CODE = 112;
     private final int STORAGE_PERMISSION_CODE = 113;
     private static byte[] byt;
-    private byte[] fotoIt;
-    private boolean cameraPerm;
-    private boolean galleryPerm;
+    private byte[] foto_it;
+    private boolean camera_perm;
+    private boolean gallery_perm;
     private Bitmap img = null;
     private Uri uri1;
     public static final String PREFS_NAME = "MyPrefsFile";
@@ -107,14 +107,14 @@ public class ItemFragment extends Fragment implements RecyclerViewClickInterface
     private String errore;
     private String aggiu;
     private String conce;
-    private String conceCamer;
-    private String conceCamerNon;
-    private String conceGalle;
-    private String conceGalleNon;
+    private String conce_camer;
+    private String conce_camer_non;
+    private String conce_galle;
+    private String conce_galle_non;
     private String camp;
     private String presen;
     private int indice=1;
-    private int oldPosition = 0;
+    private int OldPosition = 0;
 
     //Creazione del layout, collegamento con gli oggetti, apertura dell'ArrayList e di firebase e sql
     //Prendere dati dalle SharedPreferences
@@ -122,27 +122,27 @@ public class ItemFragment extends Fragment implements RecyclerViewClickInterface
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.item_tab_fragment, container, false);
-        localDB = new Database(getContext());
+        LocalDB = new Database(getContext());
         itemList = new ArrayList<>();
         areaList = new ArrayList<>();
         areaKeyList = new ArrayList<>();
         areaFireKeyList = new ArrayList<>();
         imageList = new ArrayList<>();
-        fireKeyListItem = new ArrayList<>();
+        FireKeyList_Item = new ArrayList<>();
         camp = getResources().getString(R.string.campi);
         presen = getResources().getString(R.string.Presenza_non);
         errore = getResources().getString(R.string.Errore_fb);
         aggiu =getResources().getString(R.string.aggiunto_fb);
         conce = getResources().getString(R.string.Concesso);
-        conceCamer = getResources().getString(R.string.Concesso_camera);
-        conceCamerNon = getResources().getString(R.string.Concesso_camera_non);
-        conceGalle = getResources().getString(R.string.Concesso_galleria);
-        conceGalleNon = getResources().getString(R.string.Concesso_galleria_non);
+        conce_camer = getResources().getString(R.string.Concesso_camera);
+        conce_camer_non = getResources().getString(R.string.Concesso_camera_non);
+        conce_galle = getResources().getString(R.string.Concesso_galleria);
+        conce_galle_non = getResources().getString(R.string.Concesso_galleria_non);
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Oggetti");
         mDatabase2 = FirebaseDatabase.getInstance().getReference().child("Foto_Oggetti");
         SharedPreferences preference = getActivity().getSharedPreferences("MyPrefsFile",MODE_PRIVATE);
         String email = preference.getString("Email", "");
-        idSito = preference.getString("Id_Sito", "");
+        id_sito = preference.getString("Id_Sito", "");
         mStorageFoto = FirebaseStorage.getInstance().getReference().child("Item");
         SharedPreferences.Editor editor = preference.edit();
         editor.putInt("Indice_Item",1);
@@ -166,34 +166,34 @@ public class ItemFragment extends Fragment implements RecyclerViewClickInterface
             }
         });
         //lettura dei dati da sql
-        localRouteItem(idSito);
-        recyclerViewItem = root.findViewById(R.id.itemList);
+        Local_route_Item(id_sito);
+        recyclerView_Item = root.findViewById(R.id.itemList);
         //Controllo presenza internet
         if(isNetworkAvailable()) {
             //lettura dei dati da firebase
             loadFireKeyItem(value -> {
                 adapter = new RecyclerItemAdapter(itemList, imageList, ItemFragment.this);
-                recyclerViewItem.setAdapter(adapter);
+                recyclerView_Item.setAdapter(adapter);
             });
         }else{
             Toast.makeText(getContext(),errore,Toast.LENGTH_SHORT).show();
         }
         //Divisione degli item
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL);
-        recyclerViewItem.addItemDecoration(dividerItemDecoration);
+        recyclerView_Item.addItemDecoration(dividerItemDecoration);
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
-        itemTouchHelper.attachToRecyclerView(recyclerViewItem);
+        itemTouchHelper.attachToRecyclerView(recyclerView_Item);
         return root;
 
     }
     //Aggiunta delle chiavi delle zone nell'arraylist da firebase
     private void loadFireKeyItem(final FireCallback myCallback) {
-        fireKeyListItem.clear();
-        mDatabase.orderByChild("item_Sito").equalTo(idSito).addValueEventListener(new ValueEventListener() {
+        FireKeyList_Item.clear();
+        mDatabase.orderByChild("item_Sito").equalTo(id_sito).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot snapshot2: snapshot.getChildren()){
-                    fireKeyListItem.add(snapshot2.getKey());
+                    FireKeyList_Item.add(snapshot2.getKey());
                 }
                 myCallback.onCallback("Ok");
             }
@@ -224,7 +224,7 @@ public class ItemFragment extends Fragment implements RecyclerViewClickInterface
                     deletedItem = itemList.get(position);
                     itemList.remove(position);
                     adapter.notifyItemRemoved(position);
-                    Snackbar snackbar = Snackbar.make(recyclerViewItem, deletedItem.getItemTitle() + " "+ presen, Snackbar.LENGTH_LONG)
+                    Snackbar snackbar = Snackbar.make(recyclerView_Item, deletedItem.getItemTitle() + " "+ presen, Snackbar.LENGTH_LONG)
                             .setAction(R.string.undo, view -> {
                                 itemList.add(position, deletedItem);
                                 adapter.notifyItemInserted(position);
@@ -235,42 +235,42 @@ public class ItemFragment extends Fragment implements RecyclerViewClickInterface
                                     super.onDismissed(transientBottomBar, event);
                                     SharedPreferences preference = getActivity().getSharedPreferences("MyPrefsFile",MODE_PRIVATE);
                                     if (event == DISMISS_EVENT_TIMEOUT) {
-                                        oldPosition = preference.getInt("OldPosition_Item",0);
+                                        OldPosition = preference.getInt("OldPosition_Item",0);
                                         indice = preference.getInt("Indice_Item",0);
                                         if(indice==0){
-                                            mDatabase.child(""+ fireKeyListItem.get(position).toString()).removeValue();
-                                            localDB.delete_Item(position+1);
-                                            localDB.delete_Item_Image(imageList.get(position).getItemId().toString());
+                                            mDatabase.child(""+ FireKeyList_Item.get(position).toString()).removeValue();
+                                            LocalDB.delete_Item(position+1);
+                                            LocalDB.delete_Item_Image(imageList.get(position).getItem_id().toString());
                                             indice++;
-                                            oldPosition =position;
+                                            OldPosition =position;
                                         }else{
-                                            if(position >= oldPosition){
-                                                mDatabase.child(""+ fireKeyListItem.get(position).toString()).removeValue();
-                                                localDB.delete_Item(position+indice);
-                                                localDB.delete_Item_Image(imageList.get(position).getItemId().toString());
+                                            if(position >= OldPosition){
+                                                mDatabase.child(""+ FireKeyList_Item.get(position).toString()).removeValue();
+                                                LocalDB.delete_Item(position+indice);
+                                                LocalDB.delete_Item_Image(imageList.get(position).getItem_id().toString());
                                                 indice++;
-                                                oldPosition = position;
+                                                OldPosition = position;
                                             }else{
-                                                if(position < oldPosition){
-                                                    mDatabase.child(""+ fireKeyListItem.get(position).toString()).removeValue();
-                                                    localDB.delete_Item(position+1);
-                                                    localDB.delete_Item_Image(imageList.get(position).getItemId().toString());
-                                                    oldPosition = position;
+                                                if(position < OldPosition){
+                                                    mDatabase.child(""+ FireKeyList_Item.get(position).toString()).removeValue();
+                                                    LocalDB.delete_Item(position+1);
+                                                    LocalDB.delete_Item_Image(imageList.get(position).getItem_id().toString());
+                                                    OldPosition = position;
                                                 }
                                             }
                                         }
                                         imageList.remove(position);
-                                        findFireItemPicKey(position, value -> {
+                                        Find_Fire_Item_Pic_Key(position, value -> {
                                             mDatabase2.child(""+ value).removeValue();
-                                            StorageReference fotoItem = mStorageFoto.child(value);
-                                            fotoItem.delete().addOnSuccessListener(unused -> {
+                                            StorageReference foto_item = mStorageFoto.child(value);
+                                            foto_item.delete().addOnSuccessListener(unused -> {
                                                 SharedPreferences.Editor editor = preference.edit();
                                                 editor.putInt("Indice_Item",indice);
-                                                editor.putInt("OldPosition_Item", oldPosition);
+                                                editor.putInt("OldPosition_Item", OldPosition);
                                                 editor.commit();
                                             });
                                         });
-                                        fireKeyListItem.remove(position);
+                                        FireKeyList_Item.remove(position);
                                     }
                                 }
                             });
@@ -334,9 +334,9 @@ public class ItemFragment extends Fragment implements RecyclerViewClickInterface
 
     //Apertura del layout  e cambiamento dei dati con gli item, dopo che essi vengono letti da sql
     private void showDialogEditItem(int position) {
-        final String[] itemTitle = new String[1];
-        final String[] itemDescr = new String[1];
-        final String[] itemTypology = new String[1];
+        final String[] item_title = new String[1];
+        final String[] item_descr = new String[1];
+        final String[] item_typology = new String[1];
         LayoutInflater inflater = this.getLayoutInflater();
         View view = inflater.inflate(R.layout.alert_dialog_add_new_item,null);
         Button acceptButton = view.findViewById(R.id.ad_button_do);
@@ -345,7 +345,7 @@ public class ItemFragment extends Fragment implements RecyclerViewClickInterface
         EditText et3 = view.findViewById(R.id.itemTypology_alert_dialog);
         TextView tv1 = view.findViewById(R.id.textview_new_edit_item);
         Spinner dropdown = view.findViewById(R.id.itemArea_alert_dialog);
-        localArea(idSito);
+        localArea(id_sito);
         ArrayAdapter<String> adapterAreaSpinner = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, areaList);
         dropdown.setAdapter(adapterAreaSpinner);
         fot = view.findViewById(R.id.button_add_img);
@@ -354,59 +354,59 @@ public class ItemFragment extends Fragment implements RecyclerViewClickInterface
         et1.setText(itemList.get(position).getItemTitle());
         et2.setText(itemList.get(position).getItemDescr());
         et3.setText(itemList.get(position).getItemTypology());
-        pick.setImageBitmap(imageList.get(position).getItemImgSql());
+        pick.setImageBitmap(imageList.get(position).getItem_imgSql());
         dropdown.setSelection(Integer.parseInt(itemList.get(position).getItem_Zona())-1);
         //bottone per inserire le immagini
         fot.setOnClickListener(v -> showDialog_img());
         AlertDialog alertDialog = new AlertDialog.Builder(getContext()).setView(view).create();
         acceptButton.setOnClickListener(view1 -> {
             int iFoto=0;
-            itemTitle[0] = et1.getText().toString();
-            itemDescr[0] = et2.getText().toString();
-            itemTypology[0] = et3.getText().toString();
+            item_title[0] = et1.getText().toString();
+            item_descr[0] = et2.getText().toString();
+            item_typology[0] = et3.getText().toString();
             SharedPreferences preference = getActivity().getSharedPreferences("MyPrefsFile",MODE_PRIVATE);
-            oldPosition = preference.getInt("OldPosition_Area",0);
+            OldPosition = preference.getInt("OldPosition_Area",0);
             indice = preference.getInt("Indice_Area",0);
             if(indice==0){
-                localDB.update_item(position+1,itemTitle[0], itemDescr[0],itemTypology[0],areaKeyList.get(dropdown.getSelectedItemPosition()).toString());
+                LocalDB.update_item(position+1,item_title[0], item_descr[0],item_typology[0],areaKeyList.get(dropdown.getSelectedItemPosition()).toString());
                 iFoto=position+1;
             }else{
-                if(position >= oldPosition){
-                    localDB.update_item(position+indice,itemTitle[0], itemDescr[0],itemTypology[0],areaKeyList.get(dropdown.getSelectedItemPosition()).toString());
+                if(position >= OldPosition){
+                    LocalDB.update_item(position+indice,item_title[0], item_descr[0],item_typology[0],areaKeyList.get(dropdown.getSelectedItemPosition()).toString());
                     iFoto=position+indice;
                 }else{
-                    if(position < oldPosition){
-                        localDB.update_item(position+1,itemTitle[0], itemDescr[0],itemTypology[0],areaKeyList.get(dropdown.getSelectedItemPosition()).toString());
+                    if(position < OldPosition){
+                        LocalDB.update_item(position+1,item_title[0], item_descr[0],item_typology[0],areaKeyList.get(dropdown.getSelectedItemPosition()).toString());
                         iFoto=position+1;
                     }
                 }
             }
-            if(fotoIt != null){
-                localDB.update_Foto_Items(iFoto, fotoIt);
-                findFireItemPicKey(position, value -> {
-                    StorageReference fotoItem = mStorageFoto.child(value);
-                    StorageReference fotoItem2 = mStorageFoto.child(value);
-                    fotoItem.delete().addOnSuccessListener(unused -> fotoItem2.putBytes(fotoIt).addOnSuccessListener(taskSnapshot -> Toast.makeText(getContext(),getResources().getString(R.string.aggiunto_fb),Toast.LENGTH_LONG).show()));
+            if(foto_it != null){
+                LocalDB.update_Foto_Items(iFoto, foto_it);
+                Find_Fire_Item_Pic_Key(position, value -> {
+                    StorageReference foto_item = mStorageFoto.child(value);
+                    StorageReference foto_item2 = mStorageFoto.child(value);
+                    foto_item.delete().addOnSuccessListener(unused -> foto_item2.putBytes(foto_it).addOnSuccessListener(taskSnapshot -> Toast.makeText(getContext(),getResources().getString(R.string.aggiunto_fb),Toast.LENGTH_LONG).show()));
                 });
             }
-            if(fotoIt !=null){
-                itemList.set(position, new Item(itemTitle[0],itemDescr[0],itemTypology[0],itemList.get(position).getItem_Zona(),itemList.get(position).getItem_Sito()));
-                imageList.set(position, new ImageSql(getImage(fotoIt), imageList.get(position).getItemId()));
+            if(foto_it !=null){
+                itemList.set(position, new Item(item_title[0],item_descr[0],item_typology[0],itemList.get(position).getItem_Zona(),itemList.get(position).getItem_Sito()));
+                imageList.set(position, new ImageSql(getImage(foto_it), imageList.get(position).getItem_id()));
             }else{
-                itemList.set(position, new Item(itemTitle[0],itemDescr[0],itemTypology[0],itemList.get(position).getItem_Zona(),itemList.get(position).getItem_Sito()));
+                itemList.set(position, new Item(item_title[0],item_descr[0],item_typology[0],itemList.get(position).getItem_Zona(),itemList.get(position).getItem_Sito()));
             }
-            mDatabase.child(""+ fireKeyListItem.get(position).toString()).child("itemTitle").setValue(itemTitle[0]);
-            mDatabase.child(""+ fireKeyListItem.get(position).toString()).child("itemDescr").setValue(itemDescr[0]);
-            mDatabase.child(""+ fireKeyListItem.get(position).toString()).child("item_Zona").setValue(areaFireKeyList.get(dropdown.getSelectedItemPosition()).toString());
-            mDatabase.child(""+ fireKeyListItem.get(position).toString()).child("itemTypology").setValue(itemTypology[0]).addOnCompleteListener(task -> {
+            mDatabase.child(""+ FireKeyList_Item.get(position).toString()).child("item_title").setValue(item_title[0]);
+            mDatabase.child(""+ FireKeyList_Item.get(position).toString()).child("item_descr").setValue(item_descr[0]);
+            mDatabase.child(""+ FireKeyList_Item.get(position).toString()).child("item_Zona").setValue(areaFireKeyList.get(dropdown.getSelectedItemPosition()).toString());
+            mDatabase.child(""+ FireKeyList_Item.get(position).toString()).child("item_typology").setValue(item_typology[0]).addOnCompleteListener(task -> {
                 if (task.isSuccessful()){
                     alertDialog.cancel();
                     itemList.clear();
                     imageList.clear();
-                    localRouteItem(idSito);
+                    Local_route_Item(id_sito);
                     adapter = new RecyclerItemAdapter( itemList,imageList, ItemFragment.this);
-                    ItemFragment.this.recyclerViewItem.setAdapter(adapter);
-                    recyclerViewItem.setAdapter(adapter);
+                    ItemFragment.this.recyclerView_Item.setAdapter(adapter);
+                    recyclerView_Item.setAdapter(adapter);
                 }
             });
         });
@@ -416,8 +416,8 @@ public class ItemFragment extends Fragment implements RecyclerViewClickInterface
 
 
     //Ottenimento della chiave dell'item da firebase
-    private void findFireItemPicKey(int position, final FireCallback myCallBack) {
-        mDatabase2.orderByChild("item_id").equalTo(fireKeyListItem.get(position).toString()).addValueEventListener(new ValueEventListener() {
+    private void Find_Fire_Item_Pic_Key(int position, final FireCallback myCallBack) {
+        mDatabase2.orderByChild("item_id").equalTo(FireKeyList_Item.get(position).toString()).addValueEventListener(new ValueEventListener() {
             private String key;
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -441,7 +441,7 @@ public class ItemFragment extends Fragment implements RecyclerViewClickInterface
         EditText et2 = view.findViewById(R.id.itemDescr_alert_dialog);
         EditText et3 = view.findViewById(R.id.itemTypology_alert_dialog);
         Spinner dropdown = view.findViewById(R.id.itemArea_alert_dialog);
-        localArea(idSito);
+        localArea(id_sito);
         ArrayAdapter<String> adapterAreaSpinner = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, areaList);
         dropdown.setAdapter(adapterAreaSpinner);
         fot = view.findViewById(R.id.button_add_img);
@@ -449,45 +449,45 @@ public class ItemFragment extends Fragment implements RecyclerViewClickInterface
         fot.setOnClickListener(v -> showDialog_img());
         AlertDialog alertDialog = new AlertDialog.Builder(getContext()).setView(view).create();
         acceptButton.setOnClickListener(view1 -> {
-            String itemName = et1.getText().toString();
-            String itemDescr = et2.getText().toString();
-            String itemTypology = et3.getText().toString();
-            if (TextUtils.isEmpty(itemName) || TextUtils.isEmpty(itemDescr) || TextUtils.isEmpty(itemTypology) ) {
+            String item_name = et1.getText().toString();
+            String item_descr = et2.getText().toString();
+            String item_typology = et3.getText().toString();
+            if (TextUtils.isEmpty(item_name) || TextUtils.isEmpty(item_descr) || TextUtils.isEmpty(item_typology) ) {
                 Toast.makeText(getContext(), camp, Toast.LENGTH_LONG).show();
             }else{
-                Item item = new Item(itemName,itemDescr,itemTypology,areaFireKeyList.get(dropdown.getSelectedItemPosition()).toString(), idSito);
+                Item item = new Item(item_name,item_descr,item_typology,areaFireKeyList.get(dropdown.getSelectedItemPosition()).toString(), id_sito);
                 DatabaseReference ref = mDatabase.push();
                 DatabaseReference ref2= mDatabase2.push();
                 String idOggetti = ref.getKey();
 
                 ref.setValue(item);
                 ref2.setValue(new Image(ref2.getKey(), idOggetti));
-                String result= localDB.addRecord_Item(itemName,itemDescr,itemTypology,areaKeyList.get(dropdown.getSelectedItemPosition()).toString(), idSito);
-                Cursor cursor = localDB.getLastItem();
+                String result= LocalDB.addRecord_Item(item_name,item_descr,item_typology,areaKeyList.get(dropdown.getSelectedItemPosition()).toString(), id_sito);
+                Cursor cursor = LocalDB.getLastItem();
                 cursor.moveToNext();
                 //controllo se c'è una foto scattata o scelta dalla galleria, inserimento di essa nel db
-                if(fotoIt != null){
-                    Bitmap bmp = BitmapFactory.decodeByteArray(fotoIt, 0, fotoIt.length);
+                if(foto_it != null){
+                    Bitmap bmp = BitmapFactory.decodeByteArray(foto_it, 0, foto_it.length);
                     bmp = Bitmap.createScaledBitmap(bmp, 300, 300, true);
                     byte[] foto = getBitmapAsByteArray(bmp);
-                    localDB.addFoto_Items(foto,cursor.getString(0));
-                    StorageReference fotoItem = mStorageFoto.child(ref2.getKey());
-                    fotoItem.putBytes(fotoIt).addOnSuccessListener(taskSnapshot -> Toast.makeText(getContext(),aggiu,Toast.LENGTH_LONG).show());
+                    LocalDB.addFoto_Items(foto,cursor.getString(0));
+                    StorageReference foto_item = mStorageFoto.child(ref2.getKey());
+                    foto_item.putBytes(foto_it).addOnSuccessListener(taskSnapshot -> Toast.makeText(getContext(),aggiu,Toast.LENGTH_LONG).show());
                 }//foto non inserita e quindi viene inserita la foto di default nel sistema
                 else{
                     byte[] fotoBase = getBitmapAsByteArray(BitmapFactory.decodeResource(getResources(),R.drawable.logo_app_ok));
-                    localDB.addFoto_Items(getBitmapAsByteArray(BitmapFactory.decodeResource(getResources(),R.drawable.logo_app_ok)) ,cursor.getString(0));
-                    StorageReference fotoItem = mStorageFoto.child(ref2.getKey());
-                    fotoItem.putBytes(fotoBase).addOnSuccessListener(taskSnapshot -> Toast.makeText(getContext(),aggiu,Toast.LENGTH_LONG).show());
+                    LocalDB.addFoto_Items(getBitmapAsByteArray(BitmapFactory.decodeResource(getResources(),R.drawable.logo_app_ok)) ,cursor.getString(0));
+                    StorageReference foto_item = mStorageFoto.child(ref2.getKey());
+                    foto_item.putBytes(fotoBase).addOnSuccessListener(taskSnapshot -> Toast.makeText(getContext(),aggiu,Toast.LENGTH_LONG).show());
                 }
                 if(result.equals("Success")){
                     alertDialog.cancel();
                     itemList.clear();
                     imageList.clear();
-                    localRouteItem(idSito);
+                    Local_route_Item(id_sito);
                     adapter = new RecyclerItemAdapter( itemList,imageList, ItemFragment.this);
-                    ItemFragment.this.recyclerViewItem.setAdapter(adapter);
-                    recyclerViewItem.setAdapter(adapter);
+                    ItemFragment.this.recyclerView_Item.setAdapter(adapter);
+                    recyclerView_Item.setAdapter(adapter);
                 }
             }});
         alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -497,16 +497,16 @@ public class ItemFragment extends Fragment implements RecyclerViewClickInterface
     //Lettura dati da locale
     private void localArea(String id) {
         areaList.clear();
-        Cursor cursor= localDB.readAreas(id);
-        String titolo,key,firekey;
+        Cursor cursor= LocalDB.readAreas(id);
+        String titolo,key,Firekey;
         if(cursor.moveToFirst()){
             do {
                 key = cursor.getString(0);
                 titolo = cursor.getString(1);
-                firekey = cursor.getString(5);
+                Firekey = cursor.getString(5);
                 areaList.add(titolo);
                 areaKeyList.add(key);
-                areaFireKeyList.add(firekey);
+                areaFireKeyList.add(Firekey);
                 cursor.moveToNext();
             }while(!cursor.isAfterLast());
         }
@@ -522,23 +522,28 @@ public class ItemFragment extends Fragment implements RecyclerViewClickInterface
         camera.setOnClickListener(view12 -> {
             //Richiesta dei permessi per la fotocamera
             checkPerm(Manifest.permission.CAMERA,CAMERA_PERMISSION_CODE);
-            if (cameraPerm) {
+            if (camera_perm) {
                 Intent fotoCamera = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 startActivityForResult(fotoCamera, CAMERA_REQ_CODE);
                 alertDialog.cancel();
             }
         });
         //Bottone della galleria
-        galley.setOnClickListener(view1 -> {
-            //Richiesta dei permessi per la galleria
-            checkPerm(Manifest.permission.READ_EXTERNAL_STORAGE,STORAGE_PERMISSION_CODE);
-            if (galleryPerm) {
-                Intent fotoGallery = new Intent(Intent.ACTION_PICK);
-                fotoGallery.setData(MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(fotoGallery, GALLERY_REQ_CODE);
-                alertDialog.cancel();
+        galley.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Richiesta dei permessi per la galleria
+                checkPerm(Manifest.permission.READ_EXTERNAL_STORAGE,STORAGE_PERMISSION_CODE);
+                if (gallery_perm) {
+                    Intent Foto_Gallery = new Intent(Intent.ACTION_PICK);
+                    Foto_Gallery.setData(MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    startActivityForResult(Foto_Gallery, GALLERY_REQ_CODE);
+                    alertDialog.cancel();
+
+                }
             }
         });
+
         alertDialog.getWindow().setGravity(Gravity.BOTTOM);
         alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         alertDialog.show();
@@ -550,10 +555,10 @@ public class ItemFragment extends Fragment implements RecyclerViewClickInterface
         }else{
             Toast.makeText(getContext(), conce, Toast.LENGTH_SHORT).show();
             if (requestcode==CAMERA_PERMISSION_CODE){
-                cameraPerm =true;
+                camera_perm =true;
             }
             else{
-                galleryPerm =true;
+                gallery_perm =true;
             }
         }
     }
@@ -564,31 +569,31 @@ public class ItemFragment extends Fragment implements RecyclerViewClickInterface
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if(requestCode==CAMERA_PERMISSION_CODE){
             if (grantResults.length>0 && grantResults[0]==PackageManager.PERMISSION_GRANTED){
-                cameraPerm =true;
-                Toast.makeText(getContext(), conceCamer, Toast.LENGTH_SHORT).show();
+                camera_perm =true;
+                Toast.makeText(getContext(), conce_camer, Toast.LENGTH_SHORT).show();
             }else{
-                cameraPerm =false;
-                Toast.makeText(getContext(), conceCamerNon, Toast.LENGTH_SHORT).show();
+                camera_perm =false;
+                Toast.makeText(getContext(), conce_camer_non, Toast.LENGTH_SHORT).show();
             }
         }else if(requestCode==STORAGE_PERMISSION_CODE){
             if (grantResults.length>0 && grantResults[0]==PackageManager.PERMISSION_GRANTED){
-                galleryPerm =true;
-                Toast.makeText(getContext(), conceGalle, Toast.LENGTH_SHORT).show();
+                gallery_perm =true;
+                Toast.makeText(getContext(), conce_galle, Toast.LENGTH_SHORT).show();
             }else{
-                galleryPerm =false;
-                Toast.makeText(getContext(), conceGalleNon, Toast.LENGTH_SHORT).show();
+                gallery_perm =false;
+                Toast.makeText(getContext(), conce_galle_non, Toast.LENGTH_SHORT).show();
             }
         }
     }
     //Lettura dati da locale e aggiunto nell'ArrayList di item e di immagine
-    private void localRouteItem(String ID){
+    private void Local_route_Item(String ID){
         String titolo;
         String descrizione;
         String tipologia;
-        String idSito2;
-        String idZona2;
+        String id_sito;
+        String id_zona;
         String id;
-        Cursor cursor= localDB.readItem(ID);
+        Cursor cursor= LocalDB.readItem(ID);
         byte[] foto;
         int j=0;
         if(cursor.moveToFirst() ) {
@@ -597,14 +602,14 @@ public class ItemFragment extends Fragment implements RecyclerViewClickInterface
                 titolo = cursor.getString(1);
                 tipologia = cursor.getString(2);
                 descrizione = cursor.getString(3);
-                idSito2 = cursor.getString(5);
-                idZona2 = cursor.getString(6);
-                idItem[j] = id;
-                titoTemp[j] = titolo;
+                id_sito = cursor.getString(5);
+                id_zona = cursor.getString(6);
+                id_Item[j] = id;
+                tito_temp[j] = titolo;
                 j++;
                 foto=cursor.getBlob(4);
                 Bitmap itemFoto= getImage(foto);
-                itemList.add(new Item(titolo, descrizione, tipologia,idZona2,idSito2));
+                itemList.add(new Item(titolo, descrizione, tipologia,id_zona,id_sito));
                 imageList.add(new ImageSql(itemFoto,id));
                 cursor.moveToNext();
             } while (!cursor.isAfterLast() );
@@ -624,13 +629,13 @@ public class ItemFragment extends Fragment implements RecyclerViewClickInterface
                     e.printStackTrace();
                 }
                 pick.setImageBitmap(img);
-                fotoIt =getBitmapAsByteArray(img);
+                foto_it =getBitmapAsByteArray(img);
             }
             else if(requestCode == CAMERA_REQ_CODE){
                 //Dalla fotocamera
                 img = (Bitmap)(data.getExtras().get("data"));
                 pick.setImageBitmap(img);
-                fotoIt =  getBitmapAsByteArray(img);
+                foto_it =  getBitmapAsByteArray(img);
             }
         }
     }
@@ -646,9 +651,9 @@ public class ItemFragment extends Fragment implements RecyclerViewClickInterface
     @Override
     public void onItemClick(int position) {
         Intent intentItem = new Intent(getContext(), Item_Info.class);
-        intentItem.putExtra("key_item", idItem[position]);
+        intentItem.putExtra("key_item", id_Item[position]);
         intentItem.putExtra("item", itemList.get(position));
-        intentItem.putExtra("item_img", imageList.get(position).getItemImgSql());
+        intentItem.putExtra("item_img", imageList.get(position).getItem_imgSql());
         startActivity(intentItem);
     }
 

@@ -139,31 +139,31 @@ public class MainActivity extends AppCompatActivity {
         TextView tvTutorial = view.findViewById(R.id.tutorial_desc);
         AlertDialog dialog = new AlertDialog.Builder(this).setView(view).create();
 
-        imgTutorial.setImageDrawable(getResources().getDrawable(R.drawable.buttonRoute));
+        imgTutorial.setImageDrawable(getResources().getDrawable(R.drawable.login_bg));
         tvTutorial.setText(getResources().getString(R.string.route_tutorial));
         dialog.getWindow().setGravity(Gravity.CENTER);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.show();
         dialog.setOnCancelListener(dialogInterface -> {
-            imgTutorial.setImageDrawable(getResources().getDrawable(R.drawable.filters));
+            imgTutorial.setImageDrawable(getResources().getDrawable(R.drawable.login_bg));
             tvTutorial.setText(getResources().getString(R.string.filters_tutorial));
             dialog.getWindow().setGravity(Gravity.CENTER);
             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
             dialog.show();
             dialog.setOnCancelListener(dialogInterface1 -> {
-                imgTutorial.setImageDrawable(getResources().getDrawable(R.drawable.button_resources));
+                imgTutorial.setImageDrawable(getResources().getDrawable(R.drawable.login_bg));
                 tvTutorial.setText(getResources().getString(R.string.resources_tutorial));
                 dialog.getWindow().setGravity(Gravity.CENTER);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 dialog.show();
                 dialog.setOnCancelListener(dialogInterface11 -> {
-                    imgTutorial.setImageDrawable(getResources().getDrawable(R.drawable.button_site));
+                    imgTutorial.setImageDrawable(getResources().getDrawable(R.drawable.login_bg));
                     tvTutorial.setText(getResources().getString(R.string.site_tutorial));
                     dialog.getWindow().setGravity(Gravity.CENTER);
                     dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                     dialog.show();
                     dialog.setOnCancelListener(dialogInterface111 -> {
-                        imgTutorial.setImageDrawable(getResources().getDrawable(R.drawable.fab));
+                        imgTutorial.setImageDrawable(getResources().getDrawable(R.drawable.login_bg));
                         tvTutorial.setText(getResources().getString(R.string.fab_tutorial));
                         dialog.getWindow().setGravity(Gravity.CENTER);
                         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));

@@ -21,11 +21,11 @@ import java.util.ArrayList;
 public class RecyclerAreaAdapter extends RecyclerView.Adapter<RecyclerAreaAdapter.ViewHolder>  {
     private static final String TAG = "RecyclerAdapter";
     private ArrayList<Area> arealist;
-    private RecyclerViewClickInterface clickInterface;
+    private RecyclerViewClickInterface ClickInterface;
 
     public RecyclerAreaAdapter(ArrayList<Area> arealist,RecyclerViewClickInterface clickInterface) {
         this.arealist = arealist;
-        this.clickInterface =clickInterface;
+        this.ClickInterface =clickInterface;
     }
 
     @NonNull
@@ -66,7 +66,7 @@ public class RecyclerAreaAdapter extends RecyclerView.Adapter<RecyclerAreaAdapte
             tipologyTextView = itemView.findViewById(R.id.typology);
 
             //Interfaccia dove è stato cliccato l'oggetto
-            itemView.setOnClickListener(view -> clickInterface.onItemClick(getAdapterPosition()));
+            itemView.setOnClickListener(view -> ClickInterface.onItemClick(getAdapterPosition()));
         }
     }
 }

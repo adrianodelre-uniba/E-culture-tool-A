@@ -14,17 +14,17 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_gravity="center"
         android:layout_width="70dp"
         android:layout_height="70dp"
+        android:layout_gravity="center"
         android:contentDescription="@string/nav_header_desc"
         android:src="@drawable/logo_app_ok_w" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/nav_header_vertical_spacing"
         android:gravity="center"
+        android:paddingTop="@dimen/nav_header_vertical_spacing"
         android:text="@string/do_login"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 

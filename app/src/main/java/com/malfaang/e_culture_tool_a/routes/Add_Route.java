@@ -163,7 +163,7 @@ public class Add_Route extends AppCompatActivity {
                                 Intent intent_Item = new Intent(getApplicationContext(),   Item_Info.class);
                                 intent_Item.putExtra("key_item",ID_ITEM[i]);
                                 intent_Item.putExtra("item", itemList.get(i));
-                                intent_Item.putExtra("item_img", imageList.get(i).getItemImgSql());
+                                intent_Item.putExtra("item_img", imageList.get(i).getItem_imgSql());
                                 startActivity(intent_Item);
                             }
                         }

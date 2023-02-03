@@ -65,7 +65,7 @@ public class SearchAdapter extends ArrayAdapter<Route> implements Filterable {
                     this.filteredData_Item_img = imageList;
                     for (int i=0 ; i<itemList.size();i++){
                         item_with_img.add(new ItemAndImage(itemList.get(i).getItemTitle(),itemList.get(i).getItemDescr(),itemList.get(i).getItemTypology(),itemList.get(i).getItem_Zona(),itemList.get(i).getItem_Sito(),
-                                filteredData_Item_img.get(i).getItemImgSql(),filteredData_Item_img.get(i).getItemId()));
+                                filteredData_Item_img.get(i).getItem_imgSql(),filteredData_Item_img.get(i).getItem_id()));
                     }
                 }
 
@@ -228,7 +228,7 @@ public class SearchAdapter extends ArrayAdapter<Route> implements Filterable {
                 filterableString = list_item.get(i).getItemTitle().toString();
                 if (filterableString.toLowerCase().contains(filterString)) {
                     nlist.add(new ItemAndImage(list_item.get(i).getItemTitle(),list_item.get(i).getItemDescr(),list_item.get(i).getItemTypology(),list_item.get(i).getItem_Zona(),list_item.get(i).getItem_Sito(),
-                            filteredData_Item_img.get(i).getItemImgSql(),filteredData_Item_img.get(i).getItemId()));
+                            filteredData_Item_img.get(i).getItem_imgSql(),filteredData_Item_img.get(i).getItem_id()));
 
                 }
             }

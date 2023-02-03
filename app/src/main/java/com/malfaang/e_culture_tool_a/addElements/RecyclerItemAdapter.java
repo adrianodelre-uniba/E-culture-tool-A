@@ -42,7 +42,7 @@ public class RecyclerItemAdapter extends RecyclerView.Adapter<RecyclerItemAdapte
         holder.titleTextView.setText(itemlist.get(position).getItemTitle());
         holder.descriptionTextView.setText(itemlist.get(position).getItemDescr());
         holder.tipologyTextView.setText(itemlist.get(position).getItemTypology());
-        holder.pic.setImageBitmap(imageSql.get(position).getItemImgSql());
+        holder.pic.setImageBitmap(imageSql.get(position).getItem_imgSql());
     }
 
     @Override

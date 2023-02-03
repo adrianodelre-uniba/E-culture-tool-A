@@ -55,22 +55,22 @@ import com.malfaang.e_culture_tool_a.routes.AreaInfo;
 import java.util.ArrayList;
 
 public class AreaFragment extends Fragment implements RecyclerViewClickInterface {
-    private Database localDB;
+    private Database LocalDB;
     private ArrayList<Area> areaList2;
-    private ArrayList<String> fireKeyListArea;
+    private ArrayList<String> FireKeyList_Area;
     private RecyclerAreaAdapter adapter;
-    private String idSito; //Chiave di Sito (Loggato)
-    private RecyclerView recyclerViewArea;
+    private String id_sito; //Chiave di Sito (Loggato)
+    private RecyclerView recyclerView_Area;
     private ActionBar ab;
     private DatabaseReference mDatabase;
-    private String idZon; // chiave della zona
+    private String id_zon; // chiave della zona
     private int indice=1;
-    private int oldPosition = 0;
+    private int OldPosition = 0;
     private String errore;
     private String fall;
     private String camp;
     private String presenza;
-    private String[] idArea = new String[MAX_AREA];
+    private String[] ID_AREA = new String[MAX_AREA];
     private static final int MAX_AREA = 90;
 
     //Creazione del layout, collegamento con gli oggetti, apertura dell'ArrayList e di firebase e sql
@@ -79,15 +79,15 @@ public class AreaFragment extends Fragment implements RecyclerViewClickInterface
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.area_tab_fragment, container, false);
-        localDB = new Database(getContext());
+        LocalDB = new Database(getContext());
         areaList2 = new ArrayList<>();
-        fireKeyListArea = new ArrayList<>();
+        FireKeyList_Area = new ArrayList<>();
         camp = getResources().getString(R.string.campi);
         presenza = getResources().getString(R.string.Presenza_non);
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Zone");
         SharedPreferences preference = getActivity().getSharedPreferences("MyPrefsFile",MODE_PRIVATE);
         String email = preference.getString("Email", "");
-        idSito = preference.getString("Id_Sito", "");
+        id_sito = preference.getString("Id_Sito", "");
         errore = getResources().getString(R.string.Errore_fb);
         fall = getResources().getString(R.string.fallito);
         SharedPreferences.Editor editor = preference.edit();
@@ -113,15 +113,15 @@ public class AreaFragment extends Fragment implements RecyclerViewClickInterface
             }
         });
         //lettura dei dati da sql
-        localRoute(idSito);
-        recyclerViewArea = root.findViewById(R.id.areaList1);
+        localRoute(id_sito);
+        recyclerView_Area = root.findViewById(R.id.areaList1);
         if(isNetworkAvailable()){
             //lettura dei dati da firebase
-            loadFireKey(new FireCallback() {
+            Load_Fire_Key(new FireCallback() {
                 @Override
                 public void onCallback(String value) {
                     adapter = new RecyclerAreaAdapter( areaList2, AreaFragment.this);
-                    recyclerViewArea.setAdapter(adapter);
+                    recyclerView_Area.setAdapter(adapter);
                 }
             });}
         else{
@@ -129,19 +129,19 @@ public class AreaFragment extends Fragment implements RecyclerViewClickInterface
         }
         //Divisione degli item
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL);
-        recyclerViewArea.addItemDecoration(dividerItemDecoration);
+        recyclerView_Area.addItemDecoration(dividerItemDecoration);
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
-        itemTouchHelper.attachToRecyclerView(recyclerViewArea);
+        itemTouchHelper.attachToRecyclerView(recyclerView_Area);
         return root;
     }
     //Aggiunta delle chiavi delle zone nell'arraylist da firebase
-    private void loadFireKey(final FireCallback myCallback) {
-        fireKeyListArea.clear();
-        mDatabase.orderByChild("area_id_sito").equalTo(idSito).addValueEventListener(new ValueEventListener() {
+    private void Load_Fire_Key(final FireCallback myCallback) {
+        FireKeyList_Area.clear();
+        mDatabase.orderByChild("area_id_sito").equalTo(id_sito).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot snapshot2: snapshot.getChildren()){
-                    fireKeyListArea.add(snapshot2.getKey());
+                    FireKeyList_Area.add(snapshot2.getKey());
                 }
                 myCallback.onCallback("Ok");
             }
@@ -174,7 +174,7 @@ public class AreaFragment extends Fragment implements RecyclerViewClickInterface
                     deletedArea = areaList2.get(position);
                     areaList2.remove(position);
                     adapter.notifyItemRemoved(position);
-                    Snackbar snackbar = Snackbar.make(recyclerViewArea, deletedArea.getAreaTitle() + " "+presenza, Snackbar.LENGTH_LONG)
+                    Snackbar snackbar = Snackbar.make(recyclerView_Area, deletedArea.getAreaTitle() + " "+presenza, Snackbar.LENGTH_LONG)
                             .setAction(R.string.undo, view -> {
                                 areaList2.add(position, deletedArea);
                                 adapter.notifyItemInserted(position);
@@ -185,33 +185,33 @@ public class AreaFragment extends Fragment implements RecyclerViewClickInterface
                                     super.onDismissed(transientBottomBar, event);
                                     SharedPreferences preference = getActivity().getSharedPreferences("MyPrefsFile",MODE_PRIVATE);
                                     if (event == DISMISS_EVENT_TIMEOUT) {
-                                        oldPosition = preference.getInt("OldPosition_Area",0);
+                                        OldPosition = preference.getInt("OldPosition_Area",0);
                                         indice = preference.getInt("Indice_Area",0);
                                         if(indice==1){
-                                            mDatabase.child(""+ fireKeyListArea.get(position).toString()).removeValue();
-                                            localDB.delete_Zona(position+1);
-                                            fireKeyListArea.remove(position);
+                                            mDatabase.child(""+ FireKeyList_Area.get(position).toString()).removeValue();
+                                            LocalDB.delete_Zona(position+1);
+                                            FireKeyList_Area.remove(position);
                                             indice++;
-                                            oldPosition =position;
+                                            OldPosition =position;
                                         }else{
-                                            if(position >= oldPosition){
-                                                mDatabase.child(""+ fireKeyListArea.get(position).toString()).removeValue();
-                                                localDB.delete_Zona(position+indice);
-                                                fireKeyListArea.remove(position);
+                                            if(position >= OldPosition){
+                                                mDatabase.child(""+ FireKeyList_Area.get(position).toString()).removeValue();
+                                                LocalDB.delete_Zona(position+indice);
+                                                FireKeyList_Area.remove(position);
                                                 indice++;
-                                                oldPosition = position;
+                                                OldPosition = position;
                                             }else{
-                                                if(position < oldPosition){
-                                                    mDatabase.child(""+ fireKeyListArea.get(position).toString()).removeValue();
-                                                    localDB.delete_Zona(position+1);
-                                                    fireKeyListArea.remove(position);
-                                                    oldPosition = position;
+                                                if(position < OldPosition){
+                                                    mDatabase.child(""+ FireKeyList_Area.get(position).toString()).removeValue();
+                                                    LocalDB.delete_Zona(position+1);
+                                                    FireKeyList_Area.remove(position);
+                                                    OldPosition = position;
                                                 }
                                             }
                                         }
                                         SharedPreferences.Editor editor = preference.edit();
                                         editor.putInt("Indice_Area",indice);
-                                        editor.putInt("OldPosition_Area", oldPosition);
+                                        editor.putInt("OldPosition_Area", OldPosition);
                                         editor.commit();
                                     }
                                 }
@@ -300,23 +300,23 @@ public class AreaFragment extends Fragment implements RecyclerViewClickInterface
             areaDescr[0] = et2.getText().toString();
             areaTypology[0] = et3.getText().toString();
             SharedPreferences preference = getActivity().getSharedPreferences("MyPrefsFile",MODE_PRIVATE);
-            oldPosition = preference.getInt("OldPosition_Area",0);
+            OldPosition = preference.getInt("OldPosition_Area",0);
             indice = preference.getInt("Indice_Area",0);
             if(indice==0){
-                localDB.update_zona(position+1,areaTitle[0], areaDescr[0],areaTypology[0]);
+                LocalDB.update_zona(position+1,areaTitle[0], areaDescr[0],areaTypology[0]);
             }else{
-                if(position >= oldPosition){
-                    localDB.update_zona(position+indice,areaTitle[0], areaDescr[0],areaTypology[0]);
+                if(position >= OldPosition){
+                    LocalDB.update_zona(position+indice,areaTitle[0], areaDescr[0],areaTypology[0]);
                 }else{
-                    if(position < oldPosition){
-                        localDB.update_zona(position+1,areaTitle[0], areaDescr[0],areaTypology[0]);
+                    if(position < OldPosition){
+                        LocalDB.update_zona(position+1,areaTitle[0], areaDescr[0],areaTypology[0]);
                     }
                 }
             }
             areaList2.set(position, new Area(areaTitle[0],areaDescr[0],areaTypology[0],areaList2.get(position).getArea_id_sito()));
-            mDatabase.child(""+ fireKeyListArea.get(position).toString()).child("areaTitle").setValue(areaTitle[0]);
-            mDatabase.child(""+ fireKeyListArea.get(position).toString()).child("areaDescr").setValue(areaDescr[0]);
-            mDatabase.child(""+ fireKeyListArea.get(position).toString()).child("areaTypology").setValue(areaTypology[0]).addOnCompleteListener(task -> {
+            mDatabase.child(""+ FireKeyList_Area.get(position).toString()).child("areaTitle").setValue(areaTitle[0]);
+            mDatabase.child(""+ FireKeyList_Area.get(position).toString()).child("areaDescr").setValue(areaDescr[0]);
+            mDatabase.child(""+ FireKeyList_Area.get(position).toString()).child("areaTypology").setValue(areaTypology[0]).addOnCompleteListener(task -> {
                 if (task.isSuccessful()){
                     alertDialog.cancel();
                 }
@@ -344,11 +344,11 @@ public class AreaFragment extends Fragment implements RecyclerViewClickInterface
             }else {
                 DatabaseReference ref = mDatabase.push();
                 String idZon = ref.getKey();
-                fireKeyListArea.add(idZon);
-                Area zona = new Area(areaName, areaDescr, areaTipology, idSito);
+                FireKeyList_Area.add(idZon);
+                Area zona = new Area(areaName, areaDescr, areaTipology, id_sito);
                 ref.setValue(zona);
-                String result = localDB.addRecord_Area(areaName, areaDescr, areaTipology, idSito, idZon);
-                areaList2.add(new Area(areaName, areaDescr, areaTipology, idSito));
+                String result = LocalDB.addRecord_Area(areaName, areaDescr, areaTipology, id_sito, idZon);
+                areaList2.add(new Area(areaName, areaDescr, areaTipology, id_sito));
                 if (!result.equals("Success")) {
                     Toast.makeText(getContext(), fall, Toast.LENGTH_SHORT).show();
                 }
@@ -361,12 +361,12 @@ public class AreaFragment extends Fragment implements RecyclerViewClickInterface
     //Prelievo della route da locale
     private void localRoute(String id){
         areaList2.clear();
-        Cursor cursor= localDB.readAreas(id);
+        Cursor cursor= LocalDB.readAreas(id);
         String titolo,descrizione,tipologia;
         int j=0;
         if(cursor.moveToFirst()){
             do {
-                idArea[j] = cursor.getString(0);
+                ID_AREA[j] = cursor.getString(0);
                 titolo = cursor.getString(1);
                 descrizione = cursor.getString(2);
                 tipologia = cursor.getString(3);
@@ -381,7 +381,7 @@ public class AreaFragment extends Fragment implements RecyclerViewClickInterface
     @Override
     public void onItemClick(int position) {
         Intent intentArea = new Intent(getContext(), AreaInfo.class);
-        intentArea.putExtra("key_area", idArea[position]);
+        intentArea.putExtra("key_area", ID_AREA[position]);
         intentArea.putExtra("area",areaList2.get(position));
         intentArea.putExtra("goto","Add_Route");
         startActivity(intentArea);
@@ -406,149 +406,5 @@ public class AreaFragment extends Fragment implements RecyclerViewClickInterface
             }
         }
         return false;
-    }
-
-    public Database getLocalDB() {
-        return localDB;
-    }
-
-    public void setLocalDB(Database localDB) {
-        this.localDB = localDB;
-    }
-
-    public ArrayList<Area> getAreaList2() {
-        return areaList2;
-    }
-
-    public void setAreaList2(ArrayList<Area> areaList2) {
-        this.areaList2 = areaList2;
-    }
-
-    public ArrayList<String> getFireKeyListArea() {
-        return fireKeyListArea;
-    }
-
-    public void setFireKeyListArea(ArrayList<String> fireKeyListArea) {
-        this.fireKeyListArea = fireKeyListArea;
-    }
-
-    public RecyclerAreaAdapter getAdapter() {
-        return adapter;
-    }
-
-    public void setAdapter(RecyclerAreaAdapter adapter) {
-        this.adapter = adapter;
-    }
-
-    public String getIdSito() {
-        return idSito;
-    }
-
-    public void setIdSito(String idSito) {
-        this.idSito = idSito;
-    }
-
-    public RecyclerView getRecyclerViewArea() {
-        return recyclerViewArea;
-    }
-
-    public void setRecyclerViewArea(RecyclerView recyclerViewArea) {
-        this.recyclerViewArea = recyclerViewArea;
-    }
-
-    public ActionBar getAb() {
-        return ab;
-    }
-
-    public void setAb(ActionBar ab) {
-        this.ab = ab;
-    }
-
-    public DatabaseReference getmDatabase() {
-        return mDatabase;
-    }
-
-    public void setmDatabase(DatabaseReference mDatabase) {
-        this.mDatabase = mDatabase;
-    }
-
-    public String getIdZon() {
-        return idZon;
-    }
-
-    public void setIdZon(String idZon) {
-        this.idZon = idZon;
-    }
-
-    public int getIndice() {
-        return indice;
-    }
-
-    public void setIndice(int indice) {
-        this.indice = indice;
-    }
-
-    public int getOldPosition() {
-        return oldPosition;
-    }
-
-    public void setOldPosition(int oldPosition) {
-        this.oldPosition = oldPosition;
-    }
-
-    public String getErrore() {
-        return errore;
-    }
-
-    public void setErrore(String errore) {
-        this.errore = errore;
-    }
-
-    public String getFall() {
-        return fall;
-    }
-
-    public void setFall(String fall) {
-        this.fall = fall;
-    }
-
-    public String getCamp() {
-        return camp;
-    }
-
-    public void setCamp(String camp) {
-        this.camp = camp;
-    }
-
-    public String getPresenza() {
-        return presenza;
-    }
-
-    public void setPresenza(String presenza) {
-        this.presenza = presenza;
-    }
-
-    public String[] getIdArea() {
-        return idArea;
-    }
-
-    public void setIdArea(String[] idArea) {
-        this.idArea = idArea;
-    }
-
-    public Area getDeletedArea() {
-        return deletedArea;
-    }
-
-    public void setDeletedArea(Area deletedArea) {
-        this.deletedArea = deletedArea;
-    }
-
-    public ItemTouchHelper.SimpleCallback getSimpleCallback() {
-        return simpleCallback;
-    }
-
-    public void setSimpleCallback(ItemTouchHelper.SimpleCallback simpleCallback) {
-        this.simpleCallback = simpleCallback;
     }
 }

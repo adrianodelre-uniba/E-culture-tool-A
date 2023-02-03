@@ -121,7 +121,7 @@ public class RecyclerSearchAdapter extends RecyclerView.Adapter<RecyclerSearchAd
             //Immagine Percorso ::> Da aggiungere
             holder.creationyTextView.setVisibility(View.INVISIBLE);
 
-            holder.pic.setImageBitmap(imageList.get(position).getItemImgSql());
+            holder.pic.setImageBitmap(imageList.get(position).getItem_imgSql());
         }
     }
 

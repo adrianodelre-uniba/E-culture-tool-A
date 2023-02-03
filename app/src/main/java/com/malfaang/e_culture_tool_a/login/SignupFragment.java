@@ -29,7 +29,7 @@ public class SignupFragment extends Fragment {
     private EditText confermaPassword;
     private EditText cognome;
     private EditText telefono;
-    private RadioGroup tipologia;
+    private RadioGroup Tipologia;
     private Button signup;
     private String tipologia2;
     private FirebaseAuth mAuth;
@@ -37,19 +37,19 @@ public class SignupFragment extends Fragment {
     private String camp;
     private String coincidenza;
     private String corta;
-    private String nomValid;
-    private String teleValid;
-    private DbFirebase dbFirebase;
-    private Autenticazione identificazione;
-    private Database local;
+    private String nom_valid;
+    private String tele_valid;
+    private DbFirebase Dbfire;
+    private Autenticazione Identificazione;
+    private Database Local;
     private logout fuori;
 
     //Creazione del layout con collegamento agli oggetti
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         ViewGroup root= (ViewGroup) inflater.inflate(R.layout.signup_tab_fragment,container,false);
-        tipologia = (RadioGroup)root.findViewById(R.id.Tipologia_Area);
-        local = new Database(getContext());
+        Tipologia = (RadioGroup)root.findViewById(R.id.Tipologia_Area);
+        Local = new Database(getContext());
         email1 = root.findViewById(R.id.email1);
         password1 = root.findViewById(R.id.password1);
         confermaPassword = root.findViewById(R.id.conferma_pass);
@@ -62,16 +62,16 @@ public class SignupFragment extends Fragment {
         camp = getResources().getString(R.string.campi);
         corta = getResources().getString(R.string.password_corta);
         coincidenza = getResources().getString(R.string.password_non_coincide);
-        nomValid = getResources().getString(R.string.nome_non_valido);
-        teleValid = getResources().getString(R.string.telefono_non_valido);
-        identificazione = new Autenticazione();
-        dbFirebase = new DbFirebase();
+        nom_valid = getResources().getString(R.string.nome_non_valido);
+        tele_valid = getResources().getString(R.string.telefono_non_valido);
+        Identificazione = new Autenticazione();
+        Dbfire = new DbFirebase();
         mAuth = FirebaseAuth.getInstance();
         if(mAuth.getCurrentUser()!= null) {
             startActivity(new Intent(getContext(), logout.class));
         }
         // Scelta della tipologia tramite radiogroup
-        tipologia.setOnCheckedChangeListener((radioGroup, i) -> {
+        Tipologia.setOnCheckedChangeListener((radioGroup, i) -> {
             if (i == R.id.radio_curatore) {
                 tipologia2 = "Curatore";
             } else if (i == R.id.radio_guida) {
@@ -86,27 +86,27 @@ public class SignupFragment extends Fragment {
 
     //Funzione che prende tutti i campi e richiama le funzioni di firebase
     private void registrazione() {
-        String email = email1.getText().toString();
+        String Email = email1.getText().toString();
         String pass = password1.getText().toString();
         String prov = confermaPassword.getText().toString();
         String nom = nome.getText().toString();
         String cogn = cognome.getText().toString();
-        String tipologia2 = this.tipologia2;
-        String telefono = this.telefono.getText().toString();
+        String Tipologia = this.tipologia2;
+        String Telefono = this.telefono.getText().toString();
         if(isNetworkAvailable()) {
-            if (TextUtils.isEmpty(email) || TextUtils.isEmpty(pass) || TextUtils.isEmpty(prov) || TextUtils.isEmpty(nom)
-                    || TextUtils.isEmpty(cogn) || TextUtils.isEmpty(tipologia2)
-                    || TextUtils.isEmpty(telefono)) {
+            if (TextUtils.isEmpty(Email) || TextUtils.isEmpty(pass) || TextUtils.isEmpty(prov) || TextUtils.isEmpty(nom)
+                    || TextUtils.isEmpty(cogn) || TextUtils.isEmpty(Tipologia)
+                    || TextUtils.isEmpty(Telefono)) {
                 Toast.makeText(getContext(), camp, Toast.LENGTH_LONG).show();
             } else {
-                if (emailNonValida(email)) {
+                if (emailNonValida(Email)) {
                     if (pass.equals(prov)) {
                         if (nomeNonValido(nom)) {
                             if (nomeNonValido(cogn)) {
-                                if (telNonValido(telefono)) {
+                                if (telNonValido(Telefono)) {
                                     if (passNonValida(pass)) {
-                                        identificazione.RegistrazioneFire(email, pass, mAuth);
-                                        String idUte = dbFirebase.scritturadbfi(nom, cogn, email, pass, tipologia2, telefono);
+                                        Identificazione.RegistrazioneFire(Email, pass, mAuth);
+                                        String idUte = Dbfire.scritturadbfi(nom, cogn, Email, pass, Tipologia, Telefono);
                                         Intent login = new Intent(getContext(), LoginActivity.class);
                                         startActivity(login);
                                     }
@@ -156,7 +156,7 @@ public class SignupFragment extends Fragment {
             return true;
         }
         else{
-            Toast.makeText(getContext(), nomValid,Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(), nom_valid,Toast.LENGTH_LONG).show();
             return false;
         }
     }
@@ -164,7 +164,7 @@ public class SignupFragment extends Fragment {
     private Boolean telNonValido(String telefono){
         Boolean isValid=true;
         if(telefono.length()!=10){
-            Toast.makeText(getContext(), teleValid,Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(), tele_valid,Toast.LENGTH_LONG).show();
             return false;
         }
 
@@ -180,7 +180,7 @@ public class SignupFragment extends Fragment {
             return true;
         }
         else{
-            Toast.makeText(getContext(), teleValid,Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(), tele_valid,Toast.LENGTH_LONG).show();
             return false;
         }
 

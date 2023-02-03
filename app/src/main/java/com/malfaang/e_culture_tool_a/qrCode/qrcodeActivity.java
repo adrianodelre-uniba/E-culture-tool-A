@@ -43,9 +43,6 @@ import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
 import com.journeyapps.barcodescanner.ScanContract;
 import com.journeyapps.barcodescanner.ScanOptions;
-import com.malfaang.e_culture_tool_a.Database;
-import com.malfaang.e_culture_tool_a.addElements.ImageSql;
-import com.malfaang.e_culture_tool_a.newRoute.Item;
 
 import java.util.ArrayList;
 
@@ -122,7 +119,7 @@ public class qrcodeActivity extends AppCompatActivity{
                         Item_Title.setText(itemList.get(0).getItemTitle());
                         Item_Description.setText(itemList.get(0).getItemDescr());
                         Item_Tipology.setText(itemList.get(0).getItemTypology());
-                        Item_pic.setImageBitmap(imageSQList.get(0).getItemImgSql());
+                        Item_pic.setImageBitmap(imageSQList.get(0).getItem_imgSql());
 
                         if (tipologia.equals("Visitatore")|| tipologia.equals("Guida")){
                             Item_Title.setEnabled(false);
